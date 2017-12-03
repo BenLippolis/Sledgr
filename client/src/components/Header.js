@@ -1,7 +1,28 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Header extends Component {
+    renderContent() {
+        switch (this.props.auth) {
+            case null: 
+                return;
+            case false:
+                return (
+                    <li className="nav-item">
+                        <a className="nav-link btn btn-sm btn-outline-secondary align-middle" href="/auth/google">Sign Up</a>
+                    </li>
+                );
+            default:
+                return (
+                    <li className="nav-item">
+                        <a className="nav-link btn btn-sm btn-outline-secondary align-middle" href="/api/logout">Log Out</a>
+                    </li>
+                );
+        }
+    }
+
     render() {
+        console.log(this.props);
         return (
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -29,9 +50,7 @@ class Header extends Component {
                         <a className="dropdown-item" href="#">Something else here</a>
                     </div>
                     </li>
-                    <form className="form-inline">
-                        <button className="btn btn-sm align-middle btn-outline-secondary" type="button">Sign Up</button>
-                    </form>
+                    {this.renderContent()}
                 </ul>
                 </div>
                 </nav>
@@ -39,5 +58,10 @@ class Header extends Component {
         );
     }
 }
-
-export default Header;
+// Pass the state we want to access to the component
+function mapStateToProps(state) {
+    // Return an object to be passed to the header as props 
+    // Return the property we assigned the appropriate reducer to 
+    return { auth: state.auth };
+}
+export default connect(mapStateToProps)(Header);
