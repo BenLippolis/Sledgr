@@ -29,8 +29,8 @@ class Header extends Component {
                         <a className="dropdown-item" href="#">Something else here</a>
                     </div>
                     </li>
-                    <form class="form-inline">
-                        <button class="btn btn-sm align-middle btn-outline-secondary" type="button">Sign Up</button>
+                    <form className="form-inline">
+                        <button className="btn btn-sm align-middle btn-outline-secondary" type="button">Sign Up</button>
                     </form>
                 </ul>
                 </div>
