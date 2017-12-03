@@ -6,7 +6,7 @@ class Landing extends Component {
         return (
             <div className="container">
                 <div className="jumbotron text-center branding">
-                    <h1> Welcome to the content </h1>
+                    <h1> Welcome to Sledgr.com </h1>
                 </div>
             </div>
         );

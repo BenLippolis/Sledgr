@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import  Header from './Header';
 import Landing from './Landing';
+import Footer from './Footer';
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
                     <Route exact path="/" component={Landing}> 
                         <Landing />
                     </Route>
+                    <Footer />
                 </div>
             </BrowserRouter>
         </div>
