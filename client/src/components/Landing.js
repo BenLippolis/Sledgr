@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../styles/Landing.css';
+import Dashboard from './Dashboard';
 
 class Landing extends Component {
 
@@ -8,17 +9,19 @@ class Landing extends Component {
         switch(this.props.auth) {
             case null:
             return (
-                <h1> Welcome to Sledgr.com </h1>
+                <div />
             );
 
             case false:
             return (
-                <h1> Welcome to Sledgr.com </h1>
+                <div className="jumbotron text-center branding">
+                    <h1> Welcome to Sledgr.com </h1>
+                </div>
             );
 
             default:
             return (
-                <h1> Dashboard </h1>
+                <Dashboard />
             );
         }
     }
@@ -26,9 +29,7 @@ class Landing extends Component {
     render() {
         return (
             <div className="container">
-                <div className="jumbotron text-center branding">
                     {this.renderContent()}
-                </div>
             </div>
         );
     }

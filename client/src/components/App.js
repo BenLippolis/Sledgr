@@ -7,6 +7,7 @@ import * as actions from '../actions';
 import Header from './Header';
 import Landing from './Landing';
 import Footer from './Footer';
+import SurveyNew from './surveys/SurveyNew';
 
 class App extends Component {
     // Life-cycle method for fetching current user
@@ -23,6 +24,7 @@ class App extends Component {
                         <Header />
                         <Route exact path="/" component={Landing}> 
                         </Route>
+                        <Route path="/surveys/new" component={SurveyNew} />
                         <Footer />
                     </div>
                 </BrowserRouter>
