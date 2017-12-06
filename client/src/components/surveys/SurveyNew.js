@@ -4,8 +4,7 @@ import SurveyForm from './SurveyForm';
 class SurveyNew extends Component {
     render() {
         return (    
-            <div> 
-                Survey new 
+            <div>
                 <SurveyForm />
                 
             </div>
