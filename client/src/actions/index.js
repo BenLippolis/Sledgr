@@ -9,3 +9,11 @@ export const fetchUser = () => async dispatch => {
     const res = await axios.get('/api/current_user');
     dispatch({ type: FETCH_USER, payload: res.data }); 
 };
+
+export const submitSurvey = (values, history) => async dispatch => {
+    const res = await axios.post('/api/surveys', values);
+    // We pass the history object to the action creator using the onClick callback
+    // In the component to access react router for redirection after survey creation
+    history.push('/');
+    dispatch({ type: FETCH_USER, payload: res.data });
+};
