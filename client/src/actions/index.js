@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER } from './types';
+import * as types from './types';
 
 // Fetch User action creator returns a function 
 // Redux thunk will inspect the value returned by this AC
@@ -7,7 +7,7 @@ import { FETCH_USER } from './types';
 // And pass in dispatch as an argument 
 export const fetchUser = () => async dispatch => {   
     const res = await axios.get('/api/current_user');
-    dispatch({ type: FETCH_USER, payload: res.data }); 
+    dispatch({ type: types.FETCH_USER, payload: res.data }); 
 };
 
 export const submitSurvey = (values, history) => async dispatch => {
@@ -15,5 +15,10 @@ export const submitSurvey = (values, history) => async dispatch => {
     // We pass the history object to the action creator using the onClick callback
     // In the component to access react router for redirection after survey creation
     history.push('/');
-    dispatch({ type: FETCH_USER, payload: res.data });
+    dispatch({ type: types.SUBMIT_SURVEY, payload: res.data });
 };
+
+export const connectPlaid = () => async dispatch => {
+    const res = await axios.post('/get_access_token');
+    dispatch({ type: types.CONNECT_PLAID })
+}

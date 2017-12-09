@@ -16,27 +16,19 @@ var client = new plaid.Client(
   );
 
 module.exports = app => {
-    app.post('/get_access_token', function(req, res, next) {
-        PUBLIC_TOKEN = req.body.public_token;
-        client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
-          if (error != null) {
-            var msg = 'Could not exchange public_token!';
-            console.log(msg + '\n' + error);
-            return response.json({
-              error: msg
-            });
-          }
-          const user = req.user;
-          user.access_token = tokenResponse.access_token;
-          user.item_id = tokenResponse.item_id;
-          user.save();
-          ACCESS_TOKEN = tokenResponse.access_token;
-          ITEM_ID = tokenResponse.item_id;
-          console.log('Access Token: ' + ACCESS_TOKEN);
-          console.log('Item ID: ' + ITEM_ID);
-          res.json({
-            'error': false
-          });
-        });
+  app.post('/get_access_token', function(request, response, next) {
+    PUBLIC_TOKEN = request.body.public_token;
+    client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
+      if (error != null) {
+        var msg = 'Could not exchange public_token!';
+        console.log(msg + '\n' + error);
+        return response.json({error: msg});
+      }
+      ACCESS_TOKEN = tokenResponse.access_token;
+      ITEM_ID = tokenResponse.item_id;
+      console.log('Access Token: ' + ACCESS_TOKEN);
+      console.log('Item ID: ' + ITEM_ID);
+      response.json({'error': false});
     });
+  });
 }
