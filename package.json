@@ -26,6 +26,7 @@
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
     "plaid": "^2.2.0",
+    "react-plaid-link": "^0.1.9",
     "redux-logger": "^3.0.6"
   }
 }

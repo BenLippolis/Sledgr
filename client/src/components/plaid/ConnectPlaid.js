@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { connectPlaid } from '../../actions' 
+import { connectPlaid } from '../../actions'; 
 
 const ConnectPlaid = ({ isConnected, onClick }) => {
         if(isConnected) {
@@ -12,7 +12,7 @@ const ConnectPlaid = ({ isConnected, onClick }) => {
                 <div>
                     <h3> Please connect to plaid </h3>
                     <button className="btn btn-success" type="submit"
-                    onClick={onClick}>Connect to Plaid</button>    
+                    onClick={onClick}>Connect to Plaid</button>
                 </div>
             );                          
         }

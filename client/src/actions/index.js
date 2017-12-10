@@ -18,7 +18,6 @@ export const submitSurvey = (values, history) => async dispatch => {
     dispatch({ type: types.SUBMIT_SURVEY, payload: res.data });
 };
 
-export const connectPlaid = () => async dispatch => {
-    const res = await axios.post('/get_access_token');
-    dispatch({ type: types.CONNECT_PLAID })
+export const connectPlaid = () => {
+
 }

@@ -1,5 +1,5 @@
 const requireLogin = require('../middlewares/requireLogin');
-const keys = require('./config/keys');
+const keys = require('../config/keys');
 const plaid = require('plaid');
 
 const PLAID_CLIENT_ID = keys.plaidClientId;

@@ -27,7 +27,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/surveyRoutes')(app);
-//require('./routes/plaidRoutes')(app);
+require('./routes/plaidRoutes')(app);
 
 // Config for production routing with React Router 
 if (process.env.NODE_ENV === 'production') {
