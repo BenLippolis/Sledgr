@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ConnectPlaid from './plaid/ConnectPlaid';
+import SurveyList from './surveys/SurveyList';
 
 const Dashboard = () => {
     return (
@@ -10,6 +11,7 @@ const Dashboard = () => {
                 <Link to="/surveys/new" className="btn btn-primary"> New Survey </Link>
             </div>
             <ConnectPlaid />
+            <SurveyList />
         </div>
 
     );

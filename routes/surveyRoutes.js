@@ -19,4 +19,9 @@ module.exports = app => {
             res.status(422).send(err);
         }
     });
+
+    app.get('/api/surveys', requireLogin, async (req, res) => {
+        const surveys = await Survey.find({ _user: req.user.id });
+        res.send(surveys);
+    });
 };
