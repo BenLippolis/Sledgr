@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import '../styles/Landing.css';
-import Dashboard from './Dashboard';
+import '../../styles/Landing.css';
+import Dashboard from '../dashboard/Dashboard';
 
 class Landing extends Component {
 

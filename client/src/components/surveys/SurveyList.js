@@ -22,6 +22,7 @@ class SurveyList extends Component {
             );
         });
     }
+    
     render() {
         return (
             <div className="all">

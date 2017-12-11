@@ -15,8 +15,16 @@ class Header extends Component {
                 );
             default:
                 return (
-                    <li className="nav-item">
-                        <a className="nav-link btn btn-sm btn-outline-secondary align-middle" href="/api/logout">Log Out</a>
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Benjamin
+                        </a>
+                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a className="dropdown-item" href="#">Action</a>
+                        <a className="dropdown-item" href="#">Another action</a>
+                        <div className="dropdown-divider"></div>
+                            <a className="dropdown-item" href="/api/logout">Log Out</a>
+                        </div>
                     </li>
                 );
         }
@@ -37,22 +45,12 @@ class Header extends Component {
 
                 </ul>
                 <ul className="nav navbar-nav">
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Features</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Pricing</a>
-                    </li>
-                    <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown link
-                    </a>
-                    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a className="dropdown-item" href="#">Action</a>
-                        <a className="dropdown-item" href="#">Another action</a>
-                        <a className="dropdown-item" href="#">Something else here</a>
-                    </div>
-                    </li>
+                    <Link to={'/features'} className="nav-item nav-link">
+                        Features
+                    </Link>
+                    <Link to={'/community'} className="nav-item nav-link">
+                        Community
+                    </Link>
                     {this.renderContent()}
                 </ul>
                 </div>

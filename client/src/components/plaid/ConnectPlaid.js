@@ -12,7 +12,6 @@ class ConnectPlaid extends Component {
         } else {
             return (
                 <div>
-                    <h3> Please connect to plaid </h3>
                     <button className="btn btn-primary" type="submit"
                     onClick={this.props.onClick}>Connect to Plaid</button>
                 </div>
