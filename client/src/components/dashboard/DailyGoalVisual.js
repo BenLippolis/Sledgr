@@ -5,7 +5,9 @@ class DailyGoalVisual extends Component {
         return (
             <div>
                 <div className="card one-survey">
-                    <p className="card-text text-center">Progress Bar</p>
+                    <div className="progress">
+                        <div className="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style={{width: '35%'}} aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
                 </div>
                 <div className="card one-survey">
                     <div className="card-body">
@@ -17,7 +19,6 @@ class DailyGoalVisual extends Component {
             </div>
         );
     }
-
 }
 
 export default DailyGoalVisual;

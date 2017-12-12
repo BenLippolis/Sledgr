@@ -31,6 +31,39 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
+    <div class="container">
+      <div class="col-md-12 text-center">
+        <br>
+        <button class="btn btn-primary" id="link-btn">Link Account</button> 
+      </div>   
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+    <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+    <script>
+    (function($) {
+      var handler = Plaid.create({
+        apiVersion: 'v2',
+        clientName: 'Plaid Walkthrough Demo',
+        env: 'development',
+        product: ['transactions'],
+        key: 'dd4a42fe52273d06efafcc208601f9',
+        onSuccess: function(public_token) {
+          $.post('/get_access_token', {
+            public_token: public_token
+          }, function() {
+            $('#container').fadeOut('fast', function() {
+              $('#intro').hide();
+              $('#app, #steps').fadeIn('slow');
+            });
+          });
+        },
+      });
+  
+      $('#link-btn').on('click', function(e) {
+        handler.open();
+      });
+    })(jQuery);
+    </script>
     
     <!--
       This HTML file is a template.

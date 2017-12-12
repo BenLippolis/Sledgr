@@ -20,8 +20,8 @@ class Header extends Component {
                             Benjamin
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="#">Action</a>
-                        <a className="dropdown-item" href="#">Another action</a>
+                        <a className="dropdown-item" href="#">Account</a>
+                        <a className="dropdown-item" href="#">Profile</a>
                         <div className="dropdown-divider"></div>
                             <a className="dropdown-item" href="/api/logout">Log Out</a>
                         </div>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as types from './types';
 import { FETCH_SURVEYS } from './types';
+import Plaid from 'plaid';
 
 // Fetch User action creator returns a function 
 // Redux thunk will inspect the value returned by this AC
@@ -20,6 +21,11 @@ export const submitSurvey = (values, history) => async dispatch => {
 };
 
 export const connectPlaid = () => {
+    Plaid.create({
+        clientName: 'Plaid Walkthrough Demo',
+        env: 'sandbox',
+        key: '[PUBLIC_KEY]', // Replace with your public_key to test with live credentials
+        product: ['transactions']})
 
 };
 

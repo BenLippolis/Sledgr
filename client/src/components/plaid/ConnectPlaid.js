@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { connectPlaid } from '../../actions'; 
-import Plaid from 'plaid';
 
 class ConnectPlaid extends Component {
     render() {
@@ -13,7 +12,7 @@ class ConnectPlaid extends Component {
             return (
                 <div>
                     <button className="btn btn-primary" type="submit"
-                    onClick={this.props.onClick}>Connect to Plaid</button>
+                    onClick={this.connect}>Connect to Plaid</button>
                 </div>
             ); 
         }     
