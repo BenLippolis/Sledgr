@@ -23,6 +23,6 @@ function mapStateToProps(state) {
     return { isConnected: state.auth.access_token }; 
 }
 
-const actionCreators = { onClick: connectPlaid };
+//const actionCreators = { onClick: connectPlaid };
 
-export default connect(mapStateToProps, actionCreators)(ConnectPlaid);
+export default connect(mapStateToProps)(ConnectPlaid);

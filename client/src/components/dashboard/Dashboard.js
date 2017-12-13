@@ -5,6 +5,7 @@ import SurveyList from '../surveys/SurveyList';
 import DailyGoalVisual from './DailyGoalVisual';
 import Network from './Network';
 import Roadmap from './Roadmap';
+import CreateProfile from './CreateProfile';
 
 const Dashboard = () => {
     return (
@@ -14,6 +15,7 @@ const Dashboard = () => {
                 <ConnectPlaid />
             </div>
             <div>
+                <CreateProfile />
                 <DailyGoalVisual />
             </div>
             <div className="row">
