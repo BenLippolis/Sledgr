@@ -26,7 +26,8 @@ export const fetchSurveys = () => async dispatch => {
 };
 
 export const submitProfile = (values, history) => async dispatch => {
+    console.log('Hey');
     const res = await axios.post('/api/profile', values);
-    history.push('/');
+    //history.push('/');
     dispatch({ type: types.SUBMIT_PROFILE, payload: res.data });
 }

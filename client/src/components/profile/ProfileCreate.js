@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ProfileForm from './ProfileForm';
+import { reduxForm } from 'redux-form';
 
 class ProfileCreate extends Component {
     render() {
@@ -12,4 +13,7 @@ class ProfileCreate extends Component {
     }
 }
 
-export default ProfileCreate;
+export default reduxForm({
+    // By default, redux form dumps form values when component unmounts
+    form: 'profileForm'
+})(ProfileCreate);

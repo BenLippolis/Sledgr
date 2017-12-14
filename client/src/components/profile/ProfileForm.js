@@ -4,6 +4,10 @@ import { reduxForm, Field } from 'redux-form';
 import ProfileField from './ProfileField';
 import { Link } from 'react-router-dom';
 import formFields from './formFields';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import * as actions from '../../actions';
+
 
 class ProfileForm extends Component {
     renderFields() {
@@ -22,6 +26,11 @@ class ProfileForm extends Component {
                     <Link to="/" className="btn btn-danger">
                         Cancel
                     </Link>
+                    <button 
+                        className="btn btn-success float-right"
+                        type="submit">
+                        Create Profile
+                    </button>
                 </form>
             </div>
         );
@@ -40,9 +49,9 @@ function validate(values) {
     return errors;
 }
 
+
 export default reduxForm({
-    // form: tells redux how to manage the forms values inside the forms reducer 
     validate,
-    form: 'profileForm',
-    destroyOnUnmount: false
+    form: 'profileForm'
 })(ProfileForm);
+
