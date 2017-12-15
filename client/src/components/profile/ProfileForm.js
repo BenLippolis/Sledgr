@@ -26,30 +26,28 @@ class ProfileForm extends Component {
         const { handleSubmit } = this.props;
 
         return (    
-                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                    {this.renderFields()}
-                    <Link to="/" className="btn btn-danger">
-                        Cancel
-                    </Link>
-                    <button 
-                        className="btn btn-success float-right"
-                        type="submit">
-                        Create Profile
-                    </button>
-                </form>
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                {this.renderFields()}
+                <Link to="/" className="btn btn-danger">
+                    Cancel
+                </Link>
+                <button 
+                    className="btn btn-success float-right"
+                    type="submit">
+                    Create Profile
+                </button>
+            </form>
         );
     }
 }
 
 function validate(values) {
     const errors = {};
-
     _.each(formFields, ({name, noValueError}) => {
         if (!values[name]) {
             errors[name] = noValueError;
         }
     });
-
     return errors;
 }
 

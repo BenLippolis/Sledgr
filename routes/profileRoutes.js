@@ -18,4 +18,9 @@ module.exports = app => {
             res.status(422).send(err);
         }
     });
+
+    app.get('/api/profile', requireLogin, async (req, res) => {
+        const profiles = await Profile.find({ _user: req.user.id });
+        res.send(profiles);
+    });
 };
