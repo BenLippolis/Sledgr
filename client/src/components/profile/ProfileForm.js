@@ -17,11 +17,16 @@ class ProfileForm extends Component {
             );
         });
     }
+
+    onSubmit(values) {
+        this.props.submitProfile(values, this.props.history)
+    }
     
     render() {
+        const { handleSubmit } = this.props;
+
         return (    
-            <div> 
-                <form>
+                <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                     {this.renderFields()}
                     <Link to="/" className="btn btn-danger">
                         Cancel
@@ -32,7 +37,6 @@ class ProfileForm extends Component {
                         Create Profile
                     </button>
                 </form>
-            </div>
         );
     }
 }
@@ -49,9 +53,10 @@ function validate(values) {
     return errors;
 }
 
-
 export default reduxForm({
     validate,
     form: 'profileForm'
-})(ProfileForm);
+})(
+    connect(null,actions)(withRouter(ProfileForm))
+);
 

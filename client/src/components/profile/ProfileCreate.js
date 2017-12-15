@@ -13,7 +13,4 @@ class ProfileCreate extends Component {
     }
 }
 
-export default reduxForm({
-    // By default, redux form dumps form values when component unmounts
-    form: 'profileForm'
-})(ProfileCreate);
+export default ProfileCreate;

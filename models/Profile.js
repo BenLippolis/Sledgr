@@ -5,7 +5,7 @@ const OutflowSchema = require('./Outflow');
 
 const profileSchema = new Schema({
     name: String,
-    birthday: Date,
+    birthday: String,
     //inflows: [InflowSchema],
     //outflows: [OutflowSchema],
     _user: { type: Schema.Types.ObjectId, ref: 'User'}

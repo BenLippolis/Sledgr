@@ -4,6 +4,7 @@ const Profile = mongoose.model('profile');
 
 module.exports = app => {
     app.post('/api/profile', requireLogin, async (req, res) => {
+        console.log('boo');
         const { name, birthday } = req.body;
         const profile = new Profile({
             name, 
