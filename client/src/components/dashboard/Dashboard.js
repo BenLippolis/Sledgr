@@ -6,6 +6,7 @@ import DailyGoalVisual from './DailyGoalVisual';
 import Network from './Network';
 import Roadmap from './Roadmap';
 import CreateProfile from './CreateProfile';
+import ProfileList from '../profile/ProfileList';
 
 const Dashboard = () => {
     return (
@@ -25,6 +26,9 @@ const Dashboard = () => {
                 <div className="col-md-6">
                     <Roadmap />
                 </div>
+            </div>
+            <div className="row">
+                <ProfileList />
             </div>
         </div>
 
