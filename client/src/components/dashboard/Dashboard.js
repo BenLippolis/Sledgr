@@ -16,6 +16,7 @@ const Dashboard = () => {
                 <ConnectPlaid />
             </div>
             <div>
+                <ProfileList />
                 <CreateProfile />
                 <DailyGoalVisual />
             </div>
@@ -26,9 +27,6 @@ const Dashboard = () => {
                 <div className="col-md-6">
                     <Roadmap />
                 </div>
-            </div>
-            <div className="row">
-                <ProfileList />
             </div>
         </div>
 

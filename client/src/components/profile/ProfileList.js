@@ -13,7 +13,7 @@ class ProfileList extends Component {
             return (
                     <div className="card one-survey" key={profile._id}>
                         <div className="card-body">
-                        <h3 className="card-title">Title: {profile.name} </h3>
+                        <h3 className="card-title">Name: {profile.name} </h3>
                         </div>
                     </div>
             );
@@ -23,7 +23,7 @@ class ProfileList extends Component {
     render() {
         return (
             <div className="all">
-                {this.renderProfiles()}
+                {this.renderProfiles()}                
             </div>
         );
     }
