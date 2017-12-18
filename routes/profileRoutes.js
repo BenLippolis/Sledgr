@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const Profile = mongoose.model('profile');
+const oneProfile = require('../middlewares/oneProfile');
 
 module.exports = app => {
-    app.post('/api/profile', requireLogin, async (req, res) => {
+    app.post('/api/profile', requireLogin, oneProfile, async (req, res) => {
         console.log('boo');
         const { name, birthday } = req.body;
         const profile = new Profile({
