@@ -16,19 +16,36 @@ var client = new plaid.Client(
   );
 
 module.exports = app => {
-  app.post('/get_access_token', function(request, response, next) {
-    PUBLIC_TOKEN = request.body.public_token;
+  app.post('/get_access_token', function(req, res, next) {
+    PUBLIC_TOKEN = req.body.public_token;
     client.exchangePublicToken(PUBLIC_TOKEN, function(error, tokenResponse) {
       if (error != null) {
         var msg = 'Could not exchange public_token!';
         console.log(msg + '\n' + error);
-        return response.json({error: msg});
+        return res.json({error: msg});
       }
       ACCESS_TOKEN = tokenResponse.access_token;
       ITEM_ID = tokenResponse.item_id;
       console.log('Access Token: ' + ACCESS_TOKEN);
       console.log('Item ID: ' + ITEM_ID);
-      response.json({'error': false});
+      res.json({'error': false});
+    });
+  });
+
+  app.get('/transactions', function(req, res, next) {
+    // Pull transactions for the Item for the last 30 days
+    var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD');
+    var endDate = moment().format('YYYY-MM-DD');
+    client.getTransactions(req.user.ACCESS_TOKEN, startDate, endDate, {
+      count: 250,
+      offset: 0,
+    }, function(error, transactionsResponse) {
+      if (error != null) {
+        console.log(JSON.stringify(error));
+        return res.json({error: error});
+      }
+      console.log('pulled ' + transactionsResponse.transactions.length + ' transactions');
+      res.json(transactionsResponse);
     });
   });
 }
