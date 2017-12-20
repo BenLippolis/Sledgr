@@ -1,13 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-const InflowSchema = require('./Inflow');
-const OutflowSchema = require('./Outflow');
 
 const profileSchema = new Schema({
     name: String,
     birthday: String,
-    //inflows: [InflowSchema],
-    //outflows: [OutflowSchema],
     _user: { type: Schema.Types.ObjectId, ref: 'User'}
 });
 
