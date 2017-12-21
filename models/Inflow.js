@@ -4,7 +4,7 @@ const { Schema } = mongoose
 const inflowSchema = new Schema({
     title: String, 
     amount: Number,
-    _profile: { type: Schema.Types.ObjectId, ref: 'Profile'}
+    _user: { type: Schema.Types.ObjectId, ref: 'User'}
 });
 
-module.exports = inflowSchema;
+mongoose.model('inflow', profileSchema);

@@ -4,5 +4,7 @@ const { Schema } = mongoose
 const outflowSchema = new Schema({
     title: String, 
     amount: Number,
-    _profile: { type: Schema.Types.ObjectId, ref: 'Profile'}
+    _user: { type: Schema.Types.ObjectId, ref: 'User'}
 });
+
+mongoose.model('outflow', profileSchema);
