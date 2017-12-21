@@ -2,10 +2,9 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import ProfileField from './ProfileField';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import formFields from './formFields';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 
 

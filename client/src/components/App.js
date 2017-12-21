@@ -11,6 +11,7 @@ import SurveyNew from './surveys/SurveyNew';
 import FeaturesPage from './pages/FeaturesPage';
 import Community from './pages/Community';
 import ProfileCreate from './profile/ProfileCreate';
+import ProfileShow from './profile/ProfileShow';
 
 class App extends Component {
     // Life-cycle method for fetching current user
@@ -32,6 +33,7 @@ class App extends Component {
                             <Route path="/features" component={FeaturesPage} />
                             <Route path="/community" component={Community} />
                             <Route path="/profile/create" component={ProfileCreate} />
+                            <Route path="/profile" component={ProfileShow} />
                         </div>
                         <Footer />
                     </div>

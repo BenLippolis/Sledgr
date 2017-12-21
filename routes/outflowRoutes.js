@@ -4,9 +4,9 @@ const Outflow = mongoose.model('outflow');
 
 module.exports = app => {
     app.post('/api/outflow', requireLogin, async (req, res) => {
-        const { name, amount } = req.body;
+        const { title, amount } = req.body;
         const outflow = new Outflow({
-            name, 
+            title, 
             amount,
             _user: req.user.id 
         });

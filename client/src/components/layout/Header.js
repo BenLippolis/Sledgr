@@ -21,7 +21,9 @@ class Header extends Component {
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a className="dropdown-item" href="#">Account</a>
-                        <a className="dropdown-item" href="#">Profile</a>
+                        <Link to={'/profile'} className="dropdown-item">
+                            Profile
+                        </Link>
                         <div className="dropdown-divider"></div>
                             <a className="dropdown-item" href="/api/logout">Log Out</a>
                         </div>
