@@ -7,3 +7,4 @@ export const FETCH_PROFILE = 'fetch_profile';
 export const SUBMIT_INFLOW = 'submit_inflow';
 export const FETCH_INFLOWS = 'fetch_inflows';
 export const SUBMIT_OUTFLOW = 'submit_outflow';
+export const FETCH_OUTFLOWS = 'fetch_outflows';

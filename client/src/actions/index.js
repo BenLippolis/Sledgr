@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as types from './types';
+import { FETCH_OUTFLOWS } from './types';
 
 // Fetch User action creator returns a function 
 // Redux thunk will inspect the value returned by this AC
@@ -46,5 +47,10 @@ export const fetchInflows = () => async dispatch => {
 }
 export const submitOutflow = (values, history) =>  async dispatch => {
     const res = await axios.post('/api/outflow', values);
+    history.push('/');
     dispatch({ type: types.SUBMIT_OUTFLOW, payload: res.data });
+}
+export const fetchOutflows = () => async dispatch => {
+    const res = await axios.get('/api/outflows');
+    dispatch({ type: FETCH_OUTFLOWS, payload: res.data});
 }

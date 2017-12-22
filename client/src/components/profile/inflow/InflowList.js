@@ -12,7 +12,7 @@ class InflowList extends Component {
             return(
                 <div className="card" key={inflow._id}>
                     <div className="card-body">
-                        <p className="card-text">Title: {inflow.title} | Amount: {inflow.amount} </p>
+                        <p className="card-text">Title: {inflow.title} | Amount: ${inflow.amount} </p>
                     </div>
                 </div>
             );
