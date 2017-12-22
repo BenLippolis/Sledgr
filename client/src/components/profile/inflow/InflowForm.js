@@ -27,7 +27,7 @@ class InflowForm extends Component {
         return(
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 {this.renderFields()}
-                <Link to="/" className="btn btn-warning">
+                <Link to="/" className="btn btn-danger">
                     Cancel
                 </Link>
                 <button 

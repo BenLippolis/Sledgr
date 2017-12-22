@@ -39,3 +39,8 @@ export const submitInflow = (values, history) => async dispatch => {
     const res = await axios.post('/api/inflow', values);
     dispatch({ type: types.SUBMIT_INFLOW, payload: res.data });
 }
+
+export const submitOutflow = (values, history) =>  async dispatch => {
+    const res = await axios.post('/api/outflow', values);
+    dispatch({ type: types.SUBMIT_OUTFLOW, payload: res.data });
+}

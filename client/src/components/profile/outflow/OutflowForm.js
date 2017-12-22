@@ -17,11 +17,17 @@ class OutflowForm extends Component {
         });
     }
 
+    onSubmit(values) {
+        this.props.submitOutflow(values, this.props.history);
+    }
+
     render() {
+        const { handleSubmit } = this.props;
+
         return(
-            <form>
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 {this.renderFields()}
-                <Link to="/" className="btn btn-warning">
+                <Link to="/" className="btn btn-danger">
                     Cancel
                 </Link>
                 <button 
