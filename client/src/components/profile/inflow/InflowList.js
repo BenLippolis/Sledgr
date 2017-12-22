@@ -12,7 +12,20 @@ class InflowList extends Component {
             return(
                 <div className="card" key={inflow._id}>
                     <div className="card-body">
-                        <p className="card-text">Title: {inflow.title} | Amount: ${inflow.amount} </p>
+                    <div className="col-md-6">
+                    <p className="card-text">Title: {inflow.title} </p>
+                    </div>
+                    <div className="col-md-6">
+                    <p className="card-text"> Amount: ${inflow.amount}</p>
+                    </div>
+                    <div className="col-md-6">
+                    <button className="btn btn-danger btn-sm pull-xs-right">
+                        Delete 
+                    </button>
+                    </div>
+                    
+                        
+
                     </div>
                 </div>
             );

@@ -23,4 +23,5 @@ module.exports = app => {
         const profiles = await Profile.find({ _user: req.user.id });
         res.send(profiles);
     });
+
 };
