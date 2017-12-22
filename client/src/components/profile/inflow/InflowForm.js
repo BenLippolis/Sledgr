@@ -17,9 +17,15 @@ class InflowForm extends Component {
         });
     }
 
+    onSubmit(values) {
+        this.props.submitInflow(values, this.props.history);
+    }
+
     render() {
+        const { handleSubmit } = this.props;
+        
         return(
-            <form>
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 {this.renderFields()}
                 <Link to="/" className="btn btn-warning">
                     Cancel

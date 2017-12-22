@@ -18,7 +18,7 @@ class ProfileForm extends Component {
     }
 
     onSubmit(values) {
-        this.props.submitProfile(values, this.props.history)
+        this.props.submitProfile(values, this.props.history);
     }
     
     render() {
@@ -54,6 +54,6 @@ export default reduxForm({
     validate,
     form: 'profileForm'
 })(
-    connect(null,actions)(withRouter(ProfileForm))
+    connect(null, actions)(withRouter(ProfileForm))
 );
 

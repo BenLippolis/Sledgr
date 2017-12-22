@@ -32,5 +32,10 @@ export const submitProfile = (values, history) => async dispatch => {
 
 export const fetchProfile = () => async dispatch => {
     const res = await axios.get('/api/profile');
-    dispatch({ type: types.FETCH_PROFILE, payload:res.data})
+    dispatch({ type: types.FETCH_PROFILE, payload:res.data });
+}
+
+export const submitInflow = (values, history) => async dispatch => {
+    const res = await axios.post('/api/inflow', values);
+    dispatch({ type: types.SUBMIT_INFLOW, payload: res.data });
 }

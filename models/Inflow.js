@@ -7,4 +7,4 @@ const inflowSchema = new Schema({
     _user: { type: Schema.Types.ObjectId, ref: 'User'}
 });
 
-mongoose.model('inflow', profileSchema);
+mongoose.model('inflow', inflowSchema);

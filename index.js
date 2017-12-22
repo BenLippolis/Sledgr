@@ -7,6 +7,8 @@ const keys = require('./config/keys');
 require('./models/User');
 require('./models/Survey');
 require('./models/Profile');
+require('./models/Inflow');
+require('./models/Outflow');
 require('./services/passport');
 
 mongoose.connect(keys.mongoURI);
@@ -30,6 +32,8 @@ require('./routes/authRoutes')(app);
 require('./routes/surveyRoutes')(app);
 require('./routes/plaidRoutes')(app);
 require('./routes/profileRoutes')(app);
+require('./routes/inflowRoutes')(app);
+require('./routes/outflowRoutes')(app);
 
 // Config for production routing with React Router 
 if (process.env.NODE_ENV === 'production') {
