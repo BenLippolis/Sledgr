@@ -27,13 +27,13 @@ class InflowForm extends Component {
         return(
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 {this.renderFields()}
-                <Link to="/" className="btn btn-danger">
+                <Link to="/" className="btn btn-sm btn-danger">
                     Cancel
                 </Link>
                 <button 
-                    className="btn btn-primary float-right"
+                    className="btn btn-primary btn-sm float-right"
                     type="submit">
-                    Record Inflow
+                    Add Inflow
                 </button>
             </form>
         );

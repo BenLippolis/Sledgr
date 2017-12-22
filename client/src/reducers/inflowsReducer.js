@@ -1,8 +1,8 @@
-import { FETCH_PROFILE } from '../actions/types';
+import { FETCH_INFLOWS } from '../actions/types';
 
 export default function(state = [], action) {
     switch (action.type) {
-        case FETCH_PROFILE: 
+        case FETCH_INFLOWS: 
             return action.payload;
         default: 
             return state;

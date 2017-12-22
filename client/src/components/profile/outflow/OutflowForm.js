@@ -27,13 +27,13 @@ class OutflowForm extends Component {
         return(
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                 {this.renderFields()}
-                <Link to="/" className="btn btn-danger">
+                <Link to="/" className="btn btn-sm btn-danger">
                     Cancel
                 </Link>
                 <button 
-                    className="btn btn-primary float-right"
+                    className="btn btn-sm btn-primary float-right"
                     type="submit">
-                    Record Outflow
+                    Add Outflow
                 </button>
             </form>
         );
