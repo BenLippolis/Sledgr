@@ -8,16 +8,16 @@ class ProfileShow extends Component {
     render() {
         return(
             <div className="row"> 
-                <div className="col-md-4">
-                    <h3> Inflows </h3>
+                <div className="col-md-6">
+                    <h5> Inflows </h5>
                     <InflowList />
-                    <h3> New Inflow </h3>
+                    <h5> New Inflow </h5>
                     <InflowForm />
                 </div>
-                <div className="col-md-4">
-                    <h3> Outflows </h3>
+                <div className="col-md-6">
+                    <h5> Outflows </h5>
                     <OutflowList />
-                    <h3> New Outflow </h3>
+                    <h5> New Outflow </h5>
                     <OutflowForm />
                 </div>
             </div>

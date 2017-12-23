@@ -21,7 +21,7 @@ module.exports = app => {
     });
 
     app.get('/api/surveys', requireLogin, async (req, res) => {
-        const surveys = await Survey.find({ _user: req.user.id });
+        const surveys = await Survey.findOne({ _user: req.user.id });
         res.send(surveys);
     });
 };

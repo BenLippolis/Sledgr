@@ -22,4 +22,17 @@ module.exports = app => {
         const outflows = await Outflow.find({ _user: req.user.id });
         res.send(outflows);
     });
+
+    app.post('/api/outflow/delete', requireLogin, async (req, res) => {
+        const { outflow } = req.body;   
+        console.log('DELETE THIS INFLOWwwwww' + outflow)
+        await Outflow.remove({ _id: outflow }, function(err) {  
+                   if(err){  
+                       res.send(err);  
+                   }  
+                   else{    
+                          res.send({data:"Record has been Deleted!"});             
+                      }  
+               });  
+       }) ;
 };

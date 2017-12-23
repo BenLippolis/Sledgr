@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchOutflows } from '../../../actions';
+import { fetchOutflows, deleteOutflow } from '../../../actions';
 
 class OutflowList extends Component {
     componentDidMount() {
         this.props.fetchOutflows();
+    }
+
+    onDeleteClick(id) {
+        this.props.deleteOutflow(id);
     }
 
     renderOutflows() {
@@ -12,7 +16,12 @@ class OutflowList extends Component {
             return(
                 <div className="card" key={outflow._id}>
                     <div className="card-body">
-                        <p className="card-text">Title: {outflow.title} | Amount: ${outflow.amount} </p>
+                    <p className="card-text">{outflow.title} | ${outflow.amount} |                             
+                        <button className="btn btn-danger btn-sm"
+                            onClick={this.onDeleteClick.bind(this, outflow._id)}>                       
+                            Delete 
+                        </button>
+                    </p>
                     </div>
                 </div>
             );
@@ -31,4 +40,4 @@ class OutflowList extends Component {
 function mapStateToProps(state) {
     return { outflows: state.outflows }
 }
-export default connect(mapStateToProps, { fetchOutflows })(OutflowList);
+export default connect(mapStateToProps, { fetchOutflows, deleteOutflow })(OutflowList);

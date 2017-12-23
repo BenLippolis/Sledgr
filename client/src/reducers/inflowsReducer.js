@@ -7,9 +7,5 @@ export default function(state = [], action) {
             return action.payload;
         default: 
             return state;
-
-        // Delete inflow from local state
-        case DELETE_INFLOW:
-            return _.omit(state, action.payload);
     }
 }

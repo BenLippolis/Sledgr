@@ -1,31 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchInflows } from '../../../actions';
+import { fetchInflows, deleteInflow } from '../../../actions';
 
 class InflowList extends Component {
     componentDidMount() {
         this.props.fetchInflows();
     }
 
+    onDeleteClick(id) {
+        console.log('delete this onflow!!!'+ id);
+        this.props.deleteInflow(id);
+    }
+
+
     renderInflows() {
         return this.props.inflows.map(inflow => {
             return(
                 <div className="card" key={inflow._id}>
                     <div className="card-body">
-                    <div className="col-md-6">
-                    <p className="card-text">Title: {inflow.title} </p>
-                    </div>
-                    <div className="col-md-6">
-                    <p className="card-text"> Amount: ${inflow.amount}</p>
-                    </div>
-                    <div className="col-md-6">
-                    <button className="btn btn-danger btn-sm pull-xs-right">
-                        Delete 
-                    </button>
-                    </div>
-                    
-                        
-
+                        <p className="card-text">{inflow.title} | ${inflow.amount} |                             
+                            <button className="btn btn-danger btn-sm"
+                                onClick={this.onDeleteClick.bind(this, inflow._id)}>                       
+                                Delete 
+                            </button>
+                        </p>
                     </div>
                 </div>
             );
@@ -44,4 +42,4 @@ class InflowList extends Component {
 function mapStateToProps(state) {
     return { inflows: state.inflows }
 }
-export default connect(mapStateToProps, { fetchInflows })(InflowList);
+export default connect(mapStateToProps, { fetchInflows, deleteInflow })(InflowList);

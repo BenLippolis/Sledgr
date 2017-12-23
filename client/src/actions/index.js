@@ -1,6 +1,5 @@
 import axios from 'axios';
 import * as types from './types';
-import { FETCH_OUTFLOWS } from './types';
 
 // Fetch User action creator returns a function 
 // Redux thunk will inspect the value returned by this AC
@@ -46,9 +45,11 @@ export const fetchInflows = () => async dispatch => {
     dispatch({ type: types.FETCH_INFLOWS, payload: res.data })
 }
 
-export const deleteInflow = () => (inflow) => async dispatch => {
-    const res = axios.delete('/api/inflow', inflow);
-    dispatch({ type: types.DELETE_INFLOW, payload: res.data });
+export const deleteInflow = (inflow) => async dispatch => {
+    console.log('delete inflow'+inflow);
+    const res = await axios.post('/api/inflow/delete', {
+        inflow: inflow});
+    dispatch({ type: types.DELETE_INFLOW, payload: inflow })
 }
 
 export const submitOutflow = (values, history) =>  async dispatch => {
@@ -58,6 +59,11 @@ export const submitOutflow = (values, history) =>  async dispatch => {
 }
 export const fetchOutflows = () => async dispatch => {
     const res = await axios.get('/api/outflows');
-    dispatch({ type: FETCH_OUTFLOWS, payload: res.data});
+    dispatch({ type: types.FETCH_OUTFLOWS, payload: res.data});
 }
 
+export const deleteOutflow = (outflow) => async dispatch => {
+    const res = await axios.post('/api/outflow/delete', {
+        outflow: outflow});
+    dispatch({ type: types.DELETE_OUTFLOW, payload: outflow })
+}
