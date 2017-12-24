@@ -29,12 +29,16 @@ class OutflowList extends Component {
     }
 
     render() {
-        return(
-            <div className="all">
-                <h5> Outflows </h5>
-                {this.renderOutflows()}
-            </div>
-        );
+        if(this.props.outflows.length > 0) {
+            return( 
+                <div className="all">
+                    <h5> Outflows </h5>
+                    {this.renderOutflows()}
+                </div>
+            );
+        } else {
+            return null;
+        }
     }
 }
 

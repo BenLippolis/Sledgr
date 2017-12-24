@@ -33,7 +33,7 @@ class App extends Component {
                             <Route path="/features" component={FeaturesPage} />
                             <Route path="/community" component={Community} />
                             <Route path="/profile/create" component={ProfileCreate} />
-                            <Route path="/profile" component={ProfileShow} />
+                            <Route exact path="/profile" component={ProfileShow} />
                         </div>
                         <Footer />
                     </div>

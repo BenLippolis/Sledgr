@@ -30,12 +30,16 @@ class InflowList extends Component {
     }
 
     render() {
-        return(
-            <div className="all">
-                <h5> Inflows </h5>
-                {this.renderInflows()}
-            </div>
-        );
+        if(this.props.inflows.length > 0) {
+            return(
+                <div className="all">
+                    <h5> Inflows </h5>
+                    {this.renderInflows()}
+                </div>
+            );
+        } else {
+            return null;
+        }
     }
 }
 

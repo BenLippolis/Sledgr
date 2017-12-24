@@ -3,6 +3,21 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
+
+    renderProfileName() {
+        switch (this.props.profile.length == 1) {
+            case null: 
+                return;
+            case false: 
+                return ('Your Name')
+            default: {
+                return this.props.profile.map(profile => {
+                    return(profile.name);
+                });
+            }
+        }
+    }
+
     renderContent() {
         switch (this.props.auth) {
             case null: 
@@ -17,7 +32,7 @@ class Header extends Component {
                 return (
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Benjamin
+                            {this.renderProfileName()}
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a className="dropdown-item" href="#">Account</a>
@@ -65,6 +80,6 @@ class Header extends Component {
 function mapStateToProps(state) {
     // Return an object to be passed to the header as props 
     // Return the property we assigned the appropriate reducer to 
-    return { auth: state.auth };
+    return { auth: state.auth, profile: state.profiles };
 }
 export default connect(mapStateToProps)(Header);

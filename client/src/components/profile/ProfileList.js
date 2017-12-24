@@ -10,13 +10,7 @@ class ProfileList extends Component {
 
     renderProfiles() {
         return this.props.profiles.reverse().map(profile => {
-            return (
-                    <div className="card one-survey" key={profile._id}>
-                        <div className="card-body">
-                        <h3 className="card-title">Name: {profile.name} </h3>
-                        </div>
-                    </div>
-            );
+            return null;
         });
     }
     
