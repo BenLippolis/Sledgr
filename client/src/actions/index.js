@@ -46,7 +46,6 @@ export const fetchInflows = () => async dispatch => {
 }
 
 export const deleteInflow = (inflow) => async dispatch => {
-    console.log('delete inflow'+inflow);
     const res = await axios.post('/api/inflow/delete', {
         inflow: inflow});
     dispatch({ type: types.DELETE_INFLOW, payload: inflow })
@@ -54,7 +53,6 @@ export const deleteInflow = (inflow) => async dispatch => {
 
 export const submitOutflow = (values, history) =>  async dispatch => {
     const res = await axios.post('/api/outflow', values);
-    history.push('/');
     dispatch({ type: types.SUBMIT_OUTFLOW, payload: res.data });
 }
 export const fetchOutflows = () => async dispatch => {

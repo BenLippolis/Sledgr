@@ -8,7 +8,6 @@ class InflowList extends Component {
     }
 
     onDeleteClick(id) {
-        console.log('delete this onflow!!!'+ id);
         this.props.deleteInflow(id);
     }
 

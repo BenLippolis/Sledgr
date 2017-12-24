@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, reset } from 'redux-form';
 import InflowField from './InflowField';
 import { Link, withRouter } from 'react-router-dom';
 import formFields from './formFields';

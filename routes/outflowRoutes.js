@@ -12,7 +12,7 @@ module.exports = app => {
         });
         try {
             await outflow.save();
-            res.send(req.user);
+            res.send(outflow);
         } catch (err) {
             res.status(422).send(err);
         }
@@ -25,7 +25,6 @@ module.exports = app => {
 
     app.post('/api/outflow/delete', requireLogin, async (req, res) => {
         const { outflow } = req.body;   
-        console.log('DELETE THIS INFLOWwwwww' + outflow)
         await Outflow.remove({ _id: outflow }, function(err) {  
                    if(err){  
                        res.send(err);  
