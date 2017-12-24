@@ -19,6 +19,7 @@ class InflowForm extends Component {
 
     onSubmit(values) {
         this.props.submitInflow(values, this.props.history);
+        this.props.reset()
     }
 
     render() {
@@ -26,15 +27,16 @@ class InflowForm extends Component {
         
         return(
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                {this.renderFields()}
-                <Link to="/" className="btn btn-sm btn-danger">
-                    Cancel
-                </Link>
-                <button 
-                    className="btn btn-primary btn-sm float-right"
-                    type="submit">
-                    Add Inflow
-                </button>
+                <div className="row">
+                    {this.renderFields()}
+                    <div className="col-md-4">
+                        <button 
+                            className="btn btn-primary btn-sm"
+                            type="submit">
+                            Add Inflow
+                        </button>
+                    </div>
+                </div>
             </form>
         );
     }

@@ -31,6 +31,7 @@ class OutflowList extends Component {
     render() {
         return(
             <div className="all">
+                <h5> Outflows </h5>
                 {this.renderOutflows()}
             </div>
         );

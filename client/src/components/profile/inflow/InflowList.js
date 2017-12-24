@@ -32,6 +32,7 @@ class InflowList extends Component {
     render() {
         return(
             <div className="all">
+                <h5> Inflows </h5>
                 {this.renderInflows()}
             </div>
         );

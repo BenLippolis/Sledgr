@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, reset } from 'redux-form';
 import OutflowField from './OutflowField';
 import { Link, withRouter } from 'react-router-dom';
 import formFields from './formFields';
@@ -19,6 +19,7 @@ class OutflowForm extends Component {
 
     onSubmit(values) {
         this.props.submitOutflow(values, this.props.history);
+        this.props.reset()
     }
 
     render() {
@@ -26,15 +27,16 @@ class OutflowForm extends Component {
 
         return(
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                {this.renderFields()}
-                <Link to="/" className="btn btn-sm btn-danger">
-                    Cancel
-                </Link>
-                <button 
-                    className="btn btn-sm btn-primary float-right"
-                    type="submit">
-                    Add Outflow
-                </button>
+                <div className="row">
+                    {this.renderFields()}
+                    <div className="col-md-4">
+                        <button 
+                            className="btn btn-sm btn-primary"
+                            type="submit">
+                            Add Outflow
+                        </button>
+                    </div>
+                </div>
             </form>
         );
     }
