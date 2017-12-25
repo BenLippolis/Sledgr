@@ -6,6 +6,7 @@ import { Link, withRouter } from 'react-router-dom';
 import formFields from './formFields';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
+import '../../../styles/OutflowForm.css';
 
 
 class OutflowForm extends Component {
@@ -27,7 +28,8 @@ class OutflowForm extends Component {
 
         return(
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                <div className="row">
+                <div className="row outflow_form">
+                <div className="col-md-12"><h5> New Outflow </h5></div>
                     {this.renderFields()}
                     <div className="col-md-4">
                         <button 

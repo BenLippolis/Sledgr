@@ -9,7 +9,7 @@ class Header extends Component {
             case null: 
                 return;
             case false: 
-                return ('Your Name')
+                return ('Your Name');
             default: {
                 return this.props.profile.map(profile => {
                     return(profile.name);
@@ -35,7 +35,6 @@ class Header extends Component {
                             {this.renderProfileName()}
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a className="dropdown-item" href="#">Account</a>
                         <Link to={'/profile'} className="dropdown-item">
                             Profile
                         </Link>

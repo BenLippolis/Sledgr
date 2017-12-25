@@ -10,12 +10,10 @@ class ProfileShow extends Component {
             <div className="row"> 
                 <div className="col-md-6">
                     <InflowList />
-                    <h5> New Inflow </h5>
                     <InflowForm />
                 </div>
                 <div className="col-md-6">
                     <OutflowList />
-                    <h5> New Outflow </h5>
                     <OutflowForm />
                 </div>
             </div>

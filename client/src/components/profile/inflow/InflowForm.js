@@ -6,6 +6,7 @@ import { Link, withRouter } from 'react-router-dom';
 import formFields from './formFields';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
+import '../../../styles/InflowForm.css';
 
 
 class InflowForm extends Component {
@@ -26,8 +27,9 @@ class InflowForm extends Component {
         const { handleSubmit } = this.props;
         
         return(
-            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-                <div className="row">
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))} classaName="inflow">
+                <div className="row inflow_form">
+                    <div className="col-md-12"><h5> New Inflow </h5></div>
                     {this.renderFields()}
                     <div className="col-md-4">
                         <button 

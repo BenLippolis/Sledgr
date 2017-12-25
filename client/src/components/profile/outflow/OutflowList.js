@@ -32,7 +32,7 @@ class OutflowList extends Component {
         if(this.props.outflows.length > 0) {
             return( 
                 <div className="all">
-                    <h5> Outflows </h5>
+                    <h5> Monthly Outflows </h5>
                     {this.renderOutflows()}
                 </div>
             );
