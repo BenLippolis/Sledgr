@@ -6,9 +6,11 @@ const oneProfile = require('../middlewares/oneProfile');
 module.exports = app => {
     app.post('/api/profile', requireLogin, oneProfile, async (req, res) => {
         const { name, birthday } = req.body;
+        const net_income = 0;
         const profile = new Profile({
             name, 
             birthday,
+            net_income,
             _user: req.user.id 
         });
         try {

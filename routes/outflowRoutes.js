@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 const Outflow = mongoose.model('outflow');
+const Profile = mongoose.model('profile');
 
 module.exports = app => {
     app.post('/api/outflow', requireLogin, async (req, res) => {
@@ -16,6 +17,10 @@ module.exports = app => {
         } catch (err) {
             res.status(422).send(err);
         }
+        // Update the users profile net income to reflect outflow creation
+        const profile = await Profile.findOne({_user: req.user.id});
+        profile.net_income -= outflow.amount;
+        await profile.save();
     });
 
     app.get('/api/outflows', requireLogin, async (req, res) => {
@@ -25,13 +30,20 @@ module.exports = app => {
 
     app.post('/api/outflow/delete', requireLogin, async (req, res) => {
         const { outflow } = req.body;   
+        // take the id from the request and find the outflow object
+        const outflow_obj = await Outflow.findOne({_id: outflow});
+
         await Outflow.remove({ _id: outflow }, function(err) {  
-                   if(err){  
+                   if(err) {  
                        res.send(err);  
                    }  
-                   else{    
-                          res.send({data:"Record has been Deleted!"});             
-                      }  
-               });  
-       }) ;
+                   else {    
+                        res.send({data:"Record has been Deleted!"});             
+                    }  
+        }); 
+        // Update the users profile net income to reflect the outflows destruction
+        const profile = await Profile.findOne({_user: req.user.id});
+        profile.net_income += outflow_obj.amount;
+        await profile.save();
+    });
 };
