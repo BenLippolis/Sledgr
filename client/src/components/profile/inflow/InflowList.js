@@ -7,8 +7,8 @@ class InflowList extends Component {
         this.props.fetchInflows();
     }
 
-    onDeleteClick(id) {
-        this.props.deleteInflow(id);
+    onDeleteClick(inflow_id) {
+        this.props.deleteInflow(inflow_id);
     }
 
 

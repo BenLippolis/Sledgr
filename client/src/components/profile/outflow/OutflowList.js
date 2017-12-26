@@ -7,8 +7,8 @@ class OutflowList extends Component {
         this.props.fetchOutflows();
     }
 
-    onDeleteClick(id) {
-        this.props.deleteOutflow(id);
+    onDeleteClick(outflow_id) {
+        this.props.deleteOutflow(outflow_id);
     }
 
     renderOutflows() {

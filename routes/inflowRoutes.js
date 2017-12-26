@@ -30,11 +30,11 @@ module.exports = app => {
     });
 
     app.post('/api/inflow/delete', requireLogin, async (req, res) => {
-        const { inflow } = req.body; 
+        const { inflow_id } = req.body; 
         // take the id from the request and find the inflow object
-        const inflow_obj = await Inflow.findOne({_id: inflow});
+        const inflow_obj = await Inflow.findOne({_id: inflow_id});
 
-        await Inflow.remove({ _id: inflow }, function(err) {  
+        await Inflow.remove({ _id: inflow_id }, function(err) {  
                    if(err) {  
                         res.send(err);  
                    }  

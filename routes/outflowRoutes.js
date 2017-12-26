@@ -29,11 +29,11 @@ module.exports = app => {
     });
 
     app.post('/api/outflow/delete', requireLogin, async (req, res) => {
-        const { outflow } = req.body;   
+        const { outflow_id } = req.body;   
         // take the id from the request and find the outflow object
-        const outflow_obj = await Outflow.findOne({_id: outflow});
+        const outflow_obj = await Outflow.findOne({_id: outflow_id});
 
-        await Outflow.remove({ _id: outflow }, function(err) {  
+        await Outflow.remove({ _id: outflow_id }, function(err) {  
                    if(err) {  
                        res.send(err);  
                    }  
