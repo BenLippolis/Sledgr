@@ -12,7 +12,8 @@ export default function(state = [], action) {
                 {
                     title: action.payload.title,
                     amount: action.payload.amount,
-                    _id: action.payload._id
+                    _id: action.payload._id,
+                    _user: action.payload._user
                 }
             ];
 

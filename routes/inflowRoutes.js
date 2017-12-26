@@ -11,6 +11,10 @@ module.exports = app => {
             amount,
             _user: req.user.id 
         });
+        // Update the users profile net income to reflect inflow creation
+        const profile = await Profile.findOne({_user: req.user.id});
+        profile.net_income += inflow.amount; 
+        await profile.save();
 
         try {
             await inflow.save();
@@ -18,10 +22,6 @@ module.exports = app => {
         } catch (err) {
             res.status(422).send(err);
         }
-        // Update the users profile net income to reflect inflow creation
-        const profile = await Profile.findOne({_user: req.user.id});
-        profile.net_income += inflow.amount; 
-        await profile.save();
     });
 
     app.get('/api/inflows', requireLogin, async (req, res) => {

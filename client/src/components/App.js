@@ -11,7 +11,7 @@ import SurveyNew from './surveys/SurveyNew';
 import FeaturesPage from './pages/FeaturesPage';
 import Community from './pages/Community';
 import ProfileCreate from './profile/ProfileCreate';
-import ProfileShow from './profile/ProfileShow';
+import ProfileShow from './profile/profileShow/ProfileShow';
 
 class App extends Component {
     // Life-cycle method for fetching current user
