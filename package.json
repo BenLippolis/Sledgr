@@ -29,7 +29,6 @@
     "plaid": "^2.2.0",
     "react-load-script": "0.0.6",
     "react-plaid": "^0.1.1",
-    "react-plaid-link": "^0.1.9",
     "redux-logger": "^3.0.6"
   }
 }

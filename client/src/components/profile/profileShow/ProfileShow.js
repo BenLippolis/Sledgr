@@ -6,6 +6,8 @@ import OutflowList from '../outflow/OutflowList';
 import NetIncome from './NetIncome';
 import { fetchProfile } from '../../../actions';
 import { connect } from 'react-redux';
+import TargetSavings from './TargetSavings';
+import SavingsSchedule from './SavingsSchedule';
 
 class ProfileShow extends Component {
     componentDidMount() {
@@ -28,6 +30,16 @@ class ProfileShow extends Component {
                     <div className="col-md-6">
                         <OutflowList />
                         <OutflowForm />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <TargetSavings />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <SavingsSchedule />
                     </div>
                 </div>
             </div>

@@ -3,20 +3,9 @@ import { connect } from 'react-redux';
 import { connectPlaid } from '../../actions'; 
 
 class ConnectPlaid extends Component {
-    render() {
-        if(this.props.isConnected) {
-            return (
-                <h3> You are connected! </h3>                            
-            );
-        } else {
-            return (
-                <div>
-                    <button className="btn btn-primary" type="submit"
-                    onClick={this.connect}>Connect to Plaid</button>
-                </div>
-            ); 
-        }     
-    }
+      render() {
+        return null;
+      }
 }
 
 function mapStateToProps(state) {
