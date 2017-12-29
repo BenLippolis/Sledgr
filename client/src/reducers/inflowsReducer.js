@@ -1,5 +1,8 @@
 import { FETCH_INFLOWS, DELETE_INFLOW, SUBMIT_INFLOW } from '../actions/types';
 
+// State is an empty array
+// within this reducer, state refers to inflows 
+// which is part of the greater application state
 export default function(state = [], action) {
     switch (action.type) {
         case FETCH_INFLOWS: 
