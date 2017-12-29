@@ -5,16 +5,13 @@ import { Link } from 'react-router-dom';
 class Header extends Component {
 
     renderProfileName() {
-        switch (this.props.profile.length > 0) {
+        switch (this.props.profile) {
             case null: 
                 return;
             case false: 
                 return ('Your Name');
-            default: {
-                return this.props.profile.map(profile => {
-                    return(profile.name);
-                });
-            }
+            default: 
+                return this.props.profile.name
         }
     }
 
@@ -79,6 +76,6 @@ class Header extends Component {
 function mapStateToProps(state) {
     // Return an object to be passed to the header as props 
     // Return the property we assigned the appropriate reducer to 
-    return { auth: state.auth, profile: state.profiles };
+    return { auth: state.auth, profile: state.profile };
 }
 export default connect(mapStateToProps)(Header);

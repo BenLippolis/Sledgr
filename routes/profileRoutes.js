@@ -7,10 +7,12 @@ module.exports = app => {
     app.post('/api/profile', requireLogin, oneProfile, async (req, res) => {
         const { name, birthday } = req.body;
         const net_income = 0;
+        const show_net_income = true;
         const profile = new Profile({
             name, 
             birthday,
             net_income,
+            show_net_income,
             _user: req.user.id 
         });
         try {
@@ -22,8 +24,8 @@ module.exports = app => {
     });
 
     app.get('/api/profile', requireLogin, async (req, res) => {
-        const profiles = await Profile.find({ _user: req.user.id });
-        res.send(profiles);
+        const profile = await Profile.findOne({ _user: req.user.id });
+        res.send(profile);
     });
 
 };
