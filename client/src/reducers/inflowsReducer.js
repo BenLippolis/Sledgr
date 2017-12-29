@@ -1,5 +1,4 @@
 import { FETCH_INFLOWS, DELETE_INFLOW, SUBMIT_INFLOW } from '../actions/types';
-import _ from 'lodash';
 
 export default function(state = [], action) {
     switch (action.type) {
@@ -20,7 +19,7 @@ export default function(state = [], action) {
         case DELETE_INFLOW:
             const newState = Object.assign([], state);
             const indexOfInflowToDelete = state.findIndex(inflow => {
-                return inflow.id == action.payload
+                return inflow.id == action.payload._id
             })
             newState.splice(indexOfInflowToDelete, 1);
             return newState;

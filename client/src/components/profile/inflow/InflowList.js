@@ -7,8 +7,8 @@ class InflowList extends Component {
         this.props.fetchInflows();
     }
 
-    onDeleteClick(inflow_id) {
-        this.props.deleteInflow(inflow_id);
+    onDeleteClick(inflow) {
+        this.props.deleteInflow(inflow);
     }
 
 
@@ -19,7 +19,7 @@ class InflowList extends Component {
                     <div className="card-body">
                         <p className="card-text">{inflow.title} | ${inflow.amount} |                             
                             <button className="btn btn-danger btn-sm"
-                                onClick={this.onDeleteClick.bind(this, inflow._id)}>                       
+                                onClick={this.onDeleteClick.bind(this, inflow)}>                       
                                 Delete 
                             </button>
                         </p>

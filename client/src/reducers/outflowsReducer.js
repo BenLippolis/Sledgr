@@ -6,24 +6,25 @@ export default function(state = [], action) {
             return action.payload;
 
         case SUBMIT_OUTFLOW: 
-        return [
-            ...state,
-            {
-                title: action.payload.title,
-                amount: action.payload.amount,
-                _id: action.payload._id
-            }
-        ];
+            return [
+                ...state,
+                {
+                    title: action.payload.title,
+                    amount: action.payload.amount,
+                    _id: action.payload._id,
+                    _user: action.payload._user
+                }
+            ];
 
-    case DELETE_OUTFLOW:
-        const newState = Object.assign([], state);
-        const indexOfOutflowToDelete = state.findIndex(outflow => {
-            return outflow.id == action.payload
-        })
-        newState.splice(indexOfOutflowToDelete, 1);
-        return newState;
-        
-    default: 
-        return state;
+        case DELETE_OUTFLOW:
+            const newState = Object.assign([], state);
+            const indexOfOutflowToDelete = state.findIndex(outflow => {
+                return outflow.id == action.payload
+            })
+            newState.splice(indexOfOutflowToDelete, 1);
+            return newState;
+            
+        default: 
+            return state;
     }
 }

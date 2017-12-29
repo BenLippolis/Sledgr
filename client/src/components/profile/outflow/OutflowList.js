@@ -7,8 +7,8 @@ class OutflowList extends Component {
         this.props.fetchOutflows();
     }
 
-    onDeleteClick(outflow_id) {
-        this.props.deleteOutflow(outflow_id);
+    onDeleteClick(outflow) {
+        this.props.deleteOutflow(outflow);
     }
 
     renderOutflows() {
@@ -18,7 +18,7 @@ class OutflowList extends Component {
                     <div className="card-body">
                     <p className="card-text">{outflow.title} | ${outflow.amount} |                             
                         <button className="btn btn-danger btn-sm"
-                            onClick={this.onDeleteClick.bind(this, outflow._id)}>                       
+                            onClick={this.onDeleteClick.bind(this, outflow)}>                       
                             Delete 
                         </button>
                     </p>

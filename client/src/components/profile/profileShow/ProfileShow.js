@@ -47,6 +47,4 @@ class ProfileShow extends Component {
     }
 }
 
-
-
 export default connect(null, { fetchProfile })(ProfileShow);

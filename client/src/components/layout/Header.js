@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class Header extends Component {
 
     renderProfileName() {
-        switch (this.props.profile.length == 1) {
+        switch (this.props.profile.length > 0) {
             case null: 
                 return;
             case false: 
