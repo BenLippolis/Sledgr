@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ProfileForm from './ProfileForm';
-import { reduxForm } from 'redux-form';
 
 class ProfileCreate extends Component {
     render() {

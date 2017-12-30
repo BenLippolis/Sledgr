@@ -28,7 +28,7 @@ class Header extends Component {
             default:
                 return (
                     <li className="nav-item dropdown">
-                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a className="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {this.renderProfileName()}
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdown">

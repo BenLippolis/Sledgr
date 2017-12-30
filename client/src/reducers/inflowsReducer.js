@@ -22,7 +22,7 @@ export default function(state = [], action) {
         case DELETE_INFLOW:
             const newState = Object.assign([], state);
             const indexOfInflowToDelete = state.findIndex(inflow => {
-                return inflow.id == action.payload._id
+                return inflow.id === action.payload._id
             })
             newState.splice(indexOfInflowToDelete, 1);
             return newState;

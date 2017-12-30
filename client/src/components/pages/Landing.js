@@ -8,21 +8,17 @@ class Landing extends Component {
     renderContent() {
         switch(this.props.auth) {
             case null:
-            return (
-                <div />
-            );
+                return;
 
             case false:
-            return (
-                <div className="jumbotron text-center branding">
-                    <h1> Welcome to Sledgr.com </h1>
-                </div>
-            );
+                return (
+                    <div className="jumbotron text-center branding">
+                        <h1> Welcome to Sledgr.com </h1>
+                    </div>
+                );
 
             default:
-            return (
-                <Dashboard />
-            );
+                return (<Dashboard />);
         }
     }
 

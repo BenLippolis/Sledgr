@@ -14,6 +14,28 @@ class ProfileShow extends Component {
         this.props.fetchProfile();
     }
 
+    renderInflowOutflow() {
+        switch (this.props.profile.show_net_income) {
+            case null: 
+                return;
+            case false: 
+                return;
+            default: 
+                return (                
+                    <div className="row"> 
+                        <div className="col-md-6">
+                            <InflowList />
+                            <InflowForm />
+                        </div>
+                        <div className="col-md-6">
+                            <OutflowList />
+                            <OutflowForm />
+                        </div>
+                    </div>
+                )
+        }
+    }
+
     render() {
         return(
             <div>
@@ -22,16 +44,7 @@ class ProfileShow extends Component {
                         <NetIncome />
                     </div>
                 </div>
-                <div className="row"> 
-                    <div className="col-md-6">
-                        <InflowList />
-                        <InflowForm />
-                    </div>
-                    <div className="col-md-6">
-                        <OutflowList />
-                        <OutflowForm />
-                    </div>
-                </div>
+                {this.renderInflowOutflow()}
                 <div className="row">
                     <div className="col-md-12">
                         <TargetSavings />
@@ -47,4 +60,8 @@ class ProfileShow extends Component {
     }
 }
 
-export default connect(null, { fetchProfile })(ProfileShow);
+function mapStateToProps(state) {
+    return({ profile: state.profile })
+}
+
+export default connect(mapStateToProps, { fetchProfile })(ProfileShow);
