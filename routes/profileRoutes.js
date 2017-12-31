@@ -28,4 +28,16 @@ module.exports = app => {
         res.send(profile);
     });
 
+    app.patch('/api/profile/update', requireLogin, async (req, res) => {
+        const { show_net_income } = req.body;
+        const profile = await Profile.findOne({ _user: req.user.id });
+        profile.show_net_income = show_net_income;       
+        try {
+            await profile.save();
+            res.send(profile);
+        } catch (err) {
+            res.status(422).send(err);
+        }
+    });
+
 };

@@ -1,10 +1,13 @@
-import { FETCH_PROFILE, SUBMIT_INFLOW, DELETE_INFLOW, SUBMIT_OUTFLOW, DELETE_OUTFLOW } from '../actions/types';
+import { FETCH_PROFILE, SUBMIT_INFLOW, DELETE_INFLOW, SUBMIT_OUTFLOW, DELETE_OUTFLOW, UPDATE_PROFILE } from '../actions/types';
 
 export default function(state = {}, action) {
     switch (action.type) {
 
         case FETCH_PROFILE: 
             return action.payload || false;
+
+        case UPDATE_PROFILE:
+            return action.payload;
 
         case SUBMIT_INFLOW: 
                 return Object.assign({}, state, {

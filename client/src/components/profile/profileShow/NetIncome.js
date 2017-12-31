@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { updateProfile } from '../../../actions';
+
 
 class NetIncome extends Component {
 
@@ -9,16 +11,21 @@ class NetIncome extends Component {
         } 
     };
 
+    onUpdateClick() {
+        this.props.updateProfile();
+    }
+
     renderDoneButton() {
         switch (this.props.profile.show_net_income) {
             case null: 
                 return;
             case false: 
-                return;
-            default: 
-                return(
-                    <button className="btn btn-danger btn-sm">                       
-                        Done
+               return;
+            case true: 
+                return(                           
+                    <button className="btn btn-danger btn-sm"
+                        onClick={this.onUpdateClick.bind(this)}>                       
+                        Done 
                     </button>
                 );
         }
@@ -38,4 +45,4 @@ function mapStateToProps(state) {
     return({ profile: state.profile });
 }
 
-export default connect(mapStateToProps)(NetIncome);
+export default connect(mapStateToProps, { updateProfile })(NetIncome);

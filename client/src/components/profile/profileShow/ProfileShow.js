@@ -16,11 +16,7 @@ class ProfileShow extends Component {
 
     renderInflowOutflow() {
         switch (this.props.profile.show_net_income) {
-            case null: 
-                return;
-            case false: 
-                return;
-            default: 
+             case true: 
                 return (                
                     <div className="row"> 
                         <div className="col-md-6">
