@@ -1,10 +1,6 @@
 import axios from 'axios';
 import * as types from './types';
 
-// Fetch User action creator returns a function 
-// Redux thunk will inspect the value returned by this AC
-// If we return a function, Reduc Thunk will call the function
-// And pass in dispatch as an argument 
 export const fetchUser = () => async dispatch => {   
     const res = await axios.get('/api/current_user');
     dispatch({ type: types.FETCH_USER, payload: res.data }); 
@@ -39,7 +35,7 @@ export const fetchProfile = () => async dispatch => {
 }
 
 export const updateProfile = () => async dispatch => {
-    const res = await axios.patch('/api/profile/update', {show_net_income: false});
+    const res = await axios.patch('/api/profile/update', {show_max_savings: false});
     dispatch({ type: types.UPDATE_PROFILE, payload: res.data});
 }
 

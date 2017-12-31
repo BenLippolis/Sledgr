@@ -11,23 +11,23 @@ export default function(state = {}, action) {
 
         case SUBMIT_INFLOW: 
                 return Object.assign({}, state, {
-                net_income: state.net_income + action.payload.amount
+                max_savings: state.max_savings + action.payload.amount
             })
             
 
         case DELETE_INFLOW: 
             return Object.assign({}, state, {
-                net_income: state.net_income - action.payload.amount
+                max_savings: state.max_savings - action.payload.amount
             })
 
         case SUBMIT_OUTFLOW: 
             return Object.assign({}, state, {
-                net_income: state.net_income - action.payload.amount
+                max_savings: state.max_savings - action.payload.amount
             })
 
         case DELETE_OUTFLOW: 
             return Object.assign({}, state, {
-                net_income: state.net_income + action.payload.amount
+                max_savings: state.max_savings + action.payload.amount
             })
 
         default: 

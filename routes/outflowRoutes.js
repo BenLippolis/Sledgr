@@ -19,7 +19,7 @@ module.exports = app => {
         }
         // Update the users profile net income to reflect outflow creation
         const profile = await Profile.findOne({_user: req.user.id});
-        profile.net_income -= outflow.amount;
+        profile.max_savings -= outflow.amount;
         await profile.save();
     });
 
@@ -43,7 +43,7 @@ module.exports = app => {
         }); 
         // Update the users profile net income to reflect the outflows destruction
         const profile = await Profile.findOne({_user: req.user.id});
-        profile.net_income += outflow_obj.amount;
+        profile.max_savings += outflow_obj.amount;
         await profile.save();
     });
 };

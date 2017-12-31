@@ -3,7 +3,7 @@ import InflowForm from '../inflow/InflowForm';
 import InflowList from '../inflow/InflowList';
 import OutflowForm from '../outflow/OutflowForm';
 import OutflowList from '../outflow/OutflowList';
-import NetIncome from './NetIncome';
+import MaxSavings from './MaxSavings';
 import { fetchProfile } from '../../../actions';
 import { connect } from 'react-redux';
 import TargetSavings from './TargetSavings';
@@ -15,7 +15,7 @@ class ProfileShow extends Component {
     }
 
     renderInflowOutflow() {
-        switch (this.props.profile.show_net_income) {
+        switch (this.props.profile.show_max_savings) {
              case true: 
                 return (                
                     <div className="row"> 
@@ -28,7 +28,10 @@ class ProfileShow extends Component {
                             <OutflowForm />
                         </div>
                     </div>
-                )
+                );
+            default: 
+                return;
+
         }
     }
 
@@ -37,7 +40,7 @@ class ProfileShow extends Component {
             <div>
                 <div className="row">
                     <div className="col-md-12 text-center">
-                        <NetIncome />
+                        <MaxSavings />
                     </div>
                 </div>
                 {this.renderInflowOutflow()}
