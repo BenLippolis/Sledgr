@@ -18,7 +18,6 @@ class App extends Component {
     componentDidMount() {
         // Call action creator 
         this.props.fetchUser();
-        this.props.fetchProfile();
     }
 
     render() {
