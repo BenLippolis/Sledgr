@@ -11,8 +11,8 @@ class MaxSavings extends Component {
         } 
     };
 
-    onUpdateClick() {
-        this.props.updateProfile();
+    onUpdateClick(value) {
+        this.props.updateProfile(value);
     }
 
     renderDoneButton() {
@@ -20,12 +20,17 @@ class MaxSavings extends Component {
             case null: 
                 return;
             case false: 
-               return;
+               return(                           
+                <button className="btn btn-primary btn-sm"
+                    onClick={this.onUpdateClick.bind(this, true)}>                       
+                    Edit Max Savings 
+                </button>
+            );
             case true: 
                 return(                           
                     <button className="btn btn-danger btn-sm"
-                        onClick={this.onUpdateClick.bind(this)}>                       
-                        Done 
+                        onClick={this.onUpdateClick.bind(this, false)}>                       
+                        Done Editing 
                     </button>
                 );
             default: 

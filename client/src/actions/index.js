@@ -34,8 +34,8 @@ export const fetchProfile = () => async dispatch => {
     dispatch({ type: types.FETCH_PROFILE, payload: res.data });
 }
 
-export const updateProfile = () => async dispatch => {
-    const res = await axios.patch('/api/profile/update', {show_max_savings: false});
+export const updateProfile = (value) => async dispatch => {
+    const res = await axios.patch('/api/profile/update', {show_max_savings: value});
     dispatch({ type: types.UPDATE_PROFILE, payload: res.data});
 }
 
