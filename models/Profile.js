@@ -6,6 +6,8 @@ const profileSchema = new Schema({
     birthday: String,
     max_savings: Number,
     show_max_savings: Boolean,
+    target_savings: Number,
+    monthly_spend: Number,
     _user: { type: Schema.Types.ObjectId, ref: 'User'}
 });
 

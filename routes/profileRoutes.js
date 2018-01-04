@@ -13,6 +13,8 @@ module.exports = app => {
             birthday,
             max_savings,
             show_max_savings,
+            target_savings,
+            monthly_spend,
             _user: req.user.id 
         });
         try {
