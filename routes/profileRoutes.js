@@ -7,6 +7,8 @@ module.exports = app => {
     app.post('/api/profile', requireLogin, oneProfile, async (req, res) => {
         const { name, birthday } = req.body;
         const max_savings = 0;
+        const target_savings = 0;
+        const monthly_spend = 0;
         const show_max_savings = true;
         const profile = new Profile({
             name, 

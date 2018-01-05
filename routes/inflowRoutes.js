@@ -14,6 +14,7 @@ module.exports = app => {
         // Update the users profile net income to reflect inflow creation
         const profile = await Profile.findOne({_user: req.user.id});
         profile.max_savings += inflow.amount; 
+        profile.target_savings += (inflow.amount * .8)
         await profile.save();
 
         try {
@@ -45,6 +46,7 @@ module.exports = app => {
         // Update the profile net income to reflect the inflows destruction
         const profile = await Profile.findOne({_user: req.user.id});
         profile.max_savings -= inflow_obj.amount;
+        profile.target_savings -= (inflow_obj.amount * .8)
         await profile.save();
     });
 

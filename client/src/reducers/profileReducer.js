@@ -1,34 +1,42 @@
-import { FETCH_PROFILE, SUBMIT_INFLOW, DELETE_INFLOW, SUBMIT_OUTFLOW, DELETE_OUTFLOW, UPDATE_PROFILE } from '../actions/types';
+import * as types from '../actions/types';
 
 export default function(state = {}, action) {
     switch (action.type) {
 
-        case FETCH_PROFILE: 
+        case types.FETCH_PROFILE: 
             return action.payload || false;
 
-        case UPDATE_PROFILE:
+        case types.UPDATE_PROFILE:
             return action.payload;
 
-        case SUBMIT_INFLOW: 
-                return Object.assign({}, state, {
-                max_savings: state.max_savings + action.payload.amount
-            })
+        case types.SUBMIT_INFLOW: 
+            return {
+                ...state,
+                max_savings: state.max_savings + action.payload.amount,
+                target_savings: state.target_savings + (action.payload.amount * .8)
+            }
             
 
-        case DELETE_INFLOW: 
-            return Object.assign({}, state, {
-                max_savings: state.max_savings - action.payload.amount
-            })
+        case types.DELETE_INFLOW: 
+            return {
+                ...state,
+                max_savings: state.max_savings - action.payload.amount,
+                target_savings: state.target_savings - (action.payload.amount * .8)
+            }
 
-        case SUBMIT_OUTFLOW: 
-            return Object.assign({}, state, {
-                max_savings: state.max_savings - action.payload.amount
-            })
+        case types.SUBMIT_OUTFLOW: 
+            return { 
+                ...state,
+                max_savings: state.max_savings - action.payload.amount,
+                target_savings: state.target_savings - (action.payload.amount * .8)
+            }
 
-        case DELETE_OUTFLOW: 
-            return Object.assign({}, state, {
-                max_savings: state.max_savings + action.payload.amount
-            })
+        case types.DELETE_OUTFLOW: 
+            return {
+                ...state,
+                max_savings: state.max_savings + action.payload.amount,
+                target_savings: state.target_savings + (action.payload.amount * .8)
+            }
 
         default: 
             return state;
