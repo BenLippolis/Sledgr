@@ -21,6 +21,7 @@ module.exports = app => {
         const profile = await Profile.findOne({_user: req.user.id});
         profile.max_savings -= outflow.amount;
         profile.target_savings -= (outflow.amount * .8);
+        profile.monthly_spend -= (outflow.amount * .2);
         await profile.save();
     });
 
@@ -46,6 +47,7 @@ module.exports = app => {
         const profile = await Profile.findOne({_user: req.user.id});
         profile.max_savings += outflow_obj.amount;
         profile.target_savings += (outflow_obj.amount * .8);
+        profile.monthly_spend += (outflow_obj.amount * .2);
         await profile.save();
     });
 };

@@ -13,7 +13,8 @@ export default function(state = {}, action) {
             return {
                 ...state,
                 max_savings: state.max_savings + action.payload.amount,
-                target_savings: state.target_savings + (action.payload.amount * .8)
+                target_savings: state.target_savings + (action.payload.amount * .8),
+                monthly_spend: state.monthly_spend + (action.payload.amount * .2)
             }
             
 
@@ -21,21 +22,24 @@ export default function(state = {}, action) {
             return {
                 ...state,
                 max_savings: state.max_savings - action.payload.amount,
-                target_savings: state.target_savings - (action.payload.amount * .8)
+                target_savings: state.target_savings - (action.payload.amount * .8),
+                monthly_spend: state.monthly_spend - (action.payload.amount * .2)
             }
 
         case types.SUBMIT_OUTFLOW: 
             return { 
                 ...state,
                 max_savings: state.max_savings - action.payload.amount,
-                target_savings: state.target_savings - (action.payload.amount * .8)
+                target_savings: state.target_savings - (action.payload.amount * .8),
+                monthly_spend: state.monthly_spend - (action.payload.amount * .2)
             }
 
         case types.DELETE_OUTFLOW: 
             return {
                 ...state,
                 max_savings: state.max_savings + action.payload.amount,
-                target_savings: state.target_savings + (action.payload.amount * .8)
+                target_savings: state.target_savings + (action.payload.amount * .8),
+                monthly_spend: state.monthly_spend + (action.payload.amount * .2)
             }
 
         default: 
