@@ -7,9 +7,11 @@ module.exports = app => {
     app.post('/api/profile', requireLogin, oneProfile, async (req, res) => {
         const { name, birthday } = req.body;
         const max_savings = 0;
+        const show_max_savings = true;
         const target_savings = 0;
         const monthly_spend = 0;
-        const show_max_savings = true;
+        const savings_schedule = 0;
+
         const profile = new Profile({
             name, 
             birthday,
@@ -17,6 +19,7 @@ module.exports = app => {
             show_max_savings,
             target_savings,
             monthly_spend,
+            savings_schedule,
             _user: req.user.id 
         });
         try {
@@ -43,5 +46,4 @@ module.exports = app => {
             res.status(422).send(err);
         }
     });
-
 };
