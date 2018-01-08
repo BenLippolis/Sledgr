@@ -41,7 +41,7 @@ export const updateProfile = (value) => async dispatch => {
 
 export const updateSavingsSchedule = (value) => async dispatch => {
     const res = await axios.patch('/api/profile/update', {savings_schedule: value});
-    dispatch({ type: types.UPDATE_SAVINGS_SCHEDULE, payload: res.data});
+    dispatch({ type: types.UPDATE_SAVINGS_SCHEDULE, payload: value});
 }
 
 // ------------------------------------- Inflows -------------------------------------------------- //

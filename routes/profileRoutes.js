@@ -36,9 +36,15 @@ module.exports = app => {
     });
 
     app.patch('/api/profile/update', requireLogin, async (req, res) => {
-        const { show_max_savings } = req.body;
         const profile = await Profile.findOne({ _user: req.user.id });
-        profile.show_max_savings = show_max_savings;       
+        const { show_max_savings } = req.body;
+        const { savings_schedule } = req.body;
+        if (show_max_savings != undefined) {
+            profile.show_max_savings = show_max_savings; 
+        } else if (savings_schedule != undefined) {
+            profile.savings_schedule = savings_schedule; 
+        }
+        
         try {
             await profile.save();
             res.send(profile);

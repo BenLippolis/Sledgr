@@ -42,6 +42,12 @@ export default function(state = {}, action) {
                 monthly_spend: state.monthly_spend + (action.payload.amount * .2)
             }
 
+        case types.UPDATE_SAVINGS_SCHEDULE:
+            return {
+                ...state, 
+                savings_schedule: action.payload
+            }
+            
         default: 
             return state;
     }

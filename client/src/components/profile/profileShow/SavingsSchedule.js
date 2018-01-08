@@ -21,10 +21,12 @@ class SavingsSchedule extends Component {
                     onClick={this.onUpdateClick.bind(this, 1)}>                       
                         1 Month
                     </button>
-                    <button className="btn btn-success btn-sm">                       
+                    <button className="btn btn-success btn-sm"
+                    onClick={this.onUpdateClick.bind(this, 2)}>                       
                         2 Months
                     </button>
-                    <button className="btn btn-success btn-sm">                       
+                    <button className="btn btn-success btn-sm"
+                    onClick={this.onUpdateClick.bind(this, 3)}>                        
                         3 Months 
                     </button>
                     </div>
