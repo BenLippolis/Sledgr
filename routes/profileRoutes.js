@@ -10,7 +10,7 @@ module.exports = app => {
         const show_max_savings = true;
         const target_savings = 0;
         const monthly_spend = 0;
-        const savings_schedule = 0;
+        const reward_schedule = 0;
 
         const profile = new Profile({
             name, 
@@ -19,7 +19,7 @@ module.exports = app => {
             show_max_savings,
             target_savings,
             monthly_spend,
-            savings_schedule,
+            reward_schedule,
             _user: req.user.id 
         });
         try {
@@ -38,11 +38,11 @@ module.exports = app => {
     app.patch('/api/profile/update', requireLogin, async (req, res) => {
         const profile = await Profile.findOne({ _user: req.user.id });
         const { show_max_savings } = req.body;
-        const { savings_schedule } = req.body;
+        const { reward_schedule } = req.body;
         if (show_max_savings != undefined) {
             profile.show_max_savings = show_max_savings; 
-        } else if (savings_schedule != undefined) {
-            profile.savings_schedule = savings_schedule; 
+        } else if (reward_schedule != undefined) {
+            profile.reward_schedule = reward_schedule; 
         }
         
         try {

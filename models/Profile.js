@@ -8,7 +8,7 @@ const profileSchema = new Schema({
     show_max_savings: Boolean,
     target_savings: Number,
     monthly_spend: Number,
-    savings_schedule: Number,
+    reward_schedule: Number,
     _user: { type: Schema.Types.ObjectId, ref: 'User'}
 });
 

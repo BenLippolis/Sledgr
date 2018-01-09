@@ -7,7 +7,7 @@ import MaxSavings from './MaxSavings';
 import { fetchProfile } from '../../../actions';
 import { connect } from 'react-redux';
 import TargetSavings from './TargetSavings';
-import SavingsSchedule from './SavingsSchedule';
+import RewardSchedule from './RewardSchedule';
 
 class ProfileShow extends Component {
     componentDidMount() {
@@ -51,7 +51,7 @@ class ProfileShow extends Component {
                 </div>
                 <div className="row">
                     <div className="col-md-12">
-                        <SavingsSchedule />
+                        <RewardSchedule />
                     </div>
                 </div>
             </div>

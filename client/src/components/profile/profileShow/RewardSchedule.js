@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateSavingsSchedule } from '../../../actions';
+import { updateRewardSchedule } from '../../../actions';
 
 class SavingsSchedule extends Component {
     onUpdateClick(value) {
-        this.props.updateSavingsSchedule(value);
+        this.props.updateRewardSchedule(value);
     }
 
     renderScheduleOptions() {
-        switch (this.props.profile.savings_schedule === 0) {
+        switch (this.props.profile.reward_schedule === 0) {
             case false: 
                 return (
-                    <p> You're scheduled to hit a savings goal every {this.props.profile.savings_schedule} month(s) </p>
+                    <p> You're scheduled to get rewarded every {this.props.profile.reward_schedule} month(s) </p>
                 );
             case true: 
                 return(
@@ -41,7 +41,7 @@ class SavingsSchedule extends Component {
     render() {
         return(
             <div className="jumbotron text-center">
-                <h3> Savings Schedule </h3>
+                <h3> Reward Schedule </h3>
                 {this.renderScheduleOptions()}
             </div>
         );
@@ -52,4 +52,4 @@ function mapStateToProps(state) {
     return ({ profile: state.profile})
 };
 
-export default connect(mapStateToProps, { updateSavingsSchedule})(SavingsSchedule);
+export default connect(mapStateToProps, { updateRewardSchedule})(SavingsSchedule);
