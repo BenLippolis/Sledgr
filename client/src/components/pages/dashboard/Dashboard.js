@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as actions from '../../../actions';
 import { connect } from 'react-redux';
+import AccountVisualization from './AccountVisualization';
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -26,6 +27,7 @@ class Dashboard extends Component {
                     <h1> Welcome to your digital dash </h1>
                 </div>
                 {this.renderCreateProfileLink()}
+                <AccountVisualization />
             </div>
     
         );
