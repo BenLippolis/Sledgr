@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import * as actions from '../../../actions';
 import { connect } from 'react-redux';
 import AccountVisualization from './AccountVisualization';
+import RewardVisual from './RewardVisual';
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -28,6 +29,7 @@ class Dashboard extends Component {
                 </div>
                 {this.renderCreateProfileLink()}
                 <AccountVisualization />
+                <RewardVisual />
             </div>
     
         );

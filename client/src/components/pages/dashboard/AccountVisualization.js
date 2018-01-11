@@ -14,7 +14,7 @@ class AccountVisualization extends Component {
 }
 
 function mapStateToProps(state){
-    return({profile: state.profile });
+    return({ profile: state.profile });
 }
 
 export default connect(mapStateToProps)(AccountVisualization);
