@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import AccountVisualization from './AccountVisualization';
 import RewardVisual from './RewardVisual';
 
+
 class Dashboard extends Component {
     componentDidMount() {
         this.props.fetchProfile();

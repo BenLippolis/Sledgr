@@ -8,6 +8,7 @@ import { fetchProfile } from '../../../actions';
 import { connect } from 'react-redux';
 import TargetSavings from './TargetSavings';
 import RewardSchedule from './RewardSchedule';
+import Begin from './Begin';
 
 class ProfileShow extends Component {
     componentDidMount() {
@@ -52,6 +53,11 @@ class ProfileShow extends Component {
                 <div className="row">
                     <div className="col-md-12">
                         <RewardSchedule />
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-md-12">
+                        <Begin />
                     </div>
                 </div>
             </div>

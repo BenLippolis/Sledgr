@@ -40,7 +40,7 @@ export const updateProfile = (value) => async dispatch => {
 }
 
 export const updateRewardSchedule = (value) => async dispatch => {
-    const res = await axios.patch('/api/profile/update', {reward_schedule: value});
+    await axios.patch('/api/profile/update', {reward_schedule: value});
     dispatch({ type: types.UPDATE_REWARD_SCHEDULE, payload: value});
 }
 
