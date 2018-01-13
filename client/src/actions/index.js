@@ -34,13 +34,13 @@ export const fetchProfile = () => async dispatch => {
     dispatch({ type: types.FETCH_PROFILE, payload: res.data });
 }
 
-export const updateProfile = (value) => async dispatch => {
+export const updateMaxSavings = (value) => async dispatch => {
     const res = await axios.patch('/api/profile/update', {show_max_savings: value});
-    dispatch({ type: types.UPDATE_PROFILE, payload: res.data});
+    dispatch({ type: types.UPDATE_MAX_SAVINGS, payload: res.data});
 }
 
-export const updateRewardSchedule = (value) => async dispatch => {
-    await axios.patch('/api/profile/update', {reward_schedule: value});
+export const updateRewardSchedule = (value) => dispatch => {
+    axios.patch('/api/profile/update', {reward_schedule: value});
     dispatch({ type: types.UPDATE_REWARD_SCHEDULE, payload: value});
 }
 

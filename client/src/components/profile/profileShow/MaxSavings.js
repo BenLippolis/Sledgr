@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateProfile } from '../../../actions';
+import { updateMaxSavings } from '../../../actions';
 
 
 class MaxSavings extends Component {
@@ -12,7 +12,7 @@ class MaxSavings extends Component {
     };
 
     onUpdateClick(value) {
-        this.props.updateProfile(value);
+        this.props.updateMaxSavings(value);
     }
 
     renderDoneButton() {
@@ -52,4 +52,4 @@ function mapStateToProps(state) {
     return({ profile: state.profile });
 }
 
-export default connect(mapStateToProps, { updateProfile })(MaxSavings);
+export default connect(mapStateToProps, { updateMaxSavings })(MaxSavings);

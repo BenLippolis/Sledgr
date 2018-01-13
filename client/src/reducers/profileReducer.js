@@ -6,7 +6,7 @@ export default function(state = {}, action) {
         case types.FETCH_PROFILE: 
             return action.payload || false;
 
-        case types.UPDATE_PROFILE:
+        case types.UPDATE_MAX_SAVINGS:
             return action.payload;
 
         case types.SUBMIT_INFLOW: 

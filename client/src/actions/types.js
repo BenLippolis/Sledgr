@@ -10,5 +10,5 @@ export const SUBMIT_OUTFLOW = 'submit_outflow';
 export const FETCH_OUTFLOWS = 'fetch_outflows';
 export const DELETE_INFLOW = 'delete_inflow';
 export const DELETE_OUTFLOW = 'delete_outflow';
-export const UPDATE_PROFILE = 'update_profile';
+export const UPDATE_MAX_SAVINGS = 'update_max_savings';
 export const UPDATE_REWARD_SCHEDULE = 'update_reward_schedule';
