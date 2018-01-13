@@ -1,37 +1,40 @@
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const mongoose = require('mongoose');
-const keys = require('../config/keys');
+const passport = require('passport')
+const GoogleStrategy = require('passport-google-oauth20').Strategy
+const mongoose = require('mongoose')
+const keys = require('../config/keys')
 
-const User = mongoose.model('users');
+const User = mongoose.model('users')
 
 passport.serializeUser((user, done) => {
-    done(null, user.id);
-});
+  done(null, user.id)
+})
 
 passport.deserializeUser((id, done) => {
-    User.findById(id).then(user => {
-        done(null, user);
-    });
-});
+  User.findById(id).then(user => {
+    done(null, user)
+  })
+})
 
 // Create new instance of Google Passport Strategy
-passport.use(new GoogleStrategy({
-    clientID: keys.googleClientID,
-    clientSecret: keys.googleClientSecret,
-    callbackURL: '/auth/google/callback',
-    proxy: true
-    }, 
+passport.use(
+  new GoogleStrategy(
+    {
+      clientID: keys.googleClientID,
+      clientSecret: keys.googleClientSecret,
+      callbackURL: '/auth/google/callback',
+      proxy: true
+    },
     async (accessToken, refreshToken, profile, done) => {
-        const existingUser = await User.findOne({ googleId: profile.id })
-        
-        if (existingUser) {
-            // User already exists
-            // Done function tells passport to contine auth flow 
-            return done(null, existingUser);
-        } 
-        // Create new user 
-        const user = await new User({googleId: profile.id }).save()
-        done(null, user);
-    })
-);
+      const existingUser = await User.findOne({ googleId: profile.id })
+
+      if (existingUser) {
+        // User already exists
+        // Done function tells passport to contine auth flow
+        return done(null, existingUser)
+      }
+      // Create new user
+      const user = await new User({ googleId: profile.id }).save()
+      done(null, user)
+    }
+  )
+)

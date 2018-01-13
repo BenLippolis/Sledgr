@@ -1,11 +1,11 @@
-import { FETCH_SURVEYS } from '../actions/types';
+import { FETCH_SURVEYS } from '../actions/types'
 
-// Return empty array (of surveys) by default 
-export default function(state = [], action) {
-    switch (action.type) {
-        case FETCH_SURVEYS: 
-            return action.payload;
-        default: 
-            return state;
-    }
+// Return empty array (of surveys) by default
+export default function (state = [], action) {
+  switch (action.type) {
+    case FETCH_SURVEYS:
+      return action.payload
+    default:
+      return state
+  }
 }

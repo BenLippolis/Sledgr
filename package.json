@@ -12,7 +12,8 @@
     "server": "nodemon index.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "format": "prettier --write '**/*.{js,jsx}'"
   },
   "author": "",
   "license": "ISC",
@@ -30,5 +31,13 @@
     "react-load-script": "0.0.6",
     "react-plaid": "^0.1.1",
     "redux-logger": "^3.0.6"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.5.1",
+    "prettier": "^1.10.2"
   }
 }
