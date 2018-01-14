@@ -4,8 +4,12 @@ import * as actions from '../../../actions'
 import { connect } from 'react-redux'
 import AccountVisualization from './AccountVisualization'
 import RewardVisual from './RewardVisual'
+import PlaidLink from './PlaidLink'
 
 class Dashboard extends Component {
+  handleOnSuccess () {
+    console.log('It Worked!')
+  }
   componentDidMount () {
     this.props.fetchProfile()
   }
@@ -29,6 +33,13 @@ class Dashboard extends Component {
         <div className='jumbotron text-center branding'>
           <h1> Welcome to your digital dash </h1>
         </div>
+        <PlaidLink
+          publicKey='dd4a42fe52273d06efafcc208601f9'
+          product='transactions'
+          env='development'
+          clientName='plaidname'
+          onSuccess={this.handleOnSuccess}
+        />
         {this.renderCreateProfileLink()}
         <AccountVisualization />
         <RewardVisual />

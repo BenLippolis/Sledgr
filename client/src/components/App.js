@@ -34,7 +34,7 @@ class App extends Component {
               <Route path='/profile/create' component={ProfileCreate} />
               <Route exact path='/profile' component={ProfileShow} />
             </div>
-            <Footer />
+
           </div>
         </BrowserRouter>
       </div>
