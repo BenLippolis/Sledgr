@@ -5,11 +5,18 @@ import { connect } from 'react-redux'
 import AccountVisualization from './AccountVisualization'
 import RewardVisual from './RewardVisual'
 import PlaidLink from './PlaidLink'
+import axios from 'axios'
 
 class Dashboard extends Component {
-  handleOnSuccess () {
-    console.log('It Worked!')
+  handleOnSuccess (token, metadata) {
+    axios.post('/api/get_access_token', {
+      public_token: token,
+      accounts: metadata.accounts,
+      institution: metadata.institution,
+      link_session_id: metadata.link_session_id
+    })
   }
+
   componentDidMount () {
     this.props.fetchProfile()
   }
@@ -37,7 +44,7 @@ class Dashboard extends Component {
           publicKey='dd4a42fe52273d06efafcc208601f9'
           product='transactions'
           env='development'
-          clientName='plaidname'
+          clientName='Sledgr.com'
           onSuccess={this.handleOnSuccess}
         />
         {this.renderCreateProfileLink()}

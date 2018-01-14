@@ -82,3 +82,15 @@ export const deleteOutflow = outflow => async dispatch => {
   })
   dispatch({ type: types.DELETE_OUTFLOW, payload: outflow })
 }
+
+// ------------------------------------- Plaid -------------------------------------------------- //
+
+export const getAccessToken = (token, metadata) => dispatch => {
+  axios.post('/api/get_access_token', {
+    public_token: token,
+    accounts: metadata.accounts,
+    institution: metadata.institution,
+    link_session_id: metadata.link_session_id
+  })
+  dispatch({ type: types.GET_ACCESS_TOKEN, payload: token })
+}

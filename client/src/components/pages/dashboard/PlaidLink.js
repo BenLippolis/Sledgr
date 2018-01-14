@@ -14,7 +14,7 @@ class PlaidLink extends Component {
 
   static defaultProps = {
     institution: null,
-    selectAccount: false,
+    selectAccount: true,
     buttonText: 'Connect Account',
     className: 'btn btn-primary'
   }
