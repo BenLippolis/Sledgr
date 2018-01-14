@@ -33,10 +33,18 @@ module.exports = app => {
       res.json({
         error: false
       })
+      const user = req.user
+      if (!user.access_token) {
+        user.access_token = ACCESS_TOKEN
+        user.item_id = ITEM_ID
+        user.save()
+      } else {
+        console.log('User has an access token already!')
+      }
     })
   })
 
-  app.get('/transactions', function (req, res, next) {
+  app.get('/api/transactions', function (req, res, next) {
     // Pull transactions for the Item for the last 30 days
     var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
