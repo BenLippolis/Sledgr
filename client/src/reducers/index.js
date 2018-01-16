@@ -5,6 +5,7 @@ import surveysReducer from './surveysReducer'
 import profileReducer from './profileReducer'
 import inflowsReducer from './inflowsReducer'
 import outflowsReducer from './outflowsReducer'
+import transactionsReducer from './transactionsReducer'
 
 export default combineReducers({
   auth: authReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
   surveys: surveysReducer,
   profile: profileReducer,
   inflows: inflowsReducer,
-  outflows: outflowsReducer
+  outflows: outflowsReducer,
+  transactions: transactionsReducer
 })

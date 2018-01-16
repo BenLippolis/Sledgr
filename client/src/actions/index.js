@@ -94,3 +94,8 @@ export const getAccessToken = (token, metadata) => dispatch => {
   })
   dispatch({ type: types.GET_ACCESS_TOKEN, payload: token })
 }
+
+export const fetchTransactions = () => async dispatch => {
+  const res = await axios.get('/api/transactions')
+  dispatch({ type: types.FETCH_TRANSACTIONS, payload: res.data })
+}

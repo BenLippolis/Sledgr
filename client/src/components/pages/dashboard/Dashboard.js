@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import AccountVisualization from './AccountVisualization'
 import RewardVisual from './RewardVisual'
 import PlaidLink from './PlaidLink'
+import Transactions from './Transactions'
 import axios from 'axios'
 
 class Dashboard extends Component {
@@ -15,6 +16,10 @@ class Dashboard extends Component {
       institution: metadata.institution,
       link_session_id: metadata.link_session_id
     })
+  }
+
+  plaidProducts () {
+    return ['transactions']
   }
 
   componentDidMount () {
@@ -39,17 +44,21 @@ class Dashboard extends Component {
       <div>
         <div className='jumbotron text-center branding'>
           <h1> Welcome to your digital dash </h1>
+          <PlaidLink
+            publicKey='dd4a42fe52273d06efafcc208601f9'
+            product={this.plaidProducts()}
+            env='development'
+            clientName='Sledgr.com'
+            onSuccess={this.handleOnSuccess}
+          />
         </div>
-        <PlaidLink
-          publicKey='dd4a42fe52273d06efafcc208601f9'
-          product='transactions'
-          env='development'
-          clientName='Sledgr.com'
-          onSuccess={this.handleOnSuccess}
-        />
+
         {this.renderCreateProfileLink()}
         <AccountVisualization />
         <RewardVisual />
+        <div className='jumbotron'>
+          Total Transactions: <Transactions />
+        </div>
       </div>
     )
   }

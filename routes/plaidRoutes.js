@@ -1,6 +1,7 @@
 const requireLogin = require('../middlewares/requireLogin')
 const keys = require('../config/keys')
 const plaid = require('plaid')
+const moment = require('moment')
 
 const PLAID_CLIENT_ID = keys.plaidClientId
 const PLAID_SECRET = keys.plaidSecret
@@ -16,7 +17,7 @@ var client = new plaid.Client(
 )
 
 module.exports = app => {
-  app.post('/api/get_access_token', function (req, res, next) {
+  app.post('/api/get_access_token', requireLogin, function (req, res, next) {
     PUBLIC_TOKEN = req.body.public_token
     client.exchangePublicToken(PUBLIC_TOKEN, function (error, tokenResponse) {
       if (error != null) {
@@ -44,12 +45,12 @@ module.exports = app => {
     })
   })
 
-  app.get('/api/transactions', function (req, res, next) {
+  app.get('/api/transactions', requireLogin, function (req, res, next) {
     // Pull transactions for the Item for the last 30 days
     var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
     client.getTransactions(
-      req.user.ACCESS_TOKEN,
+      req.user.access_token,
       startDate,
       endDate,
       {
@@ -64,7 +65,7 @@ module.exports = app => {
         console.log(
           'pulled ' + transactionsResponse.transactions.length + ' transactions'
         )
-        res.json(transactionsResponse)
+        res.json(transactionsResponse.transactions.length)
       }
     )
   })

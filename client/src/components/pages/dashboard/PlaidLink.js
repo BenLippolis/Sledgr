@@ -124,7 +124,6 @@ class PlaidLink extends Component {
     return (
       <div>
         <button
-          className='btn btn-primary'
           onClick={this.handleOnClick}
           disabled={this.state.disabledButton}
           style={this.props.style}
