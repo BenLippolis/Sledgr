@@ -1,7 +1,7 @@
 import { FETCH_TRANSACTIONS } from '../actions/types'
 
 // Return empty array (of surveys) by default
-export default function (state = '', action) {
+export default function (state = [], action) {
   switch (action.type) {
     case FETCH_TRANSACTIONS:
       return action.payload

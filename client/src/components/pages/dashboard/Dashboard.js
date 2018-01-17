@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import AccountVisualization from './AccountVisualization'
 import RewardVisual from './RewardVisual'
 import PlaidLink from './PlaidLink'
-import Transactions from './Transactions'
+import TransactionList from './TransactionList'
 import axios from 'axios'
 
 class Dashboard extends Component {
@@ -56,8 +56,9 @@ class Dashboard extends Component {
         {this.renderCreateProfileLink()}
         <AccountVisualization />
         <RewardVisual />
-        <div className='jumbotron'>
-          Total Transactions: <Transactions />
+        <div>
+          Transactions in the last 30 days:
+          <TransactionList />
         </div>
       </div>
     )

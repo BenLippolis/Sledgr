@@ -62,10 +62,7 @@ module.exports = app => {
           console.log(JSON.stringify(error))
           return res.json({ error: error })
         }
-        console.log(
-          'pulled ' + transactionsResponse.transactions.length + ' transactions'
-        )
-        res.json(transactionsResponse.transactions.length)
+        res.json(transactionsResponse.transactions)
       }
     )
   })
