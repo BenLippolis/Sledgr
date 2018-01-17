@@ -44,6 +44,7 @@ class Dashboard extends Component {
       <div>
         <div className='jumbotron text-center branding'>
           <h1> Welcome to your digital dash </h1>
+          <h5> Current Balance: ${this.props.balance} </h5>
           <PlaidLink
             publicKey='dd4a42fe52273d06efafcc208601f9'
             product={this.plaidProducts()}
@@ -66,7 +67,10 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps (state) {
-  return { profile: state.profile }
+  return {
+    profile: state.profile,
+    balance: state.balance
+  }
 }
 
 export default connect(mapStateToProps, actions)(Dashboard)

@@ -102,5 +102,5 @@ export const fetchTransactions = () => async dispatch => {
 
 export const fetchBalance = () => async dispatch => {
   const res = await axios.get('/api/balance')
-  dispatch({ type: types.FETCH_BALANCE, payload: '' })
+  dispatch({ type: types.FETCH_BALANCE, payload: res.data })
 }
