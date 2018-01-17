@@ -62,8 +62,23 @@ module.exports = app => {
           console.log(JSON.stringify(error))
           return res.json({ error: error })
         }
+        console.log(transactionsResponse.transactions.length)
         res.json(transactionsResponse.transactions)
       }
     )
+  })
+
+  app.get('/api/balance', requireLogin, function (req, res) {
+    client.getAccounts(req.user.access_token, function (
+      error,
+      transactionsResponse
+    ) {
+      if (error != null) {
+        console.log(JSON.stringify(error))
+        return res.json({ error: error })
+      }
+      console.log(transactionsResponse.accounts[0].balances.available)
+      res.json(transactionsResponse.accounts[0].balances.available)
+    })
   })
 }

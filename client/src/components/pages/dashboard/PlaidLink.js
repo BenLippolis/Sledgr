@@ -38,7 +38,14 @@ class PlaidLink extends Component {
     // The Plaid products you wish to use, an array containing some of connect,
     // auth, identity, income, transactions
     product: PropTypes.arrayOf(
-      PropTypes.oneOf(['connect', 'auth', 'identity', 'income', 'transactions'])
+      PropTypes.oneOf([
+        'connect',
+        'auth',
+        'identity',
+        'income',
+        'transactions',
+        'balance'
+      ])
     ).isRequired,
 
     // Specify an existing user's public token to launch Link in update mode.

@@ -19,7 +19,7 @@ class Dashboard extends Component {
   }
 
   plaidProducts () {
-    return ['transactions']
+    return ['auth', 'transactions']
   }
 
   componentDidMount () {
