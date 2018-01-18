@@ -39,19 +39,29 @@ class Dashboard extends Component {
     }
   }
 
+  // Conditionally render the connect account button based on account balance
+  renderConnectAccount () {
+    if (this.props.balance > 0) {
+      return <h5> Current Balance: ${this.props.balance} </h5>
+    } else {
+      return (
+        <PlaidLink
+          publicKey='dd4a42fe52273d06efafcc208601f9'
+          product={this.plaidProducts()}
+          env='development'
+          clientName='Sledgr.com'
+          onSuccess={this.handleOnSuccess}
+        />
+      )
+    }
+  }
+
   render () {
     return (
       <div>
         <div className='jumbotron text-center branding'>
           <h1> Welcome to your digital dash </h1>
-          <h5> Current Balance: ${this.props.balance} </h5>
-          <PlaidLink
-            publicKey='dd4a42fe52273d06efafcc208601f9'
-            product={this.plaidProducts()}
-            env='development'
-            clientName='Sledgr.com'
-            onSuccess={this.handleOnSuccess}
-          />
+          {this.renderConnectAccount()}
         </div>
 
         {this.renderCreateProfileLink()}
