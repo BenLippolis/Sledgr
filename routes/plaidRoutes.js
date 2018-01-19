@@ -62,7 +62,17 @@ module.exports = app => {
           console.log(JSON.stringify(error))
           return res.json({ error: error })
         }
-        console.log(transactionsResponse.transactions.length)
+        var ttl_food_drink = 0
+        var ttl_public_transit = 0
+        transactionsResponse.transactions.forEach(function (txn) {
+          if (txn.category_id == 13005000) {
+            ttl_food_drink += txn.amount
+          } else if (txn.category_id == 22014000) {
+            ttl_public_transit += txn.amount
+          }
+        })
+        console.log(ttl_food_drink)
+        console.log(ttl_public_transit)
         res.json(transactionsResponse.transactions)
       }
     )

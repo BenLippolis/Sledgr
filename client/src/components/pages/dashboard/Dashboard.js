@@ -27,23 +27,21 @@ class Dashboard extends Component {
   }
 
   renderCreateProfileLink () {
-    if (this.props.profile) {
-    } else {
-      return (
-        <div>
-          <Link to={'/profile/create'} className='btn btn-primary'>
-            Create Profile
-          </Link>
-        </div>
-      )
+    switch (this.props.profile) {
+      case false:
+        return (
+          <div>
+            <Link to={'/profile/create'} className='btn btn-primary'>
+              Create Profile
+            </Link>
+          </div>
+        )
     }
   }
 
   // Conditionally render the connect account button based on account balance
   renderConnectAccount () {
-    switch (this.props.balance > 0) {
-      case null:
-        return
+    switch (this.props.auth.access_token != null) {
       case false:
         return (
           <PlaidLink
@@ -56,7 +54,6 @@ class Dashboard extends Component {
         )
       case true:
         return <h5> Current Balance: ${this.props.balance} </h5>
-      default:
     }
   }
 
@@ -83,7 +80,8 @@ class Dashboard extends Component {
 function mapStateToProps (state) {
   return {
     profile: state.profile,
-    balance: state.balance
+    balance: state.balance,
+    auth: state.auth
   }
 }
 
