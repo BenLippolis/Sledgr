@@ -4,7 +4,7 @@ module.exports = {
   mongoURI: process.env.MONGO_URI,
   cookieKey: process.env.COOKIE_KEY,
   plaidClientId: process.env.PLAID_CLIENT,
-  plaidSecret: process.emv.PLAID_SECRET,
+  plaidSecret: process.env.PLAID_SECRET,
   plaidPublic: process.env.PLAID_PUBLIC,
   plaidEnv: process.env.PLAID_ENVIRONMENT
 }
