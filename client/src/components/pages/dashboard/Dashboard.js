@@ -72,7 +72,6 @@ class Dashboard extends Component {
         <RewardVisual />
         <div>
           Transactions in the last 30 days:
-          <TransactionList />
         </div>
       </div>
     )
