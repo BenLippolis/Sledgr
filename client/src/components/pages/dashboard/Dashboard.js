@@ -36,6 +36,7 @@ class Dashboard extends Component {
             </Link>
           </div>
         )
+      default:
     }
   }
 
@@ -54,6 +55,7 @@ class Dashboard extends Component {
         )
       case true:
         return <h5> Current Balance: ${this.props.balance} </h5>
+      default:
     }
   }
 
