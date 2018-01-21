@@ -24,6 +24,9 @@ class Dashboard extends Component {
 
   componentDidMount () {
     this.props.fetchProfile()
+    if (this.props.auth.access_token) {
+      this.props.fetchBalance()
+    }
   }
 
   renderCreateProfileLink () {
@@ -70,9 +73,7 @@ class Dashboard extends Component {
         {this.renderCreateProfileLink()}
         <AccountVisualization />
         <RewardVisual />
-        <div>
-          Transactions in the last 30 days:
-        </div>
+
       </div>
     )
   }

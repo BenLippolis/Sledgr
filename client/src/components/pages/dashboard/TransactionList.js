@@ -4,8 +4,10 @@ import { fetchTransactions, fetchBalance } from '../../../actions'
 
 class TransactionList extends Component {
   componentDidMount () {
-    this.props.fetchTransactions()
-    this.props.fetchBalance()
+    if (this.props.auth.access_token) {
+      this.props.fetchTransactions()
+      this.props.fetchBalance()
+    }
   }
 
   render () {
@@ -24,7 +26,10 @@ class TransactionList extends Component {
 }
 
 function mapStateToProps (state) {
-  return { transactions: state.transactions }
+  return {
+    transactions: state.transactions,
+    auth: state.auth
+  }
 }
 
 export default connect(mapStateToProps, { fetchTransactions, fetchBalance })(
