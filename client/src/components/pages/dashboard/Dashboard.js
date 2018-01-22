@@ -45,8 +45,8 @@ class Dashboard extends Component {
 
   // Conditionally render the connect account button based on account balance
   renderConnectAccount () {
-    switch (this.props.auth.access_token != null) {
-      case false:
+    switch (this.props.auth.access_token === null) {
+      case true:
         return (
           <PlaidLink
             publicKey='dd4a42fe52273d06efafcc208601f9'
@@ -56,9 +56,23 @@ class Dashboard extends Component {
             onSuccess={this.handleOnSuccess}
           />
         )
-      case true:
+      case false:
         return <h5> Current Balance: ${this.props.balance} </h5>
       default:
+    }
+  }
+
+  renderTransactions () {
+    switch (this.props.auth.access_token === null) {
+      case true:
+        return
+      case false:
+        return (
+          <div>
+            <p> Here are your transactions from the last month </p>
+            <TransactionList />
+          </div>
+        )
     }
   }
 
@@ -69,10 +83,10 @@ class Dashboard extends Component {
           <h1> Welcome to your digital dash </h1>
           {this.renderConnectAccount()}
         </div>
-
         {this.renderCreateProfileLink()}
         <AccountVisualization />
         <RewardVisual />
+        {this.renderTransactions()}
 
       </div>
     )

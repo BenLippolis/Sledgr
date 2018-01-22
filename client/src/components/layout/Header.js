@@ -14,6 +14,21 @@ class Header extends Component {
     }
   }
 
+  renderProfileLink () {
+    switch (this.props.profile) {
+      case null:
+        return
+      case false:
+        return
+      default:
+        return (
+          <Link to={'/profile'} className='dropdown-item'>
+            Profile
+          </Link>
+        )
+    }
+  }
+
   renderContent () {
     switch (this.props.auth) {
       case null:
@@ -42,9 +57,7 @@ class Header extends Component {
               {this.renderProfileName()}
             </a>
             <div className='dropdown-menu' aria-labelledby='navbarDropdown'>
-              <Link to={'/profile'} className='dropdown-item'>
-                Profile
-              </Link>
+              {this.renderProfileLink()}
               <div className='dropdown-divider' />
               <a className='dropdown-item' href='/api/logout'>Log Out</a>
             </div>
