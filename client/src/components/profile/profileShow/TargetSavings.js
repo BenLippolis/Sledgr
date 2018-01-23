@@ -5,6 +5,7 @@ class TargetSavings extends Component {
   render () {
     return (
       <div className='jumbotron text-center'>
+        <h3> Percent Saved {this.props.profile.percent_saved}% </h3>
         <h3> Target Monthly Savings ${this.props.profile.target_savings} </h3>
         <h3> Monthly Spend ${this.props.profile.monthly_spend}</h3>
       </div>

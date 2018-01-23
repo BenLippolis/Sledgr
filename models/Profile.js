@@ -7,6 +7,7 @@ const profileSchema = new Schema({
   max_savings: Number,
   show_max_savings: Boolean,
   target_savings: Number,
+  percent_saved: Number,
   monthly_spend: Number,
   reward_schedule: Number,
   active_goal: Boolean,
