@@ -9,7 +9,7 @@ module.exports = app => {
     const max_savings = 0
     const show_max_savings = true
     const target_savings = 0
-    const percent_saved = 80
+    const percent_saved = 0.8
     const monthly_spend = 0
     const reward_schedule = 0
     const active_goal = false

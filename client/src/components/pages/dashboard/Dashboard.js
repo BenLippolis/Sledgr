@@ -45,7 +45,7 @@ class Dashboard extends Component {
 
   // Conditionally render the connect account button based on account balance
   renderConnectAccount () {
-    if (this.props.auth.access_token === null) {
+    if (this.props.auth.access_token == null) {
       return (
         <PlaidLink
           publicKey='dd4a42fe52273d06efafcc208601f9'
@@ -61,7 +61,7 @@ class Dashboard extends Component {
   }
 
   renderTransactions () {
-    switch (this.props.auth.access_token === null) {
+    switch (this.props.auth.access_token == null) {
       case true:
         return
       case false:

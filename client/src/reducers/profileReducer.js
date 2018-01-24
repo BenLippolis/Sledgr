@@ -12,16 +12,20 @@ export default function (state = {}, action) {
       return {
         ...state,
         max_savings: state.max_savings + action.payload.amount,
-        target_savings: state.target_savings + action.payload.amount * 0.8,
-        monthly_spend: state.monthly_spend + action.payload.amount * 0.2
+        target_savings: state.target_savings +
+          action.payload.amount * state.percent_saved,
+        monthly_spend: state.monthly_spend +
+          action.payload.amount * (1 - state.percent_saved)
       }
 
     case types.DELETE_INFLOW:
       return {
         ...state,
         max_savings: state.max_savings - action.payload.amount,
-        target_savings: state.target_savings - action.payload.amount * 0.8,
-        monthly_spend: state.monthly_spend - action.payload.amount * 0.2
+        target_savings: state.target_savings -
+          action.payload.amount * state.percent_saved,
+        monthly_spend: state.monthly_spend -
+          action.payload.amount * (1 - state.percent_saved)
       }
 
     case types.SUBMIT_OUTFLOW:
