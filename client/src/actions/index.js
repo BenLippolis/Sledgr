@@ -46,6 +46,16 @@ export const updateRewardSchedule = value => dispatch => {
   dispatch({ type: types.UPDATE_REWARD_SCHEDULE, payload: value })
 }
 
+export const decreasePercentSaved = value => dispatch => {
+  axios.patch('/api/profile/update', { percent_saved: value })
+  dispatch({ type: types.DECREASE_PERCENT_SAVED, payload: value })
+}
+
+export const increasePercentSaved = value => dispatch => {
+  axios.patch('/api/profile/update', { percent_saved: value })
+  dispatch({ type: types.INCREASE_PERCENT_SAVED, payload: value })
+}
+
 // ------------------------------------- Inflows -------------------------------------------------- //
 
 export const submitInflow = (values, history) => async dispatch => {

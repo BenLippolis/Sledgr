@@ -50,6 +50,18 @@ export default function (state = {}, action) {
         reward_schedule: action.payload
       }
 
+    case types.DECREASE_PERCENT_SAVED:
+      return {
+        ...state,
+        percent_saved: action.payload
+      }
+
+    case types.INCREASE_PERCENT_SAVED:
+      return {
+        ...state,
+        percent_saved: action.payload
+      }
+
     default:
       return state
   }
