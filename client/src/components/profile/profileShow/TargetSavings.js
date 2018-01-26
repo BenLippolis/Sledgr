@@ -1,21 +1,35 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { decreasePercentSaved, increasePercentSaved } from '../../../actions'
+import {
+  decreasePercentSaved,
+  increasePercentSaved,
+  decreasePercentSpent,
+  increasePercentSpent
+} from '../../../actions'
 
 class TargetSavings extends Component {
-  onDecrementClick (value) {
+  onSaveDecrementClick (value) {
     this.props.decreasePercentSaved(value)
   }
 
-  onIncrementClick (value) {
+  onSaveIncrementClick (value) {
     this.props.increasePercentSaved(value)
   }
+
+  onSpentDecrementClick (value) {
+    this.props.decreasePercentSpent(value)
+  }
+
+  onSpentIncrementClick (value) {
+    this.props.increasePercentSpent(value)
+  }
+
   render () {
     return (
       <div className='jumbotron text-center'>
         <button
           className='btn btn-primary'
-          onClick={this.onDecrementClick.bind(
+          onClick={this.onSaveDecrementClick.bind(
             this,
             this.props.profile.percent_saved - 0.01
           )}
@@ -24,7 +38,7 @@ class TargetSavings extends Component {
         </button>
         <button
           className='btn btn-primary'
-          onClick={this.onIncrementClick.bind(
+          onClick={this.onSaveIncrementClick.bind(
             this,
             this.props.profile.percent_saved + 0.01
           )}
@@ -33,7 +47,26 @@ class TargetSavings extends Component {
         </button>
         <h3> Percent Saved {this.props.profile.percent_saved * 100}% </h3>
         <h3> Target Monthly Savings ${this.props.profile.target_savings} </h3>
+        <h3> Percent Spent {this.props.profile.percent_spent * 100}% </h3>
         <h3> Monthly Spend ${this.props.profile.monthly_spend}</h3>
+        <button
+          className='btn btn-primary'
+          onClick={this.onSpentDecrementClick.bind(
+            this,
+            this.props.profile.percent_spent - 0.01
+          )}
+        >
+          -{' '}
+        </button>
+        <button
+          className='btn btn-primary'
+          onClick={this.onSpentIncrementClick.bind(
+            this,
+            this.props.profile.percent_spent + 0.01
+          )}
+        >
+          +{' '}
+        </button>
       </div>
     )
   }
@@ -45,5 +78,7 @@ function mapStateToProps (state) {
 
 export default connect(mapStateToProps, {
   decreasePercentSaved,
-  increasePercentSaved
+  increasePercentSaved,
+  decreasePercentSpent,
+  increasePercentSpent
 })(TargetSavings)

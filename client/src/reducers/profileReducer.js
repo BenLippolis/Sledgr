@@ -62,6 +62,17 @@ export default function (state = {}, action) {
         percent_saved: action.payload
       }
 
+    case types.INCREASE_PERCENT_SPENT:
+      return {
+        ...state,
+        percent_spent: action.payload
+      }
+    case types.DECREASE_PERCENT_SPENT:
+      return {
+        ...state,
+        percent_spent: action.payload
+      }
+
     default:
       return state
   }
