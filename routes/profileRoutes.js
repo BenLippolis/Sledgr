@@ -11,6 +11,7 @@ module.exports = app => {
     const target_savings = 0
     const percent_saved = 0.8
     const monthly_spend = 0
+    const percent_spent = 0.2
     const reward_schedule = 0
     const active_goal = false
 
@@ -22,6 +23,7 @@ module.exports = app => {
       target_savings,
       percent_saved,
       monthly_spend,
+      percent_spent,
       reward_schedule,
       active_goal,
       _user: req.user.id
