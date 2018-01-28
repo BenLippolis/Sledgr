@@ -20,8 +20,8 @@ module.exports = app => {
     // Update the users profile net income to reflect outflow creation
     const profile = await Profile.findOne({ _user: req.user.id })
     profile.max_savings -= outflow.amount
-    profile.target_savings -= outflow.amount * 0.8
-    profile.monthly_spend -= outflow.amount * 0.2
+    profile.target_savings = profile.max_savings * profile.percent_saved
+    profile.monthly_spend = profile.target_savings * profile.percent_spent
     await profile.save()
   })
 
@@ -45,8 +45,8 @@ module.exports = app => {
     // Update the users profile net income to reflect the outflows destruction
     const profile = await Profile.findOne({ _user: req.user.id })
     profile.max_savings += outflow_obj.amount
-    profile.target_savings += outflow_obj.amount * 0.8
-    profile.monthly_spend += outflow_obj.amount * 0.2
+    profile.target_savings = profile.max_savings * profile.percent_saved
+    profile.monthly_spend = profile.target_savings * profile.percent_spent
     await profile.save()
   })
 }

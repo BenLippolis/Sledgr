@@ -15,7 +15,7 @@ module.exports = app => {
     const profile = await Profile.findOne({ _user: req.user.id })
     profile.max_savings += inflow.amount
     profile.target_savings = profile.max_savings * profile.percent_saved
-    profile.monthly_spend = profile.target_savings * (1 - profile.percent_saved)
+    profile.monthly_spend = profile.target_savings * profile.percent_spent
     await profile.save()
 
     try {
@@ -47,7 +47,7 @@ module.exports = app => {
     const profile = await Profile.findOne({ _user: req.user.id })
     profile.max_savings -= inflow_obj.amount
     profile.target_savings = profile.max_savings * profile.percent_saved
-    profile.monthly_spend = profile.target_savings * (1 - profile.percent_saved)
+    profile.monthly_spend = profile.target_savings * profile.percent_spent
     await profile.save()
   })
 }
