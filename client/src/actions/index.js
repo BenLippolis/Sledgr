@@ -41,8 +41,11 @@ export const updateMaxSavings = value => async dispatch => {
   dispatch({ type: types.UPDATE_MAX_SAVINGS, payload: res.data })
 }
 
-export const updateRewardSchedule = value => dispatch => {
-  axios.patch('/api/profile/update', { reward_schedule: value })
+export const updateRewardSchedule = (value, profile) => dispatch => {
+  axios.patch('/api/profile/update', {
+    reward_schedule: value,
+    reward_budget: value * profile.monthly_spend
+  })
   dispatch({ type: types.UPDATE_REWARD_SCHEDULE, payload: value })
 }
 

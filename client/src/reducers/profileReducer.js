@@ -55,7 +55,8 @@ export default function (state = {}, action) {
     case types.UPDATE_REWARD_SCHEDULE:
       return {
         ...state,
-        reward_schedule: action.payload
+        reward_schedule: action.payload,
+        reward_budget: action.payload * state.monthly_spend
       }
 
     case types.DECREASE_PERCENT_SAVED:

@@ -3,54 +3,25 @@ import { connect } from 'react-redux'
 import { updateRewardSchedule } from '../../../actions'
 
 class SavingsSchedule extends Component {
-  onUpdateClick (value) {
-    this.props.updateRewardSchedule(value)
+  onUpdateClick (value, profile) {
+    this.props.updateRewardSchedule(value, profile)
   }
 
   renderScheduleOptions () {
-    switch (this.props.profile.reward_schedule === 0) {
-      case false:
-        return (
-          <p>
-            {' '}
-            You're scheduled to get rewarded every
-            {' '}
-            {this.props.profile.reward_schedule}
-            {' '}
-            month(s)
-            {' '}
-          </p>
-        )
-      case true:
-        return (
-          <div>
-            <p> Please make a selection </p>
-            <button
-              className='btn btn-success btn-sm'
-              onClick={this.onUpdateClick.bind(this, 1)}
-            >
-              {' '}
-              1 Month
-            </button>
-            <button
-              className='btn btn-success btn-sm'
-              onClick={this.onUpdateClick.bind(this, 2)}
-            >
-              {' '}
-              2 Months
-            </button>
-            <button
-              className='btn btn-success btn-sm'
-              onClick={this.onUpdateClick.bind(this, 3)}
-            >
-              {' '}
-              3 Months{' '}
-            </button>
-          </div>
-        )
-      case null:
-
-      default:
+    if (this.props.profile.reward_schedule === 0) {
+      return <p> Please make a selection </p>
+    } else {
+      return (
+        <p>
+          {' '}
+          You're scheduled to get rewarded every
+          {' '}
+          {this.props.profile.reward_schedule}
+          {' '}
+          month(s)
+          {' '}
+        </p>
+      )
     }
   }
 
@@ -59,6 +30,30 @@ class SavingsSchedule extends Component {
       <div className='jumbotron text-center'>
         <h3> Reward Schedule </h3>
         {this.renderScheduleOptions()}
+        <div>
+          <button
+            className='btn btn-success btn-sm'
+            onClick={this.onUpdateClick.bind(this, 1, this.props.profile)}
+          >
+            {' '}
+            1 Month
+          </button>
+          <button
+            className='btn btn-success btn-sm'
+            onClick={this.onUpdateClick.bind(this, 2, this.props.profile)}
+          >
+            {' '}
+            2 Months
+          </button>
+          <button
+            className='btn btn-success btn-sm'
+            onClick={this.onUpdateClick.bind(this, 3, this.props.profile)}
+          >
+            {' '}
+            3 Months{' '}
+          </button>
+        </div>
+        <div> Reward budget: ${this.props.profile.reward_budget}</div>
       </div>
     )
   }
