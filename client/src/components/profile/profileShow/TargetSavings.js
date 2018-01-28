@@ -8,20 +8,20 @@ import {
 } from '../../../actions'
 
 class TargetSavings extends Component {
-  onSaveDecrementClick (value) {
-    this.props.decreasePercentSaved(value)
+  onSaveDecrementClick (profile) {
+    this.props.decreasePercentSaved(profile)
   }
 
-  onSaveIncrementClick (value) {
-    this.props.increasePercentSaved(value)
+  onSaveIncrementClick (profile) {
+    this.props.increasePercentSaved(profile)
   }
 
-  onSpentDecrementClick (value) {
-    this.props.decreasePercentSpent(value)
+  onSpentDecrementClick (profile) {
+    this.props.decreasePercentSpent(profile)
   }
 
-  onSpentIncrementClick (value) {
-    this.props.increasePercentSpent(value)
+  onSpentIncrementClick (profile) {
+    this.props.increasePercentSpent(profile)
   }
 
   render () {
@@ -29,19 +29,13 @@ class TargetSavings extends Component {
       <div className='jumbotron text-center'>
         <button
           className='btn btn-primary'
-          onClick={this.onSaveDecrementClick.bind(
-            this,
-            this.props.profile.percent_saved - 0.01
-          )}
+          onClick={this.onSaveDecrementClick.bind(this, this.props.profile)}
         >
           -{' '}
         </button>
         <button
           className='btn btn-primary'
-          onClick={this.onSaveIncrementClick.bind(
-            this,
-            this.props.profile.percent_saved + 0.01
-          )}
+          onClick={this.onSaveIncrementClick.bind(this, this.props.profile)}
         >
           +{' '}
         </button>
@@ -51,19 +45,13 @@ class TargetSavings extends Component {
         <h3> Monthly Spend ${this.props.profile.monthly_spend}</h3>
         <button
           className='btn btn-primary'
-          onClick={this.onSpentDecrementClick.bind(
-            this,
-            this.props.profile.percent_spent - 0.01
-          )}
+          onClick={this.onSpentDecrementClick.bind(this, this.props.profile)}
         >
           -{' '}
         </button>
         <button
           className='btn btn-primary'
-          onClick={this.onSpentIncrementClick.bind(
-            this,
-            this.props.profile.percent_spent + 0.01
-          )}
+          onClick={this.onSpentIncrementClick.bind(this, this.props.profile)}
         >
           +{' '}
         </button>

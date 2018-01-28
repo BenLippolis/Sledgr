@@ -46,24 +46,48 @@ export const updateRewardSchedule = value => dispatch => {
   dispatch({ type: types.UPDATE_REWARD_SCHEDULE, payload: value })
 }
 
-export const decreasePercentSaved = value => dispatch => {
-  axios.patch('/api/profile/update', { percent_saved: value })
-  dispatch({ type: types.DECREASE_PERCENT_SAVED, payload: value })
+export const decreasePercentSaved = profile => dispatch => {
+  axios.patch('/api/profile/update', {
+    percent_saved: profile.percent_saved - 0.01,
+    target_savings: profile.max_savings * (profile.percent_saved - 0.01)
+  })
+  dispatch({
+    type: types.DECREASE_PERCENT_SAVED,
+    payload: profile.percent_saved - 0.01
+  })
 }
 
-export const increasePercentSaved = value => dispatch => {
-  axios.patch('/api/profile/update', { percent_saved: value })
-  dispatch({ type: types.INCREASE_PERCENT_SAVED, payload: value })
+export const increasePercentSaved = profile => dispatch => {
+  axios.patch('/api/profile/update', {
+    percent_saved: profile.percent_saved + 0.01,
+    target_savings: profile.max_savings * (profile.percent_saved + 0.01)
+  })
+  dispatch({
+    type: types.INCREASE_PERCENT_SAVED,
+    payload: profile.percent_saved + 0.01
+  })
 }
 
-export const decreasePercentSpent = value => dispatch => {
-  axios.patch('/api/profile/update', { percent_spent: value })
-  dispatch({ type: types.DECREASE_PERCENT_SPENT, payload: value })
+export const decreasePercentSpent = profile => dispatch => {
+  axios.patch('/api/profile/update', {
+    percent_spent: profile.percent_spent - 0.01,
+    monthly_spend: profile.target_savings * (profile.percent_spent - 0.01)
+  })
+  dispatch({
+    type: types.DECREASE_PERCENT_SPENT,
+    payload: profile.percent_spent - 0.01
+  })
 }
 
-export const increasePercentSpent = value => dispatch => {
-  axios.patch('/api/profile/update', { percent_spent: value })
-  dispatch({ type: types.INCREASE_PERCENT_SPENT, payload: value })
+export const increasePercentSpent = profile => dispatch => {
+  axios.patch('/api/profile/update', {
+    percent_spent: profile.percent_spent + 0.01,
+    monthly_spend: profile.target_savings * (profile.percent_spent + 0.01)
+  })
+  dispatch({
+    type: types.INCREASE_PERCENT_SPENT,
+    payload: profile.percent_spent + 0.01
+  })
 }
 
 // ------------------------------------- Inflows -------------------------------------------------- //
