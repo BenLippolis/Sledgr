@@ -54,14 +54,16 @@ export default function (state = {}, action) {
       return {
         ...state,
         percent_saved: action.payload,
-        target_savings: state.max_savings * action.payload
+        target_savings: state.max_savings * action.payload,
+        monthly_spend: state.max_savings * action.payload * state.percent_spent
       }
 
     case types.INCREASE_PERCENT_SAVED:
       return {
         ...state,
         percent_saved: action.payload,
-        target_savings: state.max_savings * action.payload
+        target_savings: state.max_savings * action.payload,
+        monthly_spend: state.max_savings * action.payload * state.percent_spent
       }
 
     case types.INCREASE_PERCENT_SPENT:

@@ -49,7 +49,10 @@ export const updateRewardSchedule = value => dispatch => {
 export const decreasePercentSaved = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percent_saved: profile.percent_saved - 0.01,
-    target_savings: profile.max_savings * (profile.percent_saved - 0.01)
+    target_savings: profile.max_savings * (profile.percent_saved - 0.01),
+    monthly_spend: profile.max_savings *
+      (profile.percent_saved - 0.01) *
+      profile.percent_spent
   })
   dispatch({
     type: types.DECREASE_PERCENT_SAVED,
@@ -60,7 +63,10 @@ export const decreasePercentSaved = profile => dispatch => {
 export const increasePercentSaved = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percent_saved: profile.percent_saved + 0.01,
-    target_savings: profile.max_savings * (profile.percent_saved + 0.01)
+    target_savings: profile.max_savings * (profile.percent_saved + 0.01),
+    monthly_spend: profile.max_savings *
+      (profile.percent_saved + 0.01) *
+      profile.percent_spent
   })
   dispatch({
     type: types.INCREASE_PERCENT_SAVED,
