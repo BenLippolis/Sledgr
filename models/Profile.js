@@ -11,6 +11,7 @@ const profileSchema = new Schema({
   monthly_spend: Number,
   percent_spent: Number,
   reward_schedule: Number,
+  reward_budget: Number,
   active_goal: Boolean,
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 })

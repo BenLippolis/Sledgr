@@ -13,6 +13,7 @@ module.exports = app => {
     const monthly_spend = 0
     const percent_spent = 0.2
     const reward_schedule = 0
+    const reward_budget = 0
     const active_goal = false
 
     const profile = new Profile({
@@ -25,6 +26,7 @@ module.exports = app => {
       monthly_spend,
       percent_spent,
       reward_schedule,
+      reward_budget,
       active_goal,
       _user: req.user.id
     })
