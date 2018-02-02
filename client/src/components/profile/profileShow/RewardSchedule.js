@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateRewardSchedule } from '../../../actions'
+import RewardForm from '../reward/RewardForm'
 
 class SavingsSchedule extends Component {
   onUpdateClick (value, profile) {
@@ -54,6 +55,9 @@ class SavingsSchedule extends Component {
           </button>
         </div>
         <div> Reward budget: ${this.props.profile.reward_budget}</div>
+        <div className='col-md-4 col-md-offset-4'>
+          <RewardForm />
+        </div>
       </div>
     )
   }
