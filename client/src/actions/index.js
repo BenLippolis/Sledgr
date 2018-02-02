@@ -157,3 +157,10 @@ export const fetchBalance = () => async dispatch => {
   const res = await axios.get('/api/balance')
   dispatch({ type: types.FETCH_BALANCE, payload: res.data })
 }
+
+// ------------------------------------- Reward -------------------------------------------------- //
+
+export const submitReward = values => async dispatch => {
+  const res = await axios.post('/api/reward', values)
+  dispatch({ type: types.SUBMIT_REWARD, payload: res.data })
+}

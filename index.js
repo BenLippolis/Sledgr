@@ -9,6 +9,7 @@ require('./models/Survey')
 require('./models/Profile')
 require('./models/Inflow')
 require('./models/Outflow')
+require('./models/Reward')
 require('./services/passport')
 
 mongoose.connect(keys.mongoURI)
@@ -34,6 +35,7 @@ require('./routes/plaidRoutes')(app)
 require('./routes/profileRoutes')(app)
 require('./routes/inflowRoutes')(app)
 require('./routes/outflowRoutes')(app)
+require('./routes/rewardRoutes')(app)
 
 // Config for production routing with React Router
 if (process.env.NODE_ENV === 'production') {

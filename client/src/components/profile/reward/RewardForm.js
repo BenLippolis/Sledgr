@@ -22,11 +22,16 @@ class RewardForm extends Component {
     })
   }
 
+  onSubmit (values) {
+    this.props.submitReward(values)
+    this.props.reset()
+  }
+
   render () {
     const { handleSubmit } = this.props
 
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <div className='row outflow_form'>
           <div className='col-md-12'>
             <h5> Create your reward! </h5>
