@@ -7,6 +7,9 @@ module.exports = app => {
     const goal = new Goal({
       _user: req.user.id
     })
+    goal.balances.push({
+      value: 100
+    })
     try {
       await goal.save()
       res.send(goal)
