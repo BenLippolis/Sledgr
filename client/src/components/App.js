@@ -8,8 +8,10 @@ import Header from './layout/Header'
 import Landing from './pages/Landing'
 import Footer from './layout/Footer'
 import SurveyNew from './surveys/SurveyNew'
-import FeaturesPage from './pages/FeaturesPage'
 import Community from './pages/Community'
+import HowItWorks from './pages/HowItWorks'
+import Pricing from './pages/Pricing'
+import About from './pages/About'
 import ProfileCreate from './profile/ProfileCreate'
 import ProfileShow from './profile/profileShow/ProfileShow'
 
@@ -29,8 +31,10 @@ class App extends Component {
             <div className='container'>
               <Route exact path='/' component={Landing} />
               <Route path='/surveys/new' component={SurveyNew} />
-              <Route path='/features' component={FeaturesPage} />
               <Route path='/community' component={Community} />
+              <Route path='/how-it-works' component={HowItWorks} />
+              <Route path='/pricing' component={Pricing} />
+              <Route path='/about' component={About} />
               <Route path='/profile/create' component={ProfileCreate} />
               <Route exact path='/profile' component={ProfileShow} />
             </div>

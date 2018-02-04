@@ -90,11 +90,17 @@ class Header extends Component {
           >
             <ul className='nav navbar-nav navbar-right' />
             <ul className='nav navbar-nav'>
-              <Link to={'/features'} className='nav-item nav-link'>
-                Features
+              <Link to={'/how-it-works'} className='nav-item nav-link'>
+                How It Works
+              </Link>
+              <Link to={'/pricing'} className='nav-item nav-link'>
+                Pricing
               </Link>
               <Link to={'/community'} className='nav-item nav-link'>
                 Community
+              </Link>
+              <Link to={'/about'} className='nav-item nav-link'>
+                About
               </Link>
               {this.renderContent()}
             </ul>
