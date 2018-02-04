@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Bar } from 'react-chartjs-2'
 
 class Chart extends Component {
@@ -71,4 +72,8 @@ class Chart extends Component {
   }
 }
 
-export default Chart
+function mapStateToProps (state) {
+  return { goal: state.goal }
+}
+
+export default connect(mapStateToProps)(Chart)

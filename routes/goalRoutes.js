@@ -18,6 +18,11 @@ module.exports = app => {
     }
   })
 
+  app.get('/api/goals', requireLogin, async (req, res) => {
+    const goals = await Goal.find({ _user: req.user.id })
+    res.send(goals)
+  })
+
   app.patch('/api/goal/update', requireLogin, async (req, res) => {
     try {
       const goal = await Goal.findOneAndUpdate(

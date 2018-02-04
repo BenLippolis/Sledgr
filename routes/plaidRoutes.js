@@ -8,7 +8,7 @@ const PLAID_SECRET = keys.plaidSecret
 const PLAID_PUBLIC_KEY = keys.plaidPublic
 const PLAID_ENV = keys.plaidEnv
 
-// Initialize the Plaid client
+// Initialize Plaid client
 var client = new plaid.Client(
   PLAID_CLIENT_ID,
   PLAID_SECRET,
@@ -17,6 +17,7 @@ var client = new plaid.Client(
 )
 
 module.exports = app => {
+  // Get access token from Plaid
   app.post('/api/get_access_token', requireLogin, function (req, res, next) {
     PUBLIC_TOKEN = req.body.public_token
     client.exchangePublicToken(PUBLIC_TOKEN, function (error, tokenResponse) {
@@ -45,8 +46,8 @@ module.exports = app => {
     })
   })
 
+  // Get transactions for last 30 days
   app.get('/api/transactions', requireLogin, function (req, res, next) {
-    // Pull transactions for the Item for the last 30 days
     var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
     client.getTransactions(
@@ -78,6 +79,7 @@ module.exports = app => {
     )
   })
 
+  // Fetch the users account balance
   app.get('/api/balance', requireLogin, function (req, res) {
     client.getAccounts(req.user.access_token, function (
       error,
@@ -88,7 +90,21 @@ module.exports = app => {
         return res.json({ error: error })
       }
       console.log(transactionsResponse.accounts[0].balances.available)
+      // By default we're fetching the first account
+      // This should fetch the one the user selects
       res.json(transactionsResponse.accounts[0].balances.available)
+    })
+  })
+
+  // Only available in production :(
+  app.get('/api/income', requireLogin, function (req, res) {
+    client.getIncome(req.user.access_token, function (error, incomeResponse) {
+      if (error != null) {
+        console.log(JSON.stringify(error))
+        return res.json({ error: error })
+      }
+      console.log(incomeResponse)
+      // res.json(transactionsResponse.accounts[0].balances.available)
     })
   })
 }

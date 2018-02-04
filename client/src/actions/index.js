@@ -168,6 +168,11 @@ export const submitReward = values => async dispatch => {
 // ------------------------------------- Goal -------------------------------------------------- //
 
 export const submitGoal = () => async dispatch => {
-  axios.post('/api/goal')
-  dispatch({ type: types.SUBMIT_GOAL })
+  const res = await axios.post('/api/goal')
+  dispatch({ type: types.SUBMIT_GOAL, payload: res.data })
+}
+
+export const fetchGoal = () => async dispatch => {
+  const res = await axios.get('/api/goals')
+  dispatch({ type: types.FETCH_GOALS, payload: res.data })
 }
