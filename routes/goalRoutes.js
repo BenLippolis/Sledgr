@@ -17,4 +17,17 @@ module.exports = app => {
       res.status(422).send(err)
     }
   })
+
+  app.patch('/api/goal/update', requireLogin, async (req, res) => {
+    try {
+      const goal = await Goal.findOneAndUpdate(
+        { _user: req.user.id },
+        req.body,
+        { new: true }
+      )
+      res.send(goal)
+    } catch (err) {
+      res.status(422).send(err)
+    }
+  })
 }
