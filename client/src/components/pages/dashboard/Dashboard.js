@@ -24,6 +24,7 @@ class Dashboard extends Component {
 
   componentDidMount () {
     this.props.fetchProfile()
+    this.props.fetchGoals()
     if (this.props.auth.access_token) {
       this.props.fetchBalance()
     }
@@ -84,6 +85,7 @@ class Dashboard extends Component {
         {this.renderCreateProfileLink()}
         <AccountVisualization />
         <RewardVisual />
+        {this.props.goals.length}
         {this.renderTransactions()}
 
       </div>
@@ -95,7 +97,8 @@ function mapStateToProps (state) {
   return {
     profile: state.profile,
     balance: state.balance,
-    auth: state.auth
+    auth: state.auth,
+    goals: state.goals
   }
 }
 

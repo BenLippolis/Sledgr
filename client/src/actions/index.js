@@ -172,7 +172,7 @@ export const submitGoal = () => async dispatch => {
   dispatch({ type: types.SUBMIT_GOAL, payload: res.data })
 }
 
-export const fetchGoal = () => async dispatch => {
+export const fetchGoals = () => async dispatch => {
   const res = await axios.get('/api/goals')
   dispatch({ type: types.FETCH_GOALS, payload: res.data })
 }

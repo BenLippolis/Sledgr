@@ -73,7 +73,7 @@ class Chart extends Component {
 }
 
 function mapStateToProps (state) {
-  return { goal: state.goal }
+  return { goals: state.goals }
 }
 
 export default connect(mapStateToProps)(Chart)
