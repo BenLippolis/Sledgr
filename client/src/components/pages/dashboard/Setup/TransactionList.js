@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchTransactions, fetchBalance } from '../../../actions'
+import { fetchTransactions, fetchBalance } from '../../../../actions'
 
 class TransactionList extends Component {
   componentDidMount () {

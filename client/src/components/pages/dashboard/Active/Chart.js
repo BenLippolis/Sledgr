@@ -11,7 +11,7 @@ class Chart extends Component {
         datasets: [
           {
             label: 'Account Balance',
-            data: [100, 100, 100],
+            data: [100, 200, 300],
             backgroundColor: [
               '#8003a6',
               '#8003a6',

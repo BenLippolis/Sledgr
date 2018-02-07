@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchInflows, deleteInflow } from '../../../actions'
+import { fetchInflows, deleteInflow } from '../../actions'
 
 class InflowList extends Component {
   componentDidMount () {

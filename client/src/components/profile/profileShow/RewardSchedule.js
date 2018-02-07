@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateRewardSchedule } from '../../../actions'
-import RewardForm from '../reward/RewardForm'
+import RewardForm from '../../reward/RewardForm'
 
 class SavingsSchedule extends Component {
   onUpdateClick (value, profile) {

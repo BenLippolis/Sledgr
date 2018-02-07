@@ -5,7 +5,7 @@ import RewardField from './RewardField'
 import { withRouter } from 'react-router-dom'
 import formFields from './formFields'
 import { connect } from 'react-redux'
-import * as actions from '../../../actions'
+import * as actions from '../../actions'
 
 class RewardForm extends Component {
   renderFields () {

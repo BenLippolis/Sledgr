@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
 import { reduxForm, Field } from 'redux-form'
-import InflowField from './InflowField'
+import OutflowField from './OutflowField'
 import { withRouter } from 'react-router-dom'
 import formFields from './formFields'
 import { connect } from 'react-redux'
-import * as actions from '../../../actions'
-import '../../../styles/InflowForm.css'
+import * as actions from '../../actions'
+import './styles/OutflowForm.css'
 
-class InflowForm extends Component {
+class OutflowForm extends Component {
   renderFields () {
     return _.map(formFields, ({ label, name }) => {
       return (
         <Field
           key={name}
-          component={InflowField}
+          component={OutflowField}
           type='text'
           label={label}
           name={name}
@@ -24,7 +24,7 @@ class InflowForm extends Component {
   }
 
   onSubmit (values) {
-    this.props.submitInflow(values, this.props.history)
+    this.props.submitOutflow(values, this.props.history)
     this.props.reset()
   }
 
@@ -33,12 +33,12 @@ class InflowForm extends Component {
 
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-        <div className='row inflow_form'>
-          <div className='col-md-12'><h5> New Inflow </h5></div>
+        <div className='row outflow_form'>
+          <div className='col-md-12'><h5> New Outflow </h5></div>
           {this.renderFields()}
           <div className='col-md-4'>
-            <button className='btn btn-primary btn-sm' type='submit'>
-              Add Inflow
+            <button className='btn btn-sm btn-primary' type='submit'>
+              Add Outflow
             </button>
           </div>
         </div>
@@ -59,5 +59,5 @@ function validate (values) {
 
 export default reduxForm({
   validate,
-  form: 'inflowForm'
-})(connect(null, actions)(withRouter(InflowForm)))
+  form: 'outflowForm'
+})(connect(null, actions)(withRouter(OutflowForm)))

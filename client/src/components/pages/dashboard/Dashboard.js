@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as actions from '../../../actions'
 import { connect } from 'react-redux'
-import AccountVisualization from './AccountVisualization'
-import RewardVisual from './RewardVisual'
-import PlaidLink from './PlaidLink'
-import TransactionList from './TransactionList'
+import AccountVisualization from './Active/AccountVisualization'
+import RewardVisual from './Active/RewardVisual'
+import PlaidLink from './Welcome/PlaidLink'
+import TransactionList from './Setup/TransactionList'
 import axios from 'axios'
+import MaxSavings from '../../profile/profileShow/MaxSavings'
 
 class Dashboard extends Component {
   handleOnSuccess (token, metadata) {
@@ -75,15 +76,23 @@ class Dashboard extends Component {
     }
   }
 
-  renderGoals () {
-    return this.props.goals.map(goal => {
-      return goal.balances.map(bal => {
-        return (
-          <div>
-            <h3>{bal.value} </h3>
-          </div>
-        )
+  renderData () {
+    var vals = []
+    this.props.goals.map(g => {
+      g.balances.map(b => {
+        vals.push(b.value)
       })
+    })
+    return vals
+  }
+
+  renderGoals () {
+    return this.renderData().map(bal => {
+      return (
+        <div>
+          <h3>{bal} </h3>
+        </div>
+      )
     })
   }
 
@@ -95,10 +104,12 @@ class Dashboard extends Component {
           {this.renderConnectAccount()}
         </div>
         {this.renderCreateProfileLink()}
+        <div className='text-center'>
+          <MaxSavings />
+        </div>
         <AccountVisualization />
         <RewardVisual />
-        {this.props.goals.length}
-        {this.renderGoals()}
+        {this.props.goals.length} Goals
         {this.renderTransactions()}
       </div>
     )

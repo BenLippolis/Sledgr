@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-// Assign all actions creators to actions object
 import * as actions from '../actions'
 
 import Header from './layout/Header'
 import Landing from './pages/Landing'
 import Footer from './layout/Footer'
-import SurveyNew from './surveys/SurveyNew'
 import Community from './pages/Community'
 import HowItWorks from './pages/HowItWorks'
 import Pricing from './pages/Pricing'
@@ -30,7 +28,6 @@ class App extends Component {
             <Header />
             <div className='container'>
               <Route exact path='/' component={Landing} />
-              <Route path='/surveys/new' component={SurveyNew} />
               <Route path='/community' component={Community} />
               <Route path='/how-it-works' component={HowItWorks} />
               <Route path='/pricing' component={Pricing} />

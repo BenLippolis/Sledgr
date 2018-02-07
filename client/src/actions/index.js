@@ -7,7 +7,6 @@ export const fetchUser = () => async dispatch => {
 }
 
 // ------------------------------------- Surveys -------------------------------------------------- //
-
 export const submitSurvey = (values, history) => async dispatch => {
   const res = await axios.post('/api/surveys', values)
   // We pass the history object to the action creator using the onClick callback
@@ -100,7 +99,6 @@ export const increasePercentSpent = profile => dispatch => {
 }
 
 // ------------------------------------- Inflows -------------------------------------------------- //
-
 export const submitInflow = (values, history) => async dispatch => {
   const res = await axios.post('/api/inflow', values)
   dispatch({ type: types.SUBMIT_INFLOW, payload: res.data })
@@ -119,7 +117,6 @@ export const deleteInflow = inflow => async dispatch => {
 }
 
 // ------------------------------------- Outflows -------------------------------------------------- //
-
 export const submitOutflow = (values, history) => async dispatch => {
   const res = await axios.post('/api/outflow', values)
   dispatch({ type: types.SUBMIT_OUTFLOW, payload: res.data })
@@ -137,7 +134,6 @@ export const deleteOutflow = outflow => async dispatch => {
 }
 
 // ------------------------------------- Plaid -------------------------------------------------- //
-
 export const getAccessToken = (token, metadata) => dispatch => {
   axios.post('/api/get_access_token', {
     public_token: token,
@@ -159,14 +155,12 @@ export const fetchBalance = () => async dispatch => {
 }
 
 // ------------------------------------- Reward -------------------------------------------------- //
-
 export const submitReward = values => async dispatch => {
   const res = await axios.post('/api/reward', values)
   dispatch({ type: types.SUBMIT_REWARD, payload: res.data })
 }
 
 // ------------------------------------- Goal -------------------------------------------------- //
-
 export const submitGoal = () => async dispatch => {
   const res = await axios.post('/api/goal')
   dispatch({ type: types.SUBMIT_GOAL, payload: res.data })
