@@ -3,10 +3,12 @@ const requireLogin = require('../middlewares/requireLogin')
 const Goal = mongoose.model('goal')
 
 module.exports = app => {
+  // Create a goal
   app.post('/api/goal', requireLogin, async (req, res) => {
     const goal = new Goal({
       _user: req.user.id
     })
+    // Auto create a balance with value 100 (temp)
     goal.balances.push({
       value: 100
     })
@@ -18,11 +20,13 @@ module.exports = app => {
     }
   })
 
+  // Retrieve all goals
   app.get('/api/goals', requireLogin, async (req, res) => {
     const goals = await Goal.find({ _user: req.user.id })
     res.send(goals)
   })
 
+  // Update a specific goal
   app.patch('/api/goal/update', requireLogin, async (req, res) => {
     try {
       const goal = await Goal.findOneAndUpdate(

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { BrowserRouter, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from '../actions'
-
 import Header from './layout/Header'
 import Landing from './pages/Landing'
 import Footer from './layout/Footer'
@@ -14,9 +13,7 @@ import ProfileCreate from './profile/ProfileCreate'
 import ProfileShow from './profile/profileShow/ProfileShow'
 
 class App extends Component {
-  // Life-cycle method for fetching current user
   componentDidMount () {
-    // Call action creator
     this.props.fetchUser()
   }
 
@@ -35,7 +32,6 @@ class App extends Component {
               <Route path='/profile/create' component={ProfileCreate} />
               <Route exact path='/profile' component={ProfileShow} />
             </div>
-
           </div>
         </BrowserRouter>
       </div>

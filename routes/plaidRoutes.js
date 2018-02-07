@@ -90,7 +90,7 @@ module.exports = app => {
         return res.json({ error: error })
       }
       console.log(transactionsResponse.accounts[0].balances.available)
-      // By default we're fetching the first account
+      // By default we're fetching the first account (temp)
       // This should fetch the one the user selects
       res.json(transactionsResponse.accounts[0].balances.available)
     })
