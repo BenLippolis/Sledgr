@@ -75,6 +75,18 @@ class Dashboard extends Component {
     }
   }
 
+  renderGoals () {
+    return this.props.goals.map(goal => {
+      return goal.balances.map(bal => {
+        return (
+          <div>
+            <h3>{bal.value} </h3>
+          </div>
+        )
+      })
+    })
+  }
+
   render () {
     return (
       <div>
@@ -86,8 +98,8 @@ class Dashboard extends Component {
         <AccountVisualization />
         <RewardVisual />
         {this.props.goals.length}
+        {this.renderGoals()}
         {this.renderTransactions()}
-
       </div>
     )
   }
