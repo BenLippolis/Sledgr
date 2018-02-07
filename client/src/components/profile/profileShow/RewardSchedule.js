@@ -4,8 +4,8 @@ import { updateRewardSchedule } from '../../../actions'
 import RewardForm from '../../reward/RewardForm'
 
 class SavingsSchedule extends Component {
-  onUpdateClick (value, profile) {
-    this.props.updateRewardSchedule(value, profile)
+  onUpdateClick (frequency, profile) {
+    this.props.updateRewardSchedule(frequency, profile)
   }
 
   renderScheduleOptions () {

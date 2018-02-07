@@ -81,6 +81,7 @@ export default function (state = {}, action) {
         percent_spent: action.payload,
         monthly_spend: state.target_savings * action.payload
       }
+
     case types.DECREASE_PERCENT_SPENT:
       return {
         ...state,
