@@ -13,6 +13,7 @@ const profileSchema = new Schema({
   reward_schedule: Number,
   reward_budget: Number,
   active_goal: Boolean,
+  stage: String,
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 

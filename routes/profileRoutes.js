@@ -15,6 +15,7 @@ module.exports = app => {
     const reward_schedule = 0
     const reward_budget = 0
     const active_goal = false
+    const stage = 'setup'
 
     const profile = new Profile({
       name,
@@ -28,6 +29,7 @@ module.exports = app => {
       reward_schedule,
       reward_budget,
       active_goal,
+      stage,
       _user: req.user.id
     })
     try {
