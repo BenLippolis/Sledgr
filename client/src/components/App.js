@@ -10,7 +10,6 @@ import HowItWorks from './pages/HowItWorks'
 import Pricing from './pages/Pricing'
 import About from './pages/About'
 import ProfileCreate from './profile/ProfileCreate'
-import ProfileShow from './profile/profileShow/ProfileShow'
 
 class App extends Component {
   componentDidMount () {
@@ -30,7 +29,6 @@ class App extends Component {
               <Route path='/pricing' component={Pricing} />
               <Route path='/about' component={About} />
               <Route path='/profile/create' component={ProfileCreate} />
-              <Route exact path='/profile' component={ProfileShow} />
             </div>
           </div>
         </BrowserRouter>

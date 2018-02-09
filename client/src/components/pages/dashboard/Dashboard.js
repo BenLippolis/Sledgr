@@ -11,6 +11,10 @@ import MaxSavings from './Setup/MaxSavings'
 import TargetSavings from './Setup/TargetSavings'
 import RewardSchedule from './Setup/RewardSchedule'
 import Begin from './Setup/Begin'
+import InflowForm from '../../inflow/InflowForm'
+import InflowList from '../../inflow/InflowList'
+import OutflowForm from '../../outflow/OutflowForm'
+import OutflowList from '../../outflow/OutflowList'
 
 class Dashboard extends Component {
   handleOnSuccess (token, metadata) {
@@ -125,6 +129,25 @@ class Dashboard extends Component {
     this.props.updateStage(stage)
   }
 
+  renderInflowOutflow () {
+    switch (this.props.profile.show_max_savings) {
+      case true:
+        return (
+          <div className='row'>
+            <div className='col-md-6'>
+              <InflowList />
+              <InflowForm />
+            </div>
+            <div className='col-md-6'>
+              <OutflowList />
+              <OutflowForm />
+            </div>
+          </div>
+        )
+      default:
+    }
+  }
+
   render () {
     switch (this.props.profile.stage) {
       case 0:
@@ -141,6 +164,7 @@ class Dashboard extends Component {
         return (
           <div className='text-center'>
             <MaxSavings />
+            {this.renderInflowOutflow()}
             <TargetSavings />
             <RewardSchedule />
             <Begin />
