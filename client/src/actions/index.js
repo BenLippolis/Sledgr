@@ -92,7 +92,7 @@ export const increasePercentSpent = profile => dispatch => {
 
 // Update the stage of the user to the given value
 export const updateStage = stage => dispatch => {
-  axios.post('/api/profile/update', {
+  axios.patch('/api/profile/update', {
     stage: stage
   })
   dispatch({

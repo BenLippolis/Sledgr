@@ -96,6 +96,28 @@ class Dashboard extends Component {
     })
   }
 
+  renderContinueButton (stage) {
+    return (
+      <button
+        className='btn btn-primary'
+        onClick={this.onContinueClick.bind(this, stage)}
+      >
+        {' '}Continue{' '}
+      </button>
+    )
+  }
+
+  renderBackButton (stage) {
+    return (
+      <button
+        className='btn btn-primary'
+        onClick={this.onContinueClick.bind(this, stage)}
+      >
+        {' '}Go Back{' '}
+      </button>
+    )
+  }
+
   onContinueClick (stage) {
     this.props.updateStage(stage)
   }
@@ -109,18 +131,15 @@ class Dashboard extends Component {
             {this.renderCreateProfileLink()}
             <p> Please connect your bank account... </p>
             {this.renderConnectAccount()}
-            <button
-              className='btn btn-primary'
-              onClick={this.onContinueClick.bind(this, 1)}
-            >
-              {' '}Continue!{' '}
-            </button>
+            {this.renderContinueButton(1)}
           </div>
         )
       case 1:
         return (
           <div className='text-center'>
             <MaxSavings />
+            {this.renderContinueButton(2)}
+            {this.renderBackButton(0)}
           </div>
         )
       case 2:
@@ -130,6 +149,15 @@ class Dashboard extends Component {
             <RewardVisual />
             {this.props.goals.length} Goals
             {this.renderTransactions()}
+            {this.renderContinueButton(3)}
+            {this.renderBackButton(1)}
+          </div>
+        )
+      case 3:
+        return (
+          <div className='text-center'>
+            <h1> Yay you completed your goal! </h1>
+            {this.renderContinueButton(1)}
           </div>
         )
     }
