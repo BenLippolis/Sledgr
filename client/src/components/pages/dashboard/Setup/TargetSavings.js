@@ -5,7 +5,7 @@ import {
   increasePercentSaved,
   decreasePercentSpent,
   increasePercentSpent
-} from '../../../actions'
+} from '../../../../actions'
 
 class TargetSavings extends Component {
   onSaveDecrementClick (profile) {

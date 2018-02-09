@@ -7,7 +7,10 @@ import RewardVisual from './Active/RewardVisual'
 import PlaidLink from './Welcome/PlaidLink'
 import TransactionList from './Setup/TransactionList'
 import axios from 'axios'
-import MaxSavings from '../../profile/profileShow/MaxSavings'
+import MaxSavings from './Setup/MaxSavings'
+import TargetSavings from './Setup/TargetSavings'
+import RewardSchedule from './Setup/RewardSchedule'
+import Begin from './Setup/Begin'
 
 class Dashboard extends Component {
   handleOnSuccess (token, metadata) {
@@ -138,6 +141,9 @@ class Dashboard extends Component {
         return (
           <div className='text-center'>
             <MaxSavings />
+            <TargetSavings />
+            <RewardSchedule />
+            <Begin />
             {this.renderContinueButton(2)}
             {this.renderBackButton(0)}
           </div>

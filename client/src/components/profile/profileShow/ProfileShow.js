@@ -3,12 +3,8 @@ import InflowForm from '../../inflow/InflowForm'
 import InflowList from '../../inflow/InflowList'
 import OutflowForm from '../../outflow/OutflowForm'
 import OutflowList from '../../outflow/OutflowList'
-import MaxSavings from './MaxSavings'
 import { fetchProfile } from '../../../actions'
 import { connect } from 'react-redux'
-import TargetSavings from './TargetSavings'
-import RewardSchedule from './RewardSchedule'
-import Begin from './Begin'
 
 class ProfileShow extends Component {
   componentDidMount () {
@@ -38,25 +34,17 @@ class ProfileShow extends Component {
     return (
       <div>
         <div className='row'>
-          <div className='col-md-12 text-center'>
-            <MaxSavings />
-          </div>
+          <div className='col-md-12 text-center' />
         </div>
         {this.renderInflowOutflow()}
         <div className='row'>
-          <div className='col-md-12'>
-            <TargetSavings />
-          </div>
+          <div className='col-md-12' />
         </div>
         <div className='row'>
-          <div className='col-md-12'>
-            <RewardSchedule />
-          </div>
+          <div className='col-md-12' />
         </div>
         <div className='row'>
-          <div className='col-md-12'>
-            <Begin />
-          </div>
+          <div className='col-md-12' />
         </div>
       </div>
     )

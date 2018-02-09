@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updateMaxSavings } from '../../../actions'
+import { updateMaxSavings } from '../../../../actions'
 
 class MaxSavings extends Component {
   renderProfileMaxSavings () {
