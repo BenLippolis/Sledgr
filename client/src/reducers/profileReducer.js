@@ -88,6 +88,11 @@ export default function (state = {}, action) {
         percent_spent: action.payload,
         monthly_spend: state.target_savings * action.payload
       }
+    case types.UPDATE_STAGE:
+      return {
+        ...state,
+        stage: action.payload
+      }
 
     default:
       return state

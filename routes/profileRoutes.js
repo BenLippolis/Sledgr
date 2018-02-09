@@ -15,7 +15,7 @@ module.exports = app => {
     const reward_schedule = 0
     const reward_budget = 0
     const active_goal = false
-    const stage = 'setup'
+    const stage = 0
 
     const profile = new Profile({
       name,

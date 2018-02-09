@@ -96,23 +96,44 @@ class Dashboard extends Component {
     })
   }
 
+  onContinueClick (stage) {
+    this.props.updateStage(stage)
+  }
+
   render () {
-    return (
-      <div>
-        <div className='jumbotron text-center branding'>
-          <h1> Welcome to your digital dash </h1>
-          {this.renderConnectAccount()}
-        </div>
-        {this.renderCreateProfileLink()}
-        <div className='text-center'>
-          <MaxSavings />
-        </div>
-        <AccountVisualization />
-        <RewardVisual />
-        {this.props.goals.length} Goals
-        {this.renderTransactions()}
-      </div>
-    )
+    switch (this.props.profile.stage) {
+      case 0:
+        return (
+          <div className='jumbotron text-center branding'>
+            <h1> Welcome to Sledgr! </h1>
+            {this.renderCreateProfileLink()}
+            <p> Please connect your bank account... </p>
+            {this.renderConnectAccount()}
+            <button
+              className='btn btn-primary'
+              onClick={this.onContinueClick.bind(this, 1)}
+            >
+              {' '}Continue!{' '}
+            </button>
+          </div>
+        )
+      case 1:
+        return (
+          <div className='text-center'>
+            <MaxSavings />
+          </div>
+        )
+      case 2:
+        return (
+          <div>
+            <AccountVisualization />
+            <RewardVisual />
+            {this.props.goals.length} Goals
+            {this.renderTransactions()}
+          </div>
+        )
+    }
+    return <div />
   }
 }
 

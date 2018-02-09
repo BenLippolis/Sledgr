@@ -90,6 +90,17 @@ export const increasePercentSpent = profile => dispatch => {
   })
 }
 
+// Update the stage of the user to the given value
+export const updateStage = stage => dispatch => {
+  axios.post('/api/profile/update', {
+    stage: stage
+  })
+  dispatch({
+    type: types.UPDATE_STAGE,
+    payload: stage
+  })
+}
+
 // ------------------------------------- Inflows -------------------------------------------------- //
 export const submitInflow = (values, history) => async dispatch => {
   const res = await axios.post('/api/inflow', values)
