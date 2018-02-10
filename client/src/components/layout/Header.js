@@ -94,10 +94,7 @@ class Header extends Component {
     )
   }
 }
-// Pass the state we want to access to the component
 function mapStateToProps (state) {
-  // Return an object to be passed to the header as props
-  // Return the property we assigned the appropriate reducer to
   return { auth: state.auth, profile: state.profile }
 }
 export default connect(mapStateToProps)(Header)

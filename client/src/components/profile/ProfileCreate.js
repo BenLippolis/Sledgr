@@ -5,7 +5,6 @@ class ProfileCreate extends Component {
   render () {
     return (
       <div>
-        <h3>Create Profile </h3>
         <ProfileForm />
       </div>
     )

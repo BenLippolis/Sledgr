@@ -15,6 +15,7 @@ import InflowForm from '../../inflow/InflowForm'
 import InflowList from '../../inflow/InflowList'
 import OutflowForm from '../../outflow/OutflowForm'
 import OutflowList from '../../outflow/OutflowList'
+import ProfileCreate from '../../profile/ProfileCreate'
 
 class Dashboard extends Component {
   handleOnSuccess (token, metadata) {
@@ -152,9 +153,7 @@ class Dashboard extends Component {
     switch (this.props.profile.stage) {
       case 0:
         return (
-          <div className='jumbotron text-center branding'>
-            <h1> Welcome to Sledgr! </h1>
-            {this.renderCreateProfileLink()}
+          <div>
             <p> Please connect your bank account... </p>
             {this.renderConnectAccount()}
             {this.renderContinueButton(1)}
@@ -190,7 +189,21 @@ class Dashboard extends Component {
             {this.renderContinueButton(1)}
           </div>
         )
+      default:
+        return (
+          <div className='jumbotron text-center branding'>
+            <h1> Welcome to Sledgr! </h1>
+            <div className='row'>
+              <div className='col-md-12'>
+                <div className='col-md-6 col-md-offset-3'>
+                  <ProfileCreate />
+                </div>
+              </div>
+            </div>
+          </div>
+        )
     }
+
     return <div />
   }
 }

@@ -32,11 +32,8 @@ class ProfileForm extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         {this.renderFields()}
-        <Link to='/' className='btn btn-danger'>
-          Cancel
-        </Link>
-        <button className='btn btn-success float-right' type='submit'>
-          Create Profile
+        <button className='btn btn-primary float-right' type='submit'>
+          Continue!
         </button>
       </form>
     )

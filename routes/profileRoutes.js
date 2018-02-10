@@ -34,7 +34,7 @@ module.exports = app => {
     })
     try {
       await profile.save()
-      res.send(req.user)
+      res.send(profile)
     } catch (err) {
       res.status(422).send(err)
     }
