@@ -7,6 +7,7 @@ class AccountVisualization extends Component {
     return (
       <div className='jumbotron'>
         Account Visualization <br />
+        Current Balance: ${this.props.balance}<br />
         Target Savings {this.props.profile.max_savings} + account balance
         <Chart />
       </div>
@@ -15,7 +16,10 @@ class AccountVisualization extends Component {
 }
 
 function mapStateToProps (state) {
-  return { profile: state.profile }
+  return {
+    profile: state.profile,
+    balance: state.balance
+  }
 }
 
 export default connect(mapStateToProps)(AccountVisualization)

@@ -14,7 +14,8 @@ export default function (state = {}, action) {
         _id: action.payload._id,
         name: action.payload.name,
         _user: action.payload._user,
-        stage: action.payload.stage
+        stage: action.payload.stage,
+        max_savings: action.payload.max_savings
       }
 
     case types.SUBMIT_INFLOW:
@@ -101,6 +102,11 @@ export default function (state = {}, action) {
       return {
         ...state,
         stage: action.payload
+      }
+    case types.HANDLE_ON_SUCCESS:
+      return {
+        ...state,
+        stage: 1
       }
 
     default:

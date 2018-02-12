@@ -18,32 +18,36 @@ var client = new plaid.Client(
 
 module.exports = app => {
   // Get access token from Plaid
-  app.post('/api/get_access_token', requireLogin, function (req, res, next) {
+  app.post('/api/get_access_token', requireLogin, async (req, res, next) => {
     PUBLIC_TOKEN = req.body.public_token
-    client.exchangePublicToken(PUBLIC_TOKEN, function (error, tokenResponse) {
-      if (error != null) {
-        var msg = 'Could not exchange public_token!'
-        console.log(msg + '\n' + error)
-        return res.json({
-          error: msg
+    await client.exchangePublicToken(
+      PUBLIC_TOKEN,
+      async (error, tokenResponse) => {
+        if (error != null) {
+          var msg = 'Could not exchange public_token!'
+          console.log(msg + '\n' + error)
+          return res.json({
+            error: msg
+          })
+        }
+        ACCESS_TOKEN = tokenResponse.access_token
+        ITEM_ID = tokenResponse.item_id
+        console.log('Access Token: ' + ACCESS_TOKEN)
+        console.log('Item ID: ' + ITEM_ID)
+        res.json({
+          error: false
         })
+        const user = req.user
+        if (!user.access_token) {
+          user.access_token = ACCESS_TOKEN
+          user.item_id = ITEM_ID
+          await user.save()
+          res.send(user)
+        } else {
+          console.log('User has an access token already!')
+        }
       }
-      ACCESS_TOKEN = tokenResponse.access_token
-      ITEM_ID = tokenResponse.item_id
-      console.log('Access Token: ' + ACCESS_TOKEN)
-      console.log('Item ID: ' + ITEM_ID)
-      res.json({
-        error: false
-      })
-      const user = req.user
-      if (!user.access_token) {
-        user.access_token = ACCESS_TOKEN
-        user.item_id = ITEM_ID
-        user.save()
-      } else {
-        console.log('User has an access token already!')
-      }
-    })
+    )
   })
 
   // Get transactions for last 30 days

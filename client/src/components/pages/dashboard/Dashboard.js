@@ -19,12 +19,11 @@ import ProfileCreate from '../../profile/ProfileCreate'
 
 class Dashboard extends Component {
   handleOnSuccess (token, metadata) {
-    axios.post('/api/get_access_token', {
-      public_token: token,
-      accounts: metadata.accounts,
-      institution: metadata.institution,
-      link_session_id: metadata.link_session_id
-    })
+    this.props.handleOnSuccess(token, metadata)
+  }
+
+  handleStage (stage) {
+    this.props.updateStage(stage)
   }
 
   plaidProducts () {
@@ -62,7 +61,7 @@ class Dashboard extends Component {
           product={this.plaidProducts()}
           env='sandbox'
           clientName='Sledgr.com'
-          onSuccess={this.handleOnSuccess}
+          onSuccess={this.handleOnSuccess.bind(this)}
         />
       )
     } else {
