@@ -161,13 +161,13 @@ export const fetchBalance = () => async dispatch => {
 }
 
 export const handleOnSuccess = (token, metadata) => async dispatch => {
-  const res = await axios.post('/api/get_access_token', {
+  await axios.post('/api/get_access_token', {
     public_token: token,
     accounts: metadata.accounts,
     institution: metadata.institution,
     link_session_id: metadata.link_session_id
   })
-  dispatch({ type: types.HANDLE_ON_SUCCESS })
+  dispatch({ type: types.HANDLE_ON_SUCCESS, payload: 1 })
 }
 
 // ------------------------------------- Reward -------------------------------------------------- //

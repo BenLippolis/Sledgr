@@ -6,7 +6,6 @@ import AccountVisualization from './Active/AccountVisualization'
 import RewardVisual from './Active/RewardVisual'
 import PlaidLink from './Welcome/PlaidLink'
 import TransactionList from './Setup/TransactionList'
-import axios from 'axios'
 import MaxSavings from './Setup/MaxSavings'
 import TargetSavings from './Setup/TargetSavings'
 import RewardSchedule from './Setup/RewardSchedule'
@@ -80,17 +79,8 @@ class Dashboard extends Component {
             <TransactionList />
           </div>
         )
+      default:
     }
-  }
-
-  renderData () {
-    var vals = []
-    this.props.goals.map(g => {
-      g.balances.map(b => {
-        vals.push(b.value)
-      })
-    })
-    return vals
   }
 
   renderGoals () {
@@ -155,7 +145,6 @@ class Dashboard extends Component {
           <div>
             <p> Please connect your bank account... </p>
             {this.renderConnectAccount()}
-            {this.renderContinueButton(1)}
           </div>
         )
       case 1:
@@ -167,7 +156,6 @@ class Dashboard extends Component {
             <RewardSchedule />
             <Begin />
             {this.renderContinueButton(2)}
-            {this.renderBackButton(0)}
           </div>
         )
       case 2:
@@ -202,8 +190,6 @@ class Dashboard extends Component {
           </div>
         )
     }
-
-    return <div />
   }
 }
 

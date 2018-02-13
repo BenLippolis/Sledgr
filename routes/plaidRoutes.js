@@ -2,6 +2,9 @@ const requireLogin = require('../middlewares/requireLogin')
 const keys = require('../config/keys')
 const plaid = require('plaid')
 const moment = require('moment')
+const mongoose = require('mongoose')
+const Profile = mongoose.model('profile')
+
 
 const PLAID_CLIENT_ID = keys.plaidClientId
 const PLAID_SECRET = keys.plaidSecret
@@ -42,6 +45,12 @@ module.exports = app => {
           user.access_token = ACCESS_TOKEN
           user.item_id = ITEM_ID
           await user.save()
+
+          // Update profile stage 
+          const profile = await Profile.findOne({ _user: req.user.id })
+          profile.stage = 1
+          await profile.save() 
+          
           res.send(user)
         } else {
           console.log('User has an access token already!')

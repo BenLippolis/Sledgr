@@ -106,7 +106,7 @@ export default function (state = {}, action) {
     case types.HANDLE_ON_SUCCESS:
       return {
         ...state,
-        stage: 1
+        stage: action.payload
       }
 
     default:
