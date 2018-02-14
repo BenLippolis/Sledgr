@@ -15,6 +15,7 @@ import InflowList from '../../inflow/InflowList'
 import OutflowForm from '../../outflow/OutflowForm'
 import OutflowList from '../../outflow/OutflowList'
 import ProfileCreate from '../../profile/ProfileCreate'
+import Visual from './Setup/Visual'
 
 class Dashboard extends Component {
   handleOnSuccess (token, metadata) {
@@ -150,6 +151,7 @@ class Dashboard extends Component {
       case 1:
         return (
           <div className='text-center'>
+            <Visual />
             <MaxSavings />
             {this.renderInflowOutflow()}
             <TargetSavings />
