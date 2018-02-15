@@ -36,7 +36,7 @@ class InflowList extends Component {
     if (this.props.inflows.length > 0) {
       return (
         <div className='all'>
-          <h5> Monthly Inflows </h5>
+          <h5> Monthly Income </h5>
           {this.renderInflows()}
         </div>
       )

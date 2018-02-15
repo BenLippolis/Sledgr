@@ -151,7 +151,6 @@ class Dashboard extends Component {
       case 1:
         return (
           <div className='text-center'>
-            <Visual />
             <MaxSavings />
             {this.renderInflowOutflow()}
             <TargetSavings />

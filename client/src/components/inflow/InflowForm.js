@@ -34,11 +34,11 @@ class InflowForm extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <div className='row inflow_form'>
-          <div className='col-md-12'><h5> New Inflow </h5></div>
+          <div className='col-md-12'><h5> New Income</h5></div>
           {this.renderFields()}
           <div className='col-md-4'>
             <button className='btn btn-primary btn-sm' type='submit'>
-              Add Inflow
+              Add Income
             </button>
           </div>
         </div>

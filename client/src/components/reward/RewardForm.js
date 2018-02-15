@@ -34,10 +34,9 @@ class RewardForm extends Component {
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <div className='row outflow_form'>
           <div className='col-md-12'>
-            <h5> Create your reward! </h5>
             {this.renderFields()}
             <button className='btn btn-sm btn-primary' type='submit'>
-              Create Reward
+              Add Notes
             </button>
           </div>
         </div>

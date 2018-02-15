@@ -27,34 +27,72 @@ class TargetSavings extends Component {
   render () {
     return (
       <div className='jumbotron text-center'>
-        <button
-          className='btn btn-primary'
-          onClick={this.onSaveDecrementClick.bind(this, this.props.profile)}
-        >
-          -{' '}
-        </button>
+        <h4>
+          {' '}
+          How much will you save every month? $
+          {this.props.profile.target_savings}
+          {' '}
+        </h4>
         <button
           className='btn btn-primary'
           onClick={this.onSaveIncrementClick.bind(this, this.props.profile)}
         >
           +{' '}
         </button>
-        <h3> Percent Saved {this.props.profile.percent_saved * 100}% </h3>
-        <h3> Target Monthly Savings ${this.props.profile.target_savings} </h3>
-        <h3> Percent Spent {this.props.profile.percent_spent * 100}% </h3>
-        <h3> Monthly Spend ${this.props.profile.monthly_spend}</h3>
+
+        <h4> Save {this.props.profile.percent_saved * 100}% </h4>
+        <button
+          className='btn btn-primary'
+          onClick={this.onSaveDecrementClick.bind(this, this.props.profile)}
+        >
+          -{' '}
+        </button>
+
+        <h4>
+          {' '}
+          This is how much you can spend every week
+          {' '}
+          $
+          {(this.props.profile.max_savings -
+            this.props.profile.target_savings) /
+            4}
+        </h4>
+
+        <h4>
+          {' '}
+          Of the $
+          {this.props.profile.target_savings}
+          {' '}
+          you save every month, how much would you like to spend?
+          {' '}
+        </h4>
         <button
           className='btn btn-primary'
           onClick={this.onSpentDecrementClick.bind(this, this.props.profile)}
         >
           -{' '}
         </button>
+
+        <h4>
+          {' '}
+          Spend
+          {' '}
+          {this.props.profile.percent_spent * 100}
+          % of monthly savings
+        </h4>
         <button
           className='btn btn-primary'
           onClick={this.onSpentIncrementClick.bind(this, this.props.profile)}
         >
           +{' '}
         </button>
+        <h4>
+          {' '}
+          You'll have $
+          {this.props.profile.monthly_spend}
+          {' '}
+          to spend on something new & fun every month!
+        </h4>
       </div>
     )
   }

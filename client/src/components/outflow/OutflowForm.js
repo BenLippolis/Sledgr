@@ -34,11 +34,11 @@ class OutflowForm extends Component {
     return (
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <div className='row outflow_form'>
-          <div className='col-md-12'><h5> New Outflow </h5></div>
+          <div className='col-md-12'><h5> New Expense </h5></div>
           {this.renderFields()}
           <div className='col-md-4'>
             <button className='btn btn-sm btn-primary' type='submit'>
-              Add Outflow
+              Add Expense
             </button>
           </div>
         </div>

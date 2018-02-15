@@ -15,7 +15,7 @@ class SavingsSchedule extends Component {
       return (
         <p>
           {' '}
-          You're scheduled to get rewarded every
+          Every
           {' '}
           {this.props.profile.reward_schedule}
           {' '}
@@ -29,9 +29,16 @@ class SavingsSchedule extends Component {
   render () {
     return (
       <div className='jumbotron text-center'>
-        <h3> Reward Schedule </h3>
+        <h4> How often would you like to do something new & fun? </h4>
         {this.renderScheduleOptions()}
         <div>
+          <button
+            className='btn btn-success btn-sm'
+            onClick={this.onUpdateClick.bind(this, 0.5, this.props.profile)}
+          >
+            {' '}
+            2 Weeks
+          </button>
           <button
             className='btn btn-success btn-sm'
             onClick={this.onUpdateClick.bind(this, 1, this.props.profile)}
@@ -55,6 +62,17 @@ class SavingsSchedule extends Component {
           </button>
         </div>
         <div> Reward budget: ${this.props.profile.reward_budget}</div>
+        <div>
+          <button className='btn btn-primary btn-sm'>
+            Dinner
+          </button>
+          <button className='btn btn-primary btn-sm'>
+            Events
+          </button>
+          <button className='btn btn-primary btn-sm'>
+            Travel
+          </button>
+        </div>
         <div className='col-md-4 col-md-offset-4'>
           <RewardForm />
         </div>

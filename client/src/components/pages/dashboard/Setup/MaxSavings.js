@@ -48,7 +48,12 @@ class MaxSavings extends Component {
   render () {
     return (
       <div className='jumbotron'>
-        <h3> Max Monthly Savings: ${this.renderProfileMaxSavings()} </h3>
+        <h4>
+          {' '}
+          How much can you save every month? $
+          {this.renderProfileMaxSavings()}
+          {' '}
+        </h4>
         {this.renderDoneButton()}
       </div>
     )
