@@ -9,6 +9,7 @@ import TransactionList from './Setup/TransactionList'
 import MaxSavings from './Setup/MaxSavings'
 import TargetSavings from './Setup/TargetSavings'
 import RewardSchedule from './Setup/RewardSchedule'
+import RewardSelection from './Setup/RewardSelection'
 import Begin from './Setup/Begin'
 import InflowForm from '../../inflow/InflowForm'
 import InflowList from '../../inflow/InflowList'
@@ -155,6 +156,7 @@ class Dashboard extends Component {
             {this.renderInflowOutflow()}
             <TargetSavings />
             <RewardSchedule />
+            <RewardSelection />
             <Begin />
             {this.renderContinueButton(2)}
           </div>

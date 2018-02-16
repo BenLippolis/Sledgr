@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateMaxSavings, fetchBalance } from '../../../../actions'
+import '../styles/MaxSavings.css'
 
 class MaxSavings extends Component {
   componentDidMount () {

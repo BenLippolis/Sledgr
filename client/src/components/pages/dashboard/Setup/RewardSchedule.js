@@ -1,36 +1,19 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateRewardSchedule } from '../../../../actions'
-import RewardForm from '../../../reward/RewardForm'
 
-class SavingsSchedule extends Component {
+class RewardSchedule extends Component {
   onUpdateClick (frequency, profile) {
     this.props.updateRewardSchedule(frequency, profile)
-  }
-
-  renderScheduleOptions () {
-    if (this.props.profile.reward_schedule === 0) {
-      return <p> Please make a selection </p>
-    } else {
-      return (
-        <p>
-          {' '}
-          Every
-          {' '}
-          {this.props.profile.reward_schedule}
-          {' '}
-          month(s)
-          {' '}
-        </p>
-      )
-    }
   }
 
   render () {
     return (
       <div className='jumbotron text-center'>
-        <h4> How often would you like to do something new & fun? </h4>
-        {this.renderScheduleOptions()}
+        <h4>
+          {' '}How often would you like to do something new & fun?
+        </h4>
+
         <div>
           <button
             className='btn btn-success btn-sm'
@@ -61,20 +44,22 @@ class SavingsSchedule extends Component {
             3 Months{' '}
           </button>
         </div>
-        <div> Reward budget: ${this.props.profile.reward_budget}</div>
         <div>
-          <button className='btn btn-primary btn-sm'>
-            Dinner
-          </button>
-          <button className='btn btn-primary btn-sm'>
-            Events
-          </button>
-          <button className='btn btn-primary btn-sm'>
-            Travel
-          </button>
-        </div>
-        <div className='col-md-4 col-md-offset-4'>
-          <RewardForm />
+          <h4>
+            You'll have $
+            {this.props.profile.reward_budget}
+            {' '}
+            to spend on something new & fun...
+            <br />
+            {' '}
+            when you hit your goal in
+            {' '}
+            {' '}
+            {this.props.profile.reward_schedule}
+            {' '}
+            month(s)
+
+          </h4>
         </div>
       </div>
     )
@@ -86,5 +71,5 @@ function mapStateToProps (state) {
 }
 
 export default connect(mapStateToProps, { updateRewardSchedule })(
-  SavingsSchedule
+  RewardSchedule
 )

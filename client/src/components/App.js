@@ -10,6 +10,7 @@ import HowItWorks from './pages/static/HowItWorks'
 import Pricing from './pages/static/Pricing'
 import About from './pages/static/About'
 import ProfileCreate from './profile/ProfileCreate'
+import './App.css'
 
 class App extends Component {
   componentDidMount () {
@@ -22,13 +23,15 @@ class App extends Component {
         <BrowserRouter>
           <div>
             <Header />
-            <div className='container'>
-              <Route exact path='/' component={Landing} />
-              <Route path='/community' component={Community} />
-              <Route path='/how-it-works' component={HowItWorks} />
-              <Route path='/pricing' component={Pricing} />
-              <Route path='/about' component={About} />
-              <Route path='/profile/create' component={ProfileCreate} />
+            <div className='back-ground'>
+              <div className='container'>
+                <Route exact path='/' component={Landing} />
+                <Route path='/community' component={Community} />
+                <Route path='/how-it-works' component={HowItWorks} />
+                <Route path='/pricing' component={Pricing} />
+                <Route path='/about' component={About} />
+                <Route path='/profile/create' component={ProfileCreate} />
+              </div>
             </div>
           </div>
         </BrowserRouter>

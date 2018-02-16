@@ -50,16 +50,6 @@ class TargetSavings extends Component {
 
         <h4>
           {' '}
-          This is how much you can spend every week
-          {' '}
-          $
-          {(this.props.profile.max_savings -
-            this.props.profile.target_savings) /
-            4}
-        </h4>
-
-        <h4>
-          {' '}
           Of the $
           {this.props.profile.target_savings}
           {' '}
@@ -93,6 +83,7 @@ class TargetSavings extends Component {
           {' '}
           to spend on something new & fun every month!
         </h4>
+
       </div>
     )
   }

@@ -9,7 +9,21 @@ class Begin extends Component {
 
   render () {
     return (
-      <div className='text-center'>
+      <div className='text-center jumbotron'>
+        <h4>
+          {' '}
+          Soooo if you limit your weekly spending on extra stuff to
+          {' '}
+          $
+          {(this.props.profile.max_savings -
+            this.props.profile.target_savings) /
+            4}
+          ...<br />
+          {' '}
+
+          {' '}
+          you'll reach your goal in no time!!
+        </h4>
         <button
           className='btn btn-primary'
           onClick={this.onBeginClick.bind(this)}
@@ -21,4 +35,8 @@ class Begin extends Component {
   }
 }
 
-export default connect(null, { submitGoal })(Begin)
+function mapStateToProps (state) {
+  return { profile: state.profile }
+}
+
+export default connect(mapStateToProps, { submitGoal })(Begin)
