@@ -9,7 +9,6 @@ require('./models/User')
 require('./models/Profile')
 require('./models/Inflow')
 require('./models/Outflow')
-require('./models/Reward')
 require('./models/Goal')
 require('./services/passport')
 
@@ -39,7 +38,6 @@ require('./routes/plaidRoutes')(app)
 require('./routes/profileRoutes')(app)
 require('./routes/inflowRoutes')(app)
 require('./routes/outflowRoutes')(app)
-require('./routes/rewardRoutes')(app)
 require('./routes/goalRoutes')(app)
 
 // Config for production routing with React Router

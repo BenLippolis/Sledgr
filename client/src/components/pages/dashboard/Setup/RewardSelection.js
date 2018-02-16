@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import RewardForm from '../../../reward/RewardForm'
 
 class RewardSelection extends Component {
   render () {
@@ -24,7 +23,7 @@ class RewardSelection extends Component {
         </div>
         <div className='row'>
           <div className='col-md-4 col-md-offset-4'>
-            <RewardForm />
+            <p> Notes </p>
           </div>
         </div>
 

@@ -170,12 +170,6 @@ export const handleOnSuccess = (token, metadata) => async dispatch => {
   dispatch({ type: types.HANDLE_ON_SUCCESS, payload: 1 })
 }
 
-// ------------------------------------- Reward -------------------------------------------------- //
-export const submitReward = values => async dispatch => {
-  const res = await axios.post('/api/reward', values)
-  dispatch({ type: types.SUBMIT_REWARD, payload: res.data })
-}
-
 // ------------------------------------- Goal -------------------------------------------------- //
 export const submitGoal = () => async dispatch => {
   const res = await axios.post('/api/goal')
