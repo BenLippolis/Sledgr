@@ -101,6 +101,28 @@ export const updateStage = stage => dispatch => {
   })
 }
 
+// Update the type of reward the users wants when they reach goal
+export const updateRewardType = type => dispatch => {
+  axios.patch('/api/profile/update', {
+    reward_type: type
+  })
+  dispatch({
+    type: types.UPDATE_REWARD_TYPE,
+    payload: type
+  })
+}
+
+// Update the notes for reward the users wants when they reach goal
+export const updateRewardNotes = notes => dispatch => {
+  axios.patch('/api/profile/update', {
+    reward_notes: notes
+  })
+  dispatch({
+    type: types.UPDATE_REWARD_NOTES,
+    payload: notes
+  })
+}
+
 // ------------------------------------- Inflows -------------------------------------------------- //
 export const submitInflow = (values, history) => async dispatch => {
   const res = await axios.post('/api/inflow', values)

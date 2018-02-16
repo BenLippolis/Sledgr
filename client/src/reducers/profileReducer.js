@@ -15,7 +15,17 @@ export default function (state = {}, action) {
         name: action.payload.name,
         _user: action.payload._user,
         stage: action.payload.stage,
-        max_savings: action.payload.max_savings
+        max_savings: action.payload.max_savings,
+        show_max_savings: action.payload.show_max_savings,
+        target_savings: action.payload.target_savings,
+        percent_saved: action.payload.percent_saved,
+        monthly_spend: action.payload.monthly_spend,
+        percent_spent: action.payload.percent_saved,
+        reward_schedule: action.payload.reward_schedule,
+        reward_budget: action.payload.reward_budget,
+        active_goal: action.payload.active_goal,
+        reward_type: action.payload.reward_type,
+        reward_notes: action.payload.reward_notes
       }
 
     case types.SUBMIT_INFLOW:
@@ -107,6 +117,12 @@ export default function (state = {}, action) {
       return {
         ...state,
         stage: action.payload
+      }
+
+    case types.UPDATE_REWARD_TYPE:
+      return {
+        ...state,
+        reward_type: action.payload
       }
 
     default:

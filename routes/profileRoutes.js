@@ -16,7 +16,7 @@ module.exports = app => {
     const reward_budget = 0
     const active_goal = false
     const stage = 0
-    const reward_type = ''
+    const reward_type = '_____'
     const reward_notes = ''
 
     const profile = new Profile({

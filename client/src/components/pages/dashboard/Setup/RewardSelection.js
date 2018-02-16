@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { updateRewardType } from '../../../../actions'
 
 class RewardSelection extends Component {
+  onUpdateClick (type) {
+    this.props.updateRewardType(type)
+  }
+
   render () {
     return (
       <div className='jumbotron text-center'>
@@ -11,21 +16,31 @@ class RewardSelection extends Component {
           {' '}
         </h4>
         <div>
-          <button className='btn btn-primary btn-sm'>
+          <button
+            className='btn btn-primary btn-sm'
+            onClick={this.onUpdateClick.bind(this, 'dinner')}
+          >
             Dinner
           </button>
-          <button className='btn btn-primary btn-sm'>
+          <button
+            className='btn btn-primary btn-sm'
+            onClick={this.onUpdateClick.bind(this, 'events')}
+          >
             Events
           </button>
-          <button className='btn btn-primary btn-sm'>
+          <button
+            className='btn btn-primary btn-sm'
+            onClick={this.onUpdateClick.bind(this, 'travel')}
+          >
             Travel
           </button>
         </div>
-        <div className='row'>
-          <div className='col-md-4 col-md-offset-4'>
-            <p> Notes </p>
-          </div>
-        </div>
+
+        <h4>
+          {' '}Sounds like {this.props.profile.reward_type} is your thing,
+          anything specific you want us to know?{' '}
+        </h4>
+        <p> Enter Notes Here</p>
 
       </div>
     )
@@ -36,4 +51,4 @@ function mapStateToProps (state) {
   return { profile: state.profile }
 }
 
-export default connect(mapStateToProps)(RewardSelection)
+export default connect(mapStateToProps, { updateRewardType })(RewardSelection)
