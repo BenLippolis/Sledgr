@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import * as actions from '../../../actions'
 import { connect } from 'react-redux'
-import AccountVisualization from './Active/AccountVisualization'
 import RewardVisual from './Active/RewardVisual'
 import PlaidLink from './Welcome/PlaidLink'
 import TransactionList from './Setup/TransactionList'
@@ -164,7 +163,6 @@ class Dashboard extends Component {
       case 2:
         return (
           <div>
-            <AccountVisualization />
             <RewardVisual />
             {this.props.goals.length} Goals
             {this.renderTransactions()}
