@@ -16,6 +16,7 @@ import OutflowForm from '../../outflow/OutflowForm'
 import OutflowList from '../../outflow/OutflowList'
 import ProfileCreate from '../../profile/ProfileCreate'
 import Visual from './Setup/Visual'
+import WeeklyVisual from './Active/WeeklyVisual'
 
 class Dashboard extends Component {
   handleOnSuccess (token, metadata) {
@@ -163,6 +164,7 @@ class Dashboard extends Component {
       case 2:
         return (
           <div>
+            <WeeklyVisual />
             <RewardVisual />
             {this.props.goals.length} Goals
             {this.renderTransactions()}
