@@ -1,13 +1,17 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
-const balanceSchema = new mongoose.Schema({
-  value: Number
+const weekSchema = new mongoose.Schema({
+  time: { type: Date, default: Date.now },
+  max_spend: Number,
+  end_spend: Number
 })
 
 const goalSchema = new Schema({
   time: { type: Date, default: Date.now },
-  balances: [balanceSchema],
+  active: { type: Boolean, default: true },
+  week_count: Number,
+  weeks: [weekSchema],
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 

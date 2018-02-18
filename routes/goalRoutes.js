@@ -9,8 +9,8 @@ module.exports = app => {
       _user: req.user.id
     })
     // Auto create a balance with value 100 (temp)
-    goal.balances.push({
-      value: 100
+    goal.weeks.push({
+      max_spend: 100
     })
     try {
       await goal.save()
