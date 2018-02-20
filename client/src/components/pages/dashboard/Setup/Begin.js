@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import { submitGoal } from '../../../../actions'
 
 class Begin extends Component {
-  onBeginClick () {
-    this.props.submitGoal()
+  onBeginClick (profile) {
+    this.props.submitGoal(profile)
   }
 
   render () {
@@ -26,7 +26,7 @@ class Begin extends Component {
         </h4>
         <button
           className='btn btn-primary'
-          onClick={this.onBeginClick.bind(this)}
+          onClick={this.onBeginClick.bind(this, this.props.profile)}
         >
           {' '}Begin!{' '}
         </button>
