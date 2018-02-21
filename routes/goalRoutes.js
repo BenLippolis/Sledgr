@@ -27,6 +27,31 @@ module.exports = app => {
     res.send(goals)
   })
 
+  // Retrieve active goal
+  app.get('/api/active_goal', requireLogin, async (req, res) => {
+    const active_goal = await Goal.findOne({ _user: req.user.id, active: true })
+    res.send(active_goal)
+  })
+
+  // Retieve active goal's weeks
+  app.get('/api/goal_weeks', requireLogin, async (req, res) => {
+    const active_goal = await Goal.findOne({
+      _user: req.user.id,
+      active: true
+    })
+    res.send(active_goal.weeks)
+  })
+
+  // Retrieve active goals active week
+  app.get('/api/active_week', requireLogin, async (req, res) => {
+    const active_week = await Goal.findOne({
+      _user: req.user.id,
+      active: true,
+      weeks: { $elemMatch: { active: true } }
+    })
+    res.send(active_week)
+  })
+
   // Update a specific goal
   app.patch('/api/goal/update', requireLogin, async (req, res) => {
     try {

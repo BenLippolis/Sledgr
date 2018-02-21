@@ -4,7 +4,8 @@ const plaid = require('plaid')
 const moment = require('moment')
 const mongoose = require('mongoose')
 const Profile = mongoose.model('profile')
-
+const Goal = mongoose.model('goal')
+const Week = mongoose.model('goal')
 
 const PLAID_CLIENT_ID = keys.plaidClientId
 const PLAID_SECRET = keys.plaidSecret
@@ -46,11 +47,11 @@ module.exports = app => {
           user.item_id = ITEM_ID
           await user.save()
 
-          // Update profile stage 
+          // Update profile stage
           const profile = await Profile.findOne({ _user: req.user.id })
           profile.stage = 1
-          await profile.save() 
-          
+          await profile.save()
+
           res.send(user)
         } else {
           console.log('User has an access token already!')
@@ -60,7 +61,16 @@ module.exports = app => {
   })
 
   // Get transactions for last 30 days
-  app.get('/api/transactions', requireLogin, function (req, res, next) {
+  app.get('/api/transactions', requireLogin, async (req, res, next) => {
+    // Find active week
+    // Use week.time to pull necesary transactions
+    const active_week = await Goal.findOne({
+      _user: req.user.id,
+      active: true,
+      weeks: { $elemMatch: { active: true } }
+    })
+
+    console.log(active_week)
     var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
     client.getTransactions(
@@ -99,7 +109,7 @@ module.exports = app => {
       transactionsResponse
     ) {
       if (error != null) {
-        console.log(JSON.stringify(error))
+        console.log(error)
         return res.json({ error: error })
       }
       console.log(transactionsResponse.accounts[0].balances.available)
@@ -113,7 +123,7 @@ module.exports = app => {
   app.get('/api/income', requireLogin, function (req, res) {
     client.getIncome(req.user.access_token, function (error, incomeResponse) {
       if (error != null) {
-        console.log(JSON.stringify(error))
+        console.log(error)
         return res.json({ error: error })
       }
       console.log(incomeResponse)

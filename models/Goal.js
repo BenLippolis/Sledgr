@@ -3,6 +3,7 @@ const { Schema } = mongoose
 
 const weekSchema = new mongoose.Schema({
   time: { type: Date, default: Date.now },
+  active: { type: Boolean, default: true },
   max_spend: Number,
   end_spend: Number
 })

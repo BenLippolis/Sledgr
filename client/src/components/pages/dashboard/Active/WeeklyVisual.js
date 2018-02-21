@@ -4,21 +4,32 @@ import { connect } from 'react-redux'
 class WeeklyVisual extends Component {
   render () {
     return (
-      <div className='jumbotron'>
+      <div>
         <h3> Weekly visual </h3>
-        <p>
-          {' '}
-          {(this.props.profile.max_savings -
-            this.props.profile.target_savings) /
-            4}
-        </p>
+        <div className='progress'>
+          <div
+            className='progress-bar'
+            role='progressbar'
+            style={{ width: (1 - 1 / 5) * 100 + '%' }}
+            aria-valuenow='25'
+            aria-valuemin='0'
+            aria-valuemax='100'
+          >
+            25{' '}
+          </div>
+        </div>
+        <p />
+        <p />
       </div>
     )
   }
 }
 
 function mapStateToProps (state) {
-  return { profile: state.profile }
+  return {
+    profile: state.profile,
+    goals: state.goals
+  }
 }
 
 export default connect(mapStateToProps)(WeeklyVisual)

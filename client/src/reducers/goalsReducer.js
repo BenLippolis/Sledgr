@@ -6,7 +6,7 @@ export default function (state = [], action) {
       return [
         ...state,
         {
-          balances: action.payload.balances,
+          weeks: action.payload.weeks,
           _id: action.payload._id,
           _user: action.payload._user
         }
