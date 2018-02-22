@@ -7,6 +7,7 @@ import outflowsReducer from './outflowsReducer'
 import transactionsReducer from './transactionsReducer'
 import balanceReducer from './balanceReducer'
 import goalsReducer from './goalsReducer'
+import activeWeekReducer from './activeWeekReducer'
 
 export default combineReducers({
   auth: authReducer,
@@ -16,5 +17,6 @@ export default combineReducers({
   outflows: outflowsReducer,
   transactions: transactionsReducer,
   balance: balanceReducer,
-  goals: goalsReducer
+  goals: goalsReducer,
+  activeWeek: activeWeekReducer
 })

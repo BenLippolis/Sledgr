@@ -64,13 +64,13 @@ module.exports = app => {
   app.get('/api/transactions', requireLogin, async (req, res, next) => {
     // Find active week
     // Use week.time to pull necesary transactions
-    const active_week = await Goal.findOne({
+    const active_goal = await Goal.findOne({
       _user: req.user.id,
-      active: true,
-      weeks: { $elemMatch: { active: true } }
+      active: true
     })
-
+    const active_week = active_goal.weeks.find(week => week.active === true)
     console.log(active_week)
+
     var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
     client.getTransactions(

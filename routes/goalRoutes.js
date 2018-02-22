@@ -44,11 +44,11 @@ module.exports = app => {
 
   // Retrieve active goals active week
   app.get('/api/active_week', requireLogin, async (req, res) => {
-    const active_week = await Goal.findOne({
+    const active_goal = await Goal.findOne({
       _user: req.user.id,
-      active: true,
-      weeks: { $elemMatch: { active: true } }
+      active: true
     })
+    const active_week = active_goal.weeks.find(week => week.active === true)
     res.send(active_week)
   })
 
