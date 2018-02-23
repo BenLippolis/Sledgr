@@ -71,8 +71,9 @@ module.exports = app => {
     const active_week = active_goal.weeks.find(week => week.active === true)
     console.log(active_week)
 
-    var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
+    var startDate = moment().subtract(2, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
+    // Exclude 'grocery' related transactions over $20
     client.getTransactions(
       req.user.access_token,
       startDate,
@@ -86,18 +87,18 @@ module.exports = app => {
           console.log(JSON.stringify(error))
           return res.json({ error: error })
         }
-        var ttl_food_drink = 0
-        var ttl_public_transit = 0
+        var displayTxns = []
+        var displayTxnsValue = 0
         transactionsResponse.transactions.forEach(function (txn) {
-          if (txn.category_id == 13005000) {
-            ttl_food_drink += txn.amount
-          } else if (txn.category_id == 22014000) {
-            ttl_public_transit += txn.amount
+          if (txn.category_id === '19047000' && txn.amount > 20) {
+          } else {
+            displayTxns.push(txn)
+            displayTxnsValue += txn.amount
           }
         })
-        console.log(ttl_food_drink)
-        console.log(ttl_public_transit)
-        res.json(transactionsResponse.transactions)
+        console.log(transactionsResponse.transactions)
+        console.log(displayTxnsValue)
+        res.json(displayTxns)
       }
     )
   })

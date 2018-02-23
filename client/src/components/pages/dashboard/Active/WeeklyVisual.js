@@ -6,6 +6,9 @@ class WeeklyVisual extends Component {
   componentDidMount () {
     this.props.fetchActiveWeek()
   }
+
+  calsTotalSpend () {}
+
   render () {
     return (
       <div>
@@ -34,7 +37,8 @@ class WeeklyVisual extends Component {
 function mapStateToProps (state) {
   return {
     profile: state.profile,
-    activeWeek: state.activeWeek
+    activeWeek: state.activeWeek,
+    transactions: state.transactions
   }
 }
 

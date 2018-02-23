@@ -60,7 +60,7 @@ class Dashboard extends Component {
         <PlaidLink
           publicKey='dd4a42fe52273d06efafcc208601f9'
           product={this.plaidProducts()}
-          env='sandbox'
+          env='development'
           clientName='Sledgr.com'
           onSuccess={this.handleOnSuccess.bind(this)}
         />

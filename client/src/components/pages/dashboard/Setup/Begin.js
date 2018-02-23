@@ -16,8 +16,9 @@ class Begin extends Component {
           {' '}
           $
           {(this.props.profile.max_savings -
-            this.props.profile.target_savings) /
-            4}
+            this.props.profile.target_savings) *
+            12 /
+            52}
           ...<br />
           {' '}
 
