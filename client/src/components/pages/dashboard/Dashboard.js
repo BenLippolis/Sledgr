@@ -77,7 +77,7 @@ class Dashboard extends Component {
       case false:
         return (
           <div>
-            <p> Here are your transactions from the last month </p>
+            <p> Here are your transactions from the last week </p>
             <TransactionList />
           </div>
         )

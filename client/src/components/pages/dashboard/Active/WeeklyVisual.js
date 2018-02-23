@@ -7,7 +7,13 @@ class WeeklyVisual extends Component {
     this.props.fetchActiveWeek()
   }
 
-  calsTotalSpend () {}
+  calTotalSpend () {
+    var total = 0
+    this.props.transactions.forEach(function (txn) {
+      total += txn.amount
+    })
+    return total
+  }
 
   render () {
     return (
@@ -18,13 +24,16 @@ class WeeklyVisual extends Component {
             className='progress-bar'
             role='progressbar'
             style={{
-              width: (1 - 1 / this.props.activeWeek.max_spend) * 100 + '%'
+              width: (1 -
+                this.calTotalSpend() / this.props.activeWeek.max_spend) *
+                100 +
+                '%'
             }}
             aria-valuenow='25'
             aria-valuemin='0'
             aria-valuemax='100'
           >
-            {this.props.activeWeek.max_spend}
+            ${this.props.activeWeek.max_spend - this.calTotalSpend()}
           </div>
         </div>
         <p />
