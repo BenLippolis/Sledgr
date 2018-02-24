@@ -16,11 +16,11 @@ module.exports = app => {
     // Find users profile
     const profile = await Profile.findOne({ _user: req.user.id })
     // Increase max savings by new inflow amount
-    profile.max_savings += inflow.amount
+    profile.maxSavings += inflow.amount
     // Use updated max savings to update target savings
-    profile.target_savings = profile.max_savings * profile.percent_saved
+    profile.targetSavings = profile.maxSavings * profile.percentSaved
     // Use updated target savings to update monthly spend
-    profile.monthly_spend = profile.target_savings * profile.percent_spent
+    profile.monthlySpend = profile.targetSavings * profile.percentSpent
     await profile.save()
 
     try {
@@ -54,11 +54,11 @@ module.exports = app => {
     // Find users profile
     const profile = await Profile.findOne({ _user: req.user.id })
     // Decrease max savings by deleted inflow amount
-    profile.max_savings -= inflow.amount
+    profile.maxSavings -= inflow.amount
     // Use updated max savings to update target savings
-    profile.target_savings = profile.max_savings * profile.percent_saved
+    profile.targetSavings = profile.maxSavings * profile.percentSaved
     // Use updated target savings to update monthly spend
-    profile.monthly_spend = profile.target_savings * profile.percent_spent
+    profile.monthlySpend = profile.targetSavings * profile.percentSpent
     await profile.save()
   })
 }

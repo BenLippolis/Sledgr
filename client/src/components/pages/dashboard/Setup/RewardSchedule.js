@@ -47,7 +47,7 @@ class RewardSchedule extends Component {
         <div>
           <h4>
             You'll have $
-            {this.props.profile.reward_budget}
+            {this.props.profile.rewardBudget}
             {' '}
             to spend on something new & fun...
             <br />
@@ -55,7 +55,7 @@ class RewardSchedule extends Component {
             when you hit your goal in
             {' '}
             {' '}
-            {this.props.profile.reward_schedule}
+            {this.props.profile.rewardSchedule}
             {' '}
             month(s)
 

@@ -15,98 +15,98 @@ export default function (state = {}, action) {
         name: action.payload.name,
         _user: action.payload._user,
         stage: action.payload.stage,
-        max_savings: action.payload.max_savings,
-        show_max_savings: action.payload.show_max_savings,
-        target_savings: action.payload.target_savings,
-        percent_saved: action.payload.percent_saved,
-        monthly_spend: action.payload.monthly_spend,
-        percent_spent: action.payload.percent_saved,
-        reward_schedule: action.payload.reward_schedule,
-        reward_budget: action.payload.reward_budget,
-        active_goal: action.payload.active_goal,
-        reward_type: action.payload.reward_type,
-        reward_notes: action.payload.reward_notes
+        maxSavings: action.payload.maxSavings,
+        showMaxSavings: action.payload.showMaxSavings,
+        targetSavings: action.payload.targetSavings,
+        percentSaved: action.payload.percentSaved,
+        monthlySpend: action.payload.monthlySpend,
+        percentSpent: action.payload.percentSaved,
+        rewardSchedule: action.payload.rewardSchedule,
+        rewardBudget: action.payload.rewardBudget,
+        activeGoal: action.payload.activeGoal,
+        rewardType: action.payload.rewardType,
+        rewardNotes: action.payload.rewardNotes
       }
 
     case types.SUBMIT_INFLOW:
       return {
         ...state,
-        max_savings: state.max_savings + action.payload.amount,
-        target_savings: (state.max_savings + action.payload.amount) *
-          state.percent_saved,
-        monthly_spend: (state.max_savings + action.payload.amount) *
-          state.percent_saved *
-          state.percent_spent
+        maxSavings: state.maxSavings + action.payload.amount,
+        targetSavings: (state.maxSavings + action.payload.amount) *
+          state.percentSaved,
+        monthlySpend: (state.maxSavings + action.payload.amount) *
+          state.percentSaved *
+          state.percentSpent
       }
 
     case types.DELETE_INFLOW:
       return {
         ...state,
-        max_savings: state.max_savings - action.payload.amount,
-        target_savings: (state.max_savings - action.payload.amount) *
-          state.percent_saved,
-        monthly_spend: (state.max_savings - action.payload.amount) *
-          state.percent_saved *
-          state.percent_spent
+        maxSavings: state.maxSavings - action.payload.amount,
+        targetSavings: (state.maxSavings - action.payload.amount) *
+          state.percentSaved,
+        monthlySpend: (state.maxSavings - action.payload.amount) *
+          state.percentSaved *
+          state.percentSpent
       }
 
     case types.SUBMIT_OUTFLOW:
       return {
         ...state,
-        max_savings: state.max_savings - action.payload.amount,
-        target_savings: (state.max_savings - action.payload.amount) *
-          state.percent_saved,
-        monthly_spend: (state.max_savings - action.payload.amount) *
-          state.percent_saved *
-          state.percent_spent
+        maxSavings: state.maxSavings - action.payload.amount,
+        targetSavings: (state.maxSavings - action.payload.amount) *
+          state.percentSaved,
+        monthlySpend: (state.maxSavings - action.payload.amount) *
+          state.percentSaved *
+          state.percentSpent
       }
 
     case types.DELETE_OUTFLOW:
       return {
         ...state,
-        max_savings: state.max_savings + action.payload.amount,
-        target_savings: (state.max_savings + action.payload.amount) *
-          state.percent_saved,
-        monthly_spend: (state.max_savings + action.payload.amount) *
-          state.percent_saved *
-          state.percent_spent
+        maxSavings: state.maxSavings + action.payload.amount,
+        targetSavings: (state.maxSavings + action.payload.amount) *
+          state.percentSaved,
+        monthlySpend: (state.maxSavings + action.payload.amount) *
+          state.percentSaved *
+          state.percentSpent
       }
 
     case types.UPDATE_REWARD_SCHEDULE:
       return {
         ...state,
-        reward_schedule: action.payload,
-        reward_budget: action.payload * state.monthly_spend
+        rewardSchedule: action.payload,
+        rewardBudget: action.payload * state.monthlySpend
       }
 
     case types.DECREASE_PERCENT_SAVED:
       return {
         ...state,
-        percent_saved: action.payload,
-        target_savings: state.max_savings * action.payload,
-        monthly_spend: state.max_savings * action.payload * state.percent_spent
+        percentSaved: action.payload,
+        targetSavings: state.maxSavings * action.payload,
+        monthlySpend: state.maxSavings * action.payload * state.percentSpent
       }
 
     case types.INCREASE_PERCENT_SAVED:
       return {
         ...state,
-        percent_saved: action.payload,
-        target_savings: state.max_savings * action.payload,
-        monthly_spend: state.max_savings * action.payload * state.percent_spent
+        percentSaved: action.payload,
+        targetSavings: state.maxSavings * action.payload,
+        monthlySpend: state.maxSavings * action.payload * state.percentSpent
       }
 
     case types.INCREASE_PERCENT_SPENT:
       return {
         ...state,
-        percent_spent: action.payload,
-        monthly_spend: state.target_savings * action.payload
+        percentSpent: action.payload,
+        monthlySpend: state.targetSavings * action.payload
       }
 
     case types.DECREASE_PERCENT_SPENT:
       return {
         ...state,
-        percent_spent: action.payload,
-        monthly_spend: state.target_savings * action.payload
+        percentSpent: action.payload,
+        monthlySpend: state.targetSavings * action.payload
       }
     case types.UPDATE_STAGE:
       return {
@@ -122,7 +122,7 @@ export default function (state = {}, action) {
     case types.UPDATE_REWARD_TYPE:
       return {
         ...state,
-        reward_type: action.payload
+        rewardType: action.payload
       }
 
     default:

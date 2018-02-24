@@ -30,7 +30,7 @@ class TargetSavings extends Component {
         <h4>
           {' '}
           How much will you save every month? $
-          {this.props.profile.target_savings}
+          {this.props.profile.targetSavings}
           {' '}
         </h4>
         <button
@@ -40,7 +40,7 @@ class TargetSavings extends Component {
           +{' '}
         </button>
 
-        <h4> Save {this.props.profile.percent_saved * 100}% </h4>
+        <h4> Save {this.props.profile.percentSaved * 100}% </h4>
         <button
           className='btn btn-primary'
           onClick={this.onSaveDecrementClick.bind(this, this.props.profile)}
@@ -51,7 +51,7 @@ class TargetSavings extends Component {
         <h4>
           {' '}
           Of the $
-          {this.props.profile.target_savings}
+          {this.props.profile.targetSavings}
           {' '}
           you save every month, how much would you like to spend?
           {' '}
@@ -67,7 +67,7 @@ class TargetSavings extends Component {
           {' '}
           Spend
           {' '}
-          {this.props.profile.percent_spent * 100}
+          {this.props.profile.percentSpent * 100}
           % of monthly savings
         </h4>
         <button
@@ -79,7 +79,7 @@ class TargetSavings extends Component {
         <h4>
           {' '}
           You'll have $
-          {this.props.profile.monthly_spend}
+          {this.props.profile.monthlySpend}
           {' '}
           to spend on something new & fun every month!
         </h4>

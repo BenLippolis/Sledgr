@@ -6,34 +6,34 @@ const oneProfile = require('../middlewares/oneProfile')
 module.exports = app => {
   app.post('/api/profile', requireLogin, oneProfile, async (req, res) => {
     const { name, birthday } = req.body
-    const max_savings = 0
-    const show_max_savings = true
-    const target_savings = 0
-    const percent_saved = 0.8
-    const monthly_spend = 0
-    const percent_spent = 0.2
-    const reward_schedule = 0
-    const reward_budget = 0
-    const active_goal = false
+    const maxSavings = 0
+    const showMaxSavings = true
+    const targetSavings = 0
+    const percentSaved = 0.8
+    const monthlySpend = 0
+    const percentSpent = 0.2
+    const rewardSchedule = 0
+    const rewardBudget = 0
+    const activeGoal = false
     const stage = 0
-    const reward_type = '_____'
-    const reward_notes = ''
+    const rewardType = '_____'
+    const rewardNotes = ''
 
     const profile = new Profile({
       name,
       birthday,
-      max_savings,
-      show_max_savings,
-      target_savings,
-      percent_saved,
-      monthly_spend,
-      percent_spent,
-      reward_schedule,
-      reward_budget,
-      active_goal,
+      maxSavings,
+      showMaxSavings,
+      targetSavings,
+      percentSaved,
+      monthlySpend,
+      percentSpent,
+      rewardSchedule,
+      rewardBudget,
+      activeGoal,
       stage,
-      reward_type,
-      reward_notes,
+      rewardType,
+      rewardNotes,
       _user: req.user.id
     })
     try {

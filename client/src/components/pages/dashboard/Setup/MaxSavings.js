@@ -10,7 +10,7 @@ class MaxSavings extends Component {
 
   renderProfileMaxSavings () {
     if (this.props.profile) {
-      return this.props.profile.max_savings
+      return this.props.profile.maxSavings
     }
   }
 
@@ -19,7 +19,7 @@ class MaxSavings extends Component {
   }
 
   renderDoneButton () {
-    switch (this.props.profile.show_max_savings) {
+    switch (this.props.profile.showMaxSavings) {
       case null:
         return
       case false:

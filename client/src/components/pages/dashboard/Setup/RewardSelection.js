@@ -37,7 +37,7 @@ class RewardSelection extends Component {
         </div>
 
         <h4>
-          {' '}Sounds like {this.props.profile.reward_type} is your thing,
+          {' '}Sounds like {this.props.profile.rewardType} is your thing,
           anything specific you want us to know?{' '}
         </h4>
         <p> Enter Notes Here</p>

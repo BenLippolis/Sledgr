@@ -15,8 +15,7 @@ class Begin extends Component {
           Soooo if you limit your weekly spending on extra stuff to
           {' '}
           $
-          {(this.props.profile.max_savings -
-            this.props.profile.target_savings) *
+          {(this.props.profile.maxSavings - this.props.profile.targetSavings) *
             12 /
             52}
           ...<br />

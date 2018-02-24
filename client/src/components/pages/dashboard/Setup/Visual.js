@@ -9,8 +9,8 @@ class Visual extends Component {
           className='progress-bar bg-success'
           role='progressbar'
           style={{
-            width: this.props.profile.target_savings /
-              this.props.profile.max_savings *
+            width: this.props.profile.targetSavings /
+              this.props.profile.maxSavings *
               100 +
               '%'
           }}

@@ -122,7 +122,7 @@ class Dashboard extends Component {
   }
 
   renderInflowOutflow () {
-    switch (this.props.profile.show_max_savings) {
+    switch (this.props.profile.showMaxSavings) {
       case true:
         return (
           <div className='row'>

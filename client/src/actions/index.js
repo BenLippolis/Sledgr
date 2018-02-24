@@ -22,7 +22,7 @@ export const fetchProfile = () => async dispatch => {
 // Updates MaxSavings component visibility
 export const updateMaxSavings = value => async dispatch => {
   const res = await axios.patch('/api/profile/update', {
-    show_max_savings: value
+    showMaxSavings: value
   })
   dispatch({ type: types.UPDATE_MAX_SAVINGS, payload: res.data })
 }
@@ -30,8 +30,8 @@ export const updateMaxSavings = value => async dispatch => {
 // Updates the frequency and $ value of the profiles reward schedule
 export const updateRewardSchedule = (frequency, profile) => dispatch => {
   axios.patch('/api/profile/update', {
-    reward_schedule: frequency,
-    reward_budget: frequency * profile.monthly_spend
+    rewardSchedule: frequency,
+    rewardBudget: frequency * profile.monthlySpend
   })
   dispatch({ type: types.UPDATE_REWARD_SCHEDULE, payload: frequency })
 }
@@ -39,54 +39,54 @@ export const updateRewardSchedule = (frequency, profile) => dispatch => {
 // Decreases the profiles percent saved by 1% and updates dependent values accordingly (target savings, monthly spend)
 export const decreasePercentSaved = profile => dispatch => {
   axios.patch('/api/profile/update', {
-    percent_saved: profile.percent_saved - 0.01,
-    target_savings: profile.max_savings * (profile.percent_saved - 0.01),
-    monthly_spend: profile.max_savings *
-      (profile.percent_saved - 0.01) *
-      profile.percent_spent
+    percentSaved: profile.percentSaved - 0.01,
+    targetSavings: profile.maxSavings * (profile.percentSaved - 0.01),
+    monthlySpend: profile.maxSavings *
+      (profile.percentSaved - 0.01) *
+      profile.percentSpent
   })
   dispatch({
     type: types.DECREASE_PERCENT_SAVED,
-    payload: profile.percent_saved - 0.01
+    payload: profile.percentSaved - 0.01
   })
 }
 
 // Increases the profiles percent saved by 1% and updates dependent values accordingly (target savings, monthly spend)
 export const increasePercentSaved = profile => dispatch => {
   axios.patch('/api/profile/update', {
-    percent_saved: profile.percent_saved + 0.01,
-    target_savings: profile.max_savings * (profile.percent_saved + 0.01),
-    monthly_spend: profile.max_savings *
-      (profile.percent_saved + 0.01) *
-      profile.percent_spent
+    percentSaved: profile.percentSaved + 0.01,
+    targetSavings: profile.maxSavings * (profile.percentSaved + 0.01),
+    monthlySpend: profile.maxSavings *
+      (profile.percentSaved + 0.01) *
+      profile.percentSpent
   })
   dispatch({
     type: types.INCREASE_PERCENT_SAVED,
-    payload: profile.percent_saved + 0.01
+    payload: profile.percentSaved + 0.01
   })
 }
 
 // Decreases the profiles percent spent by 1% and updates dependent values accordingly (monthly spend)
 export const decreasePercentSpent = profile => dispatch => {
   axios.patch('/api/profile/update', {
-    percent_spent: profile.percent_spent - 0.01,
-    monthly_spend: profile.target_savings * (profile.percent_spent - 0.01)
+    percentSpent: profile.percentSpent - 0.01,
+    monthlySpend: profile.targetSavings * (profile.percentSpent - 0.01)
   })
   dispatch({
     type: types.DECREASE_PERCENT_SPENT,
-    payload: profile.percent_spent - 0.01
+    payload: profile.percentSpent - 0.01
   })
 }
 
 // Increases the profiles percent spent by 1% and updates dependent values accordingly (monthly spend)
 export const increasePercentSpent = profile => dispatch => {
   axios.patch('/api/profile/update', {
-    percent_spent: profile.percent_spent + 0.01,
-    monthly_spend: profile.target_savings * (profile.percent_spent + 0.01)
+    percentSpent: profile.percentSpent + 0.01,
+    monthlySpend: profile.targetSavings * (profile.percentSpent + 0.01)
   })
   dispatch({
     type: types.INCREASE_PERCENT_SPENT,
-    payload: profile.percent_spent + 0.01
+    payload: profile.percentSpent + 0.01
   })
 }
 
@@ -104,7 +104,7 @@ export const updateStage = stage => dispatch => {
 // Update the type of reward the users wants when they reach goal
 export const updateRewardType = type => dispatch => {
   axios.patch('/api/profile/update', {
-    reward_type: type
+    rewardType: type
   })
   dispatch({
     type: types.UPDATE_REWARD_TYPE,
@@ -115,7 +115,7 @@ export const updateRewardType = type => dispatch => {
 // Update the notes for reward the users wants when they reach goal
 export const updateRewardNotes = notes => dispatch => {
   axios.patch('/api/profile/update', {
-    reward_notes: notes
+    rewardNotes: notes
   })
   dispatch({
     type: types.UPDATE_REWARD_NOTES,
@@ -195,7 +195,7 @@ export const handleOnSuccess = (token, metadata) => async dispatch => {
 // ------------------------------------- Goal -------------------------------------------------- //
 export const submitGoal = profile => async dispatch => {
   const res = await axios.post('/api/goal', {
-    maxSpend: (profile.max_savings - profile.target_savings) / 4
+    maxSpend: (profile.maxSavings - profile.targetSavings) / 4
   })
   dispatch({ type: types.SUBMIT_GOAL, payload: res.data })
 }

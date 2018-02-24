@@ -4,7 +4,7 @@ import { fetchTransactions, fetchBalance } from '../../../../actions'
 
 class TransactionList extends Component {
   componentDidMount () {
-    if (this.props.auth.access_token) {
+    if (this.props.auth.accessToken) {
       this.props.fetchTransactions()
       this.props.fetchBalance()
     }

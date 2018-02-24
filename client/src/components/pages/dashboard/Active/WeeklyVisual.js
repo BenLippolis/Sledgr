@@ -25,7 +25,7 @@ class WeeklyVisual extends Component {
             role='progressbar'
             style={{
               width: (1 -
-                this.calTotalSpend() / this.props.activeWeek.max_spend) *
+                this.calTotalSpend() / this.props.activeWeek.maxSpend) *
                 100 +
                 '%'
             }}
@@ -33,7 +33,7 @@ class WeeklyVisual extends Component {
             aria-valuemin='0'
             aria-valuemax='100'
           >
-            ${this.props.activeWeek.max_spend - this.calTotalSpend()}
+            ${this.props.activeWeek.maxSpend - this.calTotalSpend()}
           </div>
         </div>
         <p />
