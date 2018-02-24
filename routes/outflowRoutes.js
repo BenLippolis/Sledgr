@@ -31,11 +31,11 @@ module.exports = app => {
   })
 
   app.post('/api/outflow/delete', requireLogin, async (req, res) => {
-    const { outflow_id } = req.body
+    const { outflowId } = req.body
     // take the id from the request and find the outflow object
-    const outflow_obj = await Outflow.findOne({ _id: outflow_id })
+    const outflow = await Outflow.findOne({ _id: outflowId })
 
-    await Outflow.remove({ _id: outflow_id }, function (err) {
+    await Outflow.remove({ _id: outflowId }, function (err) {
       if (err) {
         res.send(err)
       } else {
@@ -44,7 +44,7 @@ module.exports = app => {
     })
     // Update the users profile net income to reflect the outflows destruction
     const profile = await Profile.findOne({ _user: req.user.id })
-    profile.max_savings += outflow_obj.amount
+    profile.max_savings += outflow.amount
     profile.target_savings = profile.max_savings * profile.percent_saved
     profile.monthly_spend = profile.target_savings * profile.percent_spent
     await profile.save()

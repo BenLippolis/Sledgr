@@ -153,7 +153,7 @@ export const fetchOutflows = () => async dispatch => {
 
 export const deleteOutflow = outflow => async dispatch => {
   await axios.post('/api/outflow/delete', {
-    outflow_id: outflow._id
+    outflowId: outflow._id
   })
   dispatch({ type: types.DELETE_OUTFLOW, payload: outflow })
 }
