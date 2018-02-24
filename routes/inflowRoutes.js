@@ -40,10 +40,10 @@ module.exports = app => {
   // Destroy an inflow
   app.post('/api/inflow/delete', requireLogin, async (req, res) => {
     // Get inflow id from request body
-    const { inflow_id } = req.body
-    const inflow_obj = await Inflow.findOne({ _id: inflow_id })
+    const { inflowId } = req.body
+    const inflow = await Inflow.findOne({ _id: inflowId })
 
-    await Inflow.remove({ _id: inflow_id }, function (err) {
+    await Inflow.remove({ _id: inflowId }, function (err) {
       if (err) {
         res.send(err)
       } else {
@@ -54,7 +54,7 @@ module.exports = app => {
     // Find users profile
     const profile = await Profile.findOne({ _user: req.user.id })
     // Decrease max savings by deleted inflow amount
-    profile.max_savings -= inflow_obj.amount
+    profile.max_savings -= inflow.amount
     // Use updated max savings to update target savings
     profile.target_savings = profile.max_savings * profile.percent_saved
     // Use updated target savings to update monthly spend

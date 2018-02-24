@@ -136,7 +136,7 @@ export const fetchInflows = () => async dispatch => {
 
 export const deleteInflow = inflow => async dispatch => {
   await axios.post('/api/inflow/delete', {
-    inflow_id: inflow._id
+    inflowId: inflow._id
   })
   dispatch({ type: types.DELETE_INFLOW, payload: inflow })
 }
