@@ -34,7 +34,7 @@ class Dashboard extends Component {
   componentDidMount () {
     this.props.fetchProfile()
     this.props.fetchGoals()
-    if (this.props.auth.access_token) {
+    if (this.props.auth.accessToken) {
       this.props.fetchBalance()
     }
   }
@@ -55,7 +55,7 @@ class Dashboard extends Component {
 
   // Conditionally render the connect account button based on account balance
   renderConnectAccount () {
-    if (this.props.auth.access_token == null) {
+    if (this.props.auth.accessToken == null) {
       return (
         <PlaidLink
           publicKey='dd4a42fe52273d06efafcc208601f9'
@@ -71,7 +71,7 @@ class Dashboard extends Component {
   }
 
   renderTransactions () {
-    switch (this.props.auth.access_token == null) {
+    switch (this.props.auth.accessToken == null) {
       case true:
         return
       case false:

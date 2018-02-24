@@ -3,8 +3,8 @@ const { Schema } = mongoose
 
 const userSchema = new Schema({
   googleId: String,
-  access_token: String,
-  item_id: String
+  accessToken: String,
+  itemId: String
 })
 
 mongoose.model('users', userSchema)

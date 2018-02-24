@@ -43,9 +43,9 @@ module.exports = app => {
           error: false
         })
         const user = req.user
-        if (!user.access_token) {
-          user.access_token = ACCESS_TOKEN
-          user.item_id = ITEM_ID
+        if (!user.accessToken) {
+          user.accessToken = ACCESS_TOKEN
+          user.itemId = ITEM_ID
           await user.save()
 
           // Update profile stage
@@ -92,7 +92,7 @@ module.exports = app => {
     var endDate = moment().format('YYYY-MM-DD')
     // Exclude 'grocery' related transactions over $20
     client.getTransactions(
-      req.user.access_token,
+      req.user.accessToken,
       startDate,
       endDate,
       {
@@ -122,7 +122,7 @@ module.exports = app => {
 
   // Fetch the users account balance
   app.get('/api/balance', requireLogin, function (req, res) {
-    client.getAccounts(req.user.access_token, function (
+    client.getAccounts(req.user.accessToken, function (
       error,
       transactionsResponse
     ) {
@@ -139,7 +139,7 @@ module.exports = app => {
 
   // Only available in production :(
   app.get('/api/income', requireLogin, function (req, res) {
-    client.getIncome(req.user.access_token, function (error, incomeResponse) {
+    client.getIncome(req.user.accessToken, function (error, incomeResponse) {
       if (error != null) {
         console.log(error)
         return res.json({ error: error })
