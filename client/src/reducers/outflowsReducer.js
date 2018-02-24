@@ -21,12 +21,10 @@ export default function (state = [], action) {
       ]
 
     case DELETE_OUTFLOW:
-      const newState = Object.assign([], state)
-      const indexOfOutflowToDelete = state.findIndex(outflow => {
-        return outflow.id === action.payload
-      })
-      newState.splice(indexOfOutflowToDelete, 1)
-      return newState
+      const outflows = state.filter(
+        outflow => outflow._id !== action.payload._id
+      )
+      return outflows
 
     default:
       return state

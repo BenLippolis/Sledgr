@@ -1,4 +1,5 @@
 import { FETCH_INFLOWS, DELETE_INFLOW, SUBMIT_INFLOW } from '../actions/types'
+import _ from 'lodash'
 
 // State is an empty array
 // within this reducer, state refers to inflows
@@ -20,13 +21,8 @@ export default function (state = [], action) {
       ]
 
     case DELETE_INFLOW:
-      const newState = Object.assign([], state)
-      const indexOfInflowToDelete = state.findIndex(inflow => {
-        return inflow.id === action.payload._id
-      })
-      newState.splice(indexOfInflowToDelete, 1)
-      return newState
-
+      const inflows = state.filter(inflow => inflow._id !== action.payload._id)
+      return inflows
     default:
       return state
   }
