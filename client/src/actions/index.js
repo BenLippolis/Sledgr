@@ -195,7 +195,7 @@ export const handleOnSuccess = (token, metadata) => async dispatch => {
 // ------------------------------------- Goal -------------------------------------------------- //
 export const submitGoal = profile => async dispatch => {
   const res = await axios.post('/api/goal', {
-    max_spend: (profile.max_savings - profile.target_savings) / 4
+    maxSpend: (profile.max_savings - profile.target_savings) / 4
   })
   dispatch({ type: types.SUBMIT_GOAL, payload: res.data })
 }

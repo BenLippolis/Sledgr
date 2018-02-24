@@ -5,13 +5,13 @@ const Goal = mongoose.model('goal')
 module.exports = app => {
   // Create a goal
   app.post('/api/goal', requireLogin, async (req, res) => {
-    const { max_spend } = req.body
+    const { maxSpend } = req.body
     const goal = new Goal({
       _user: req.user.id
     })
     // Auto create a balance with value 100 (temp)
     goal.weeks.push({
-      max_spend: max_spend
+      maxSpend: maxSpend
     })
     try {
       await goal.save()
@@ -29,27 +29,27 @@ module.exports = app => {
 
   // Retrieve active goal
   app.get('/api/active_goal', requireLogin, async (req, res) => {
-    const active_goal = await Goal.findOne({ _user: req.user.id, active: true })
-    res.send(active_goal)
+    const activeGoal = await Goal.findOne({ _user: req.user.id, active: true })
+    res.send(activeGoal)
   })
 
   // Retieve active goal's weeks
   app.get('/api/goal_weeks', requireLogin, async (req, res) => {
-    const active_goal = await Goal.findOne({
+    const activeGoal = await Goal.findOne({
       _user: req.user.id,
       active: true
     })
-    res.send(active_goal.weeks)
+    res.send(activeGoal.weeks)
   })
 
   // Retrieve active goals active week
   app.get('/api/active_week', requireLogin, async (req, res) => {
-    const active_goal = await Goal.findOne({
+    const activeGoal = await Goal.findOne({
       _user: req.user.id,
       active: true
     })
-    const active_week = active_goal.weeks.find(week => week.active === true)
-    res.send(active_week)
+    const activeWeek = activeGoal.weeks.find(week => week.active === true)
+    res.send(activeWeek)
   })
 
   // Update a specific goal
