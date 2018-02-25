@@ -5,9 +5,6 @@ export default function (state = {}, action) {
     case types.FETCH_PROFILE:
       return action.payload || false
 
-    case types.UPDATE_MAX_SAVINGS:
-      return action.payload
-
     case types.SUBMIT_PROFILE:
       return {
         ...state,
@@ -15,8 +12,6 @@ export default function (state = {}, action) {
         name: action.payload.name,
         _user: action.payload._user,
         stage: action.payload.stage,
-        maxSavings: action.payload.maxSavings,
-        showMaxSavings: action.payload.showMaxSavings,
         targetSavings: action.payload.targetSavings,
         percentSaved: action.payload.percentSaved,
         monthlySpend: action.payload.monthlySpend,
@@ -27,50 +22,6 @@ export default function (state = {}, action) {
         rewardType: action.payload.rewardType,
         rewardNotes: action.payload.rewardNotes,
         expenses: action.payload.expenses
-      }
-
-    case types.SUBMIT_INFLOW:
-      return {
-        ...state,
-        maxSavings: state.maxSavings + action.payload.amount,
-        targetSavings: (state.maxSavings + action.payload.amount) *
-          state.percentSaved,
-        monthlySpend: (state.maxSavings + action.payload.amount) *
-          state.percentSaved *
-          state.percentSpent
-      }
-
-    case types.DELETE_INFLOW:
-      return {
-        ...state,
-        maxSavings: state.maxSavings - action.payload.amount,
-        targetSavings: (state.maxSavings - action.payload.amount) *
-          state.percentSaved,
-        monthlySpend: (state.maxSavings - action.payload.amount) *
-          state.percentSaved *
-          state.percentSpent
-      }
-
-    case types.SUBMIT_OUTFLOW:
-      return {
-        ...state,
-        maxSavings: state.maxSavings - action.payload.amount,
-        targetSavings: (state.maxSavings - action.payload.amount) *
-          state.percentSaved,
-        monthlySpend: (state.maxSavings - action.payload.amount) *
-          state.percentSaved *
-          state.percentSpent
-      }
-
-    case types.DELETE_OUTFLOW:
-      return {
-        ...state,
-        maxSavings: state.maxSavings + action.payload.amount,
-        targetSavings: (state.maxSavings + action.payload.amount) *
-          state.percentSaved,
-        monthlySpend: (state.maxSavings + action.payload.amount) *
-          state.percentSaved *
-          state.percentSpent
       }
 
     case types.UPDATE_REWARD_SCHEDULE:
@@ -113,11 +64,13 @@ export default function (state = {}, action) {
         percentSpent: action.payload,
         monthlySpend: state.targetSavings * action.payload
       }
+
     case types.UPDATE_STAGE:
       return {
         ...state,
         stage: action.payload
       }
+
     case types.HANDLE_ON_SUCCESS:
       return {
         ...state,
@@ -135,7 +88,8 @@ export default function (state = {}, action) {
         ...state,
         expenses: action.payload.expenses,
         weeklyMaxSavings: action.payload.weeklyMaxSavings,
-        targetSavings: action.payload.targetSavings
+        targetSavings: action.payload.targetSavings,
+        monthlySpend: action.payload.monthlySpend
       }
 
     case types.DELETE_EXPENSE:
@@ -143,14 +97,16 @@ export default function (state = {}, action) {
         ...state,
         expenses: action.payload.expenses,
         weeklyMaxSavings: action.payload.weeklyMaxSavings,
-        targetSavings: action.payload.targetSavings
+        targetSavings: action.payload.targetSavings,
+        monthlySpend: action.payload.monthlySpend
       }
 
     case types.ADD_INCOME:
       return {
         ...state,
         weeklyMaxSavings: action.payload.weeklyMaxSavings,
-        targetSavings: action.payload.targetSavings
+        targetSavings: action.payload.targetSavings,
+        monthlySpend: action.payload.monthlySpend
       }
 
     default:
