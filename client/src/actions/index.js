@@ -31,7 +31,7 @@ export const addExpense = values => async dispatch => {
 
 export const deleteExpense = expense => async dispatch => {
   const res = await axios.patch('/api/profile/expense/delete', {
-    expenseId: expense._id
+    expense: expense
   })
   dispatch({ type: types.DELETE_EXPENSE, payload: res.data })
 }

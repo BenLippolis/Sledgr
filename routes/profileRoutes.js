@@ -32,20 +32,27 @@ module.exports = app => {
         req.body,
         { new: true }
       )
+      profile.weeklyMaxSavings =
+        profile.income / profile.incomeFrequency - profile.weeklyExpenseTotal
+      await profile.save()
       res.send(profile)
     } catch (err) {
       res.status(422).send(err)
     }
   })
 
+  // Create an expense
   app.patch('/api/profile/expense', requireLogin, async (req, res) => {
     const { title, amount } = req.body
     const newExpense = { title: title, amount: amount }
     try {
       const profile = await Profile.findOne({ _user: req.user.id })
       profile.expenses.push(newExpense)
-      profile.save()
-      res.send(profile.expenses)
+      profile.weeklyExpenseTotal += amount * 12 / 52
+      profile.weeklyMaxSavings =
+        profile.income / profile.incomeFrequency - profile.weeklyExpenseTotal
+      await profile.save()
+      res.send(profile)
     } catch (err) {
       res.status(422).send(err)
     }
@@ -53,12 +60,15 @@ module.exports = app => {
 
   // Destroy an expense
   app.patch('/api/profile/expense/delete', requireLogin, async (req, res) => {
-    const { expenseId } = req.body
+    const { expense } = req.body
     try {
       const profile = await Profile.findOne({ _user: req.user.id })
-      profile.expenses.pull(expenseId)
-      profile.save()
-      res.send(profile.expenses)
+      profile.expenses.pull(expense._id)
+      profile.weeklyExpenseTotal -= expense.amount * 12 / 52
+      profile.weeklyMaxSavings =
+        profile.income / profile.incomeFrequency - profile.weeklyExpenseTotal
+      await profile.save()
+      res.send(profile)
     } catch (err) {
       res.status(422).send(err)
     }

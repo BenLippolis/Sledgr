@@ -24,6 +24,8 @@ const profileSchema = new Schema({
   income: { type: Number, default: 0 },
   incomeFrequency: { type: Number, default: 0 },
   expenses: [expenseSchema],
+  weeklyMaxSavings: { type: Number, default: 0 },
+  weeklyExpenseTotal: { type: Number, default: 0 },
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 

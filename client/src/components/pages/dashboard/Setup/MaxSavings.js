@@ -55,6 +55,7 @@ class MaxSavings extends Component {
         <IncomeForm />
         <ExpenseList />
         <ExpenseForm />
+        <h4> Weekly Max Savings ${this.props.profile.weeklyMaxSavings} </h4>
         <h4>
           {' '}
           How much can you save every month? $

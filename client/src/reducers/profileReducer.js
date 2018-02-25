@@ -129,13 +129,13 @@ export default function (state = {}, action) {
     case types.ADD_EXPENSE:
       return {
         ...state,
-        expenses: action.payload
+        expenses: action.payload.expenses
       }
 
     case types.DELETE_EXPENSE:
       return {
         ...state,
-        expenses: action.payload
+        expenses: action.payload.expenses
       }
 
     default:
