@@ -25,8 +25,15 @@ export const addIncome = values => async dispatch => {
 }
 
 export const addExpense = values => async dispatch => {
-  await axios.patch('/api/profile/expense', values)
-  dispatch({ type: types.ADD_EXPENSE })
+  const res = await axios.patch('/api/profile/expense', values)
+  dispatch({ type: types.ADD_EXPENSE, payload: res.data })
+}
+
+export const deleteExpense = expense => async dispatch => {
+  const res = await axios.patch('/api/profile/expense/delete', {
+    expenseId: expense._id
+  })
+  dispatch({ type: types.DELETE_EXPENSE, payload: res.data })
 }
 
 export const fetchProfile = () => async dispatch => {

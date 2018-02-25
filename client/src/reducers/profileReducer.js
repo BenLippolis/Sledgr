@@ -126,6 +126,18 @@ export default function (state = {}, action) {
         rewardType: action.payload
       }
 
+    case types.ADD_EXPENSE:
+      return {
+        ...state,
+        expenses: action.payload
+      }
+
+    case types.DELETE_EXPENSE:
+      return {
+        ...state,
+        expenses: action.payload
+      }
+
     default:
       return state
   }

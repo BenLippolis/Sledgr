@@ -50,4 +50,17 @@ module.exports = app => {
       res.status(422).send(err)
     }
   })
+
+  // Destroy an expense
+  app.patch('/api/profile/expense/delete', requireLogin, async (req, res) => {
+    const { expenseId } = req.body
+    try {
+      const profile = await Profile.findOne({ _user: req.user.id })
+      profile.expenses.pull(expenseId)
+      profile.save()
+      res.send(profile.expenses)
+    } catch (err) {
+      res.status(422).send(err)
+    }
+  })
 }

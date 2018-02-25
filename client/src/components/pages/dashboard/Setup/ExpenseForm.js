@@ -8,6 +8,7 @@ import * as actions from '../../../../actions'
 class ExpenseForm extends Component {
   onSubmit (values) {
     this.props.addExpense(values)
+    this.props.reset()
   }
 
   render () {
