@@ -1,61 +1,50 @@
 import axios from 'axios'
 import * as types from './types'
 
-// ------------------------------------- Users ----------------------------------------------------- //
+// ------------------------------------- User ----------------------------------------------------- //
 export const fetchUser = () => async dispatch => {
   const res = await axios.get('/api/current_user')
   dispatch({ type: types.FETCH_USER, payload: res.data })
 }
 
-// ------------------------------------- Profiles -------------------------------------------------- //
+// ------------------------------------- Profile -------------------------------------------------- //
+// Create a new profile
 export const submitProfile = (values, history) => async dispatch => {
   const res = await axios.post('/api/profile', values)
   history.push('/')
   dispatch({ type: types.SUBMIT_PROFILE, payload: res.data })
 }
 
-export const addNotes = values => async dispatch => {
-  await axios.patch('/api/profile/update', values)
-  dispatch({ type: types.ADD_NOTES })
-}
-
-export const addIncome = values => async dispatch => {
-  const res = await axios.patch('/api/profile/update', values)
-  dispatch({ type: types.ADD_INCOME, payload: res.data })
-}
-
-export const addExpense = values => async dispatch => {
-  const res = await axios.patch('/api/profile/expense', values)
-  dispatch({ type: types.ADD_EXPENSE, payload: res.data })
-}
-
-export const deleteExpense = expense => async dispatch => {
-  const res = await axios.patch('/api/profile/expense/delete', {
-    expense: expense
-  })
-  dispatch({ type: types.DELETE_EXPENSE, payload: res.data })
-}
-
+// Retrieve the profile
 export const fetchProfile = () => async dispatch => {
   const res = await axios.get('/api/profile')
   dispatch({ type: types.FETCH_PROFILE, payload: res.data })
 }
 
-// Updates MaxSavings component visibility
-export const updateMaxSavings = value => async dispatch => {
-  const res = await axios.patch('/api/profile/update', {
-    showMaxSavings: value
-  })
-  dispatch({ type: types.UPDATE_MAX_SAVINGS, payload: res.data })
+// Add notes to profile
+export const addNotes = values => async dispatch => {
+  await axios.patch('/api/profile/update', values)
+  dispatch({ type: types.ADD_NOTES })
 }
 
-// Updates the frequency and $ value of the profiles reward schedule
-export const updateRewardSchedule = (frequency, profile) => dispatch => {
-  axios.patch('/api/profile/update', {
-    rewardSchedule: frequency,
-    rewardBudget: frequency * profile.weeklyTargetSpend
+// Add income to profile
+export const addIncome = values => async dispatch => {
+  const res = await axios.patch('/api/profile/update', values)
+  dispatch({ type: types.ADD_INCOME, payload: res.data })
+}
+
+// Add expense to profile
+export const addExpense = values => async dispatch => {
+  const res = await axios.patch('/api/profile/expense', values)
+  dispatch({ type: types.ADD_EXPENSE, payload: res.data })
+}
+
+// Delete expense from profile
+export const deleteExpense = expense => async dispatch => {
+  const res = await axios.patch('/api/profile/expense/delete', {
+    expense: expense
   })
-  dispatch({ type: types.UPDATE_REWARD_SCHEDULE, payload: frequency })
+  dispatch({ type: types.DELETE_EXPENSE, payload: res.data })
 }
 
 // Decreases the profiles percent saved by 1% and updates dependent values accordingly (target savings, monthly spend)
@@ -127,6 +116,15 @@ export const updateStage = stage => dispatch => {
   })
 }
 
+// Updates the frequency and $ value of the profiles reward schedule
+export const updateRewardSchedule = (frequency, profile) => dispatch => {
+  axios.patch('/api/profile/update', {
+    rewardSchedule: frequency,
+    rewardBudget: frequency * profile.weeklyTargetSpend
+  })
+  dispatch({ type: types.UPDATE_REWARD_SCHEDULE, payload: frequency })
+}
+
 // Update the type of reward the users wants when they reach goal
 export const updateRewardType = type => dispatch => {
   axios.patch('/api/profile/update', {
@@ -173,6 +171,7 @@ export const fetchBalance = () => async dispatch => {
   dispatch({ type: types.FETCH_BALANCE, payload: res.data })
 }
 
+// Passes Plaid data to server when account successfully connected
 export const handleOnSuccess = (token, metadata) => async dispatch => {
   await axios.post('/api/get_access_token', {
     public_token: token,
@@ -184,6 +183,7 @@ export const handleOnSuccess = (token, metadata) => async dispatch => {
 }
 
 // ------------------------------------- Goal -------------------------------------------------- //
+// Create a goal
 export const submitGoal = profile => async dispatch => {
   const res = await axios.post('/api/goal', {
     maxSpend: profile.weeklyMaxSavings - profile.weeklyTargetSavings
@@ -191,11 +191,13 @@ export const submitGoal = profile => async dispatch => {
   dispatch({ type: types.SUBMIT_GOAL, payload: res.data })
 }
 
+// Fetch a goal
 export const fetchGoals = () => async dispatch => {
   const res = await axios.get('/api/goals')
   dispatch({ type: types.FETCH_GOALS, payload: res.data })
 }
 
+// Fetch active week
 export const fetchActiveWeek = () => async dispatch => {
   const res = await axios.get('/api/active_week')
   dispatch({ type: types.FETCH_ACTIVE_WEEK, payload: res.data })

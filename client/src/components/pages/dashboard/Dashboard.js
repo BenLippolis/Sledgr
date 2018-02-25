@@ -15,41 +15,28 @@ import Visual from './Setup/Visual'
 import WeeklyVisual from './Active/WeeklyVisual'
 
 class Dashboard extends Component {
+  // Trigger action when account successfully linked
   handleOnSuccess (token, metadata) {
     this.props.handleOnSuccess(token, metadata)
   }
 
+  // Trigger update profile stage action
   handleStage (stage) {
     this.props.updateStage(stage)
   }
 
+  // List Plaid profucts for Plaid Link
   plaidProducts () {
     return ['auth', 'transactions']
   }
 
+  // Fetch profile, goals on component mount
   componentDidMount () {
     this.props.fetchProfile()
     this.props.fetchGoals()
-    if (this.props.auth.accessToken) {
-      this.props.fetchBalance()
-    }
   }
 
-  renderCreateProfileLink () {
-    switch (this.props.profile) {
-      case false:
-        return (
-          <div>
-            <Link to={'/profile/create'} className='btn btn-primary'>
-              Create Profile
-            </Link>
-          </div>
-        )
-      default:
-    }
-  }
-
-  // Conditionally render the connect account button based on account balance
+  // Conditionally render the connect account button based on presence of Plaid access token
   renderConnectAccount () {
     if (this.props.auth.accessToken == null) {
       return (
@@ -61,11 +48,10 @@ class Dashboard extends Component {
           onSuccess={this.handleOnSuccess.bind(this)}
         />
       )
-    } else {
-      return <h5> Current Balance: ${this.props.balance} </h5>
     }
   }
 
+  // Conditionally render transactions based on presence of Plaid access token
   renderTransactions () {
     switch (this.props.auth.accessToken == null) {
       case true:
@@ -80,7 +66,7 @@ class Dashboard extends Component {
       default:
     }
   }
-
+  // Render list of goals
   renderGoals () {
     return this.renderData().map(bal => {
       return (
@@ -91,6 +77,7 @@ class Dashboard extends Component {
     })
   }
 
+  // Temporary button to move to next stage
   renderContinueButton (stage) {
     return (
       <button
@@ -102,6 +89,7 @@ class Dashboard extends Component {
     )
   }
 
+  // Temporary button to move back a stage
   renderBackButton (stage) {
     return (
       <button
@@ -113,6 +101,7 @@ class Dashboard extends Component {
     )
   }
 
+  // Trigger update stage action
   onContinueClick (stage) {
     this.props.updateStage(stage)
   }
