@@ -149,41 +149,6 @@ export const updateRewardNotes = notes => dispatch => {
   })
 }
 
-// ------------------------------------- Inflows -------------------------------------------------- //
-export const submitInflow = (values, history) => async dispatch => {
-  const res = await axios.post('/api/inflow', values)
-  dispatch({ type: types.SUBMIT_INFLOW, payload: res.data })
-}
-
-export const fetchInflows = () => async dispatch => {
-  const res = await axios.get('/api/inflows')
-  dispatch({ type: types.FETCH_INFLOWS, payload: res.data })
-}
-
-export const deleteInflow = inflow => async dispatch => {
-  await axios.post('/api/inflow/delete', {
-    inflowId: inflow._id
-  })
-  dispatch({ type: types.DELETE_INFLOW, payload: inflow })
-}
-
-// ------------------------------------- Outflows -------------------------------------------------- //
-export const submitOutflow = (values, history) => async dispatch => {
-  const res = await axios.post('/api/outflow', values)
-  dispatch({ type: types.SUBMIT_OUTFLOW, payload: res.data })
-}
-export const fetchOutflows = () => async dispatch => {
-  const res = await axios.get('/api/outflows')
-  dispatch({ type: types.FETCH_OUTFLOWS, payload: res.data })
-}
-
-export const deleteOutflow = outflow => async dispatch => {
-  await axios.post('/api/outflow/delete', {
-    outflowId: outflow._id
-  })
-  dispatch({ type: types.DELETE_OUTFLOW, payload: outflow })
-}
-
 // ------------------------------------- Plaid -------------------------------------------------- //
 // Exchanges public token for access token courtesy of Plaid
 export const getAccessToken = (token, metadata) => dispatch => {
