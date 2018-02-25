@@ -17,7 +17,7 @@ class TargetSavings extends Component {
         <h4>
           {' '}
           How do you want to aim to save every week?
-          {this.props.profile.targetSavings}
+          {this.props.profile.weeklyTargetSavings}
           {' '}
         </h4>
         <button
@@ -38,7 +38,7 @@ class TargetSavings extends Component {
         <h4>
           To do this, you can still spend           $
           {this.props.profile.weeklyMaxSavings -
-            this.props.profile.targetSavings}
+            this.props.profile.weeklyTargetSavings}
           {' '}
 
           every week on extra stuff...

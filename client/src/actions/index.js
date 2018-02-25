@@ -62,7 +62,8 @@ export const updateRewardSchedule = (frequency, profile) => dispatch => {
 export const decreasePercentSaved = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percentSaved: profile.percentSaved - 0.01,
-    targetSavings: profile.weeklyMaxSavings * (profile.percentSaved - 0.01),
+    weeklyTargetSavings: profile.weeklyMaxSavings *
+      (profile.percentSaved - 0.01),
     weeklyTargetSpend: profile.weeklyMaxSavings *
       (profile.percentSaved - 0.01) *
       profile.percentSpent
@@ -77,7 +78,8 @@ export const decreasePercentSaved = profile => dispatch => {
 export const increasePercentSaved = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percentSaved: profile.percentSaved + 0.01,
-    targetSavings: profile.weeklyMaxSavings * (profile.percentSaved + 0.01),
+    weeklyTargetSavings: profile.weeklyMaxSavings *
+      (profile.percentSaved + 0.01),
     weeklyTargetSpend: profile.weeklyMaxSavings *
       (profile.percentSaved + 0.01) *
       profile.percentSpent
@@ -92,7 +94,8 @@ export const increasePercentSaved = profile => dispatch => {
 export const decreasePercentSpent = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percentSpent: profile.percentSpent - 0.01,
-    weeklyTargetSpend: profile.targetSavings * (profile.percentSpent - 0.01)
+    weeklyTargetSpend: profile.weeklyTargetSavings *
+      (profile.percentSpent - 0.01)
   })
   dispatch({
     type: types.DECREASE_PERCENT_SPENT,
@@ -104,7 +107,8 @@ export const decreasePercentSpent = profile => dispatch => {
 export const increasePercentSpent = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percentSpent: profile.percentSpent + 0.01,
-    weeklyTargetSpend: profile.targetSavings * (profile.percentSpent + 0.01)
+    weeklyTargetSpend: profile.weeklyTargetSavings *
+      (profile.percentSpent + 0.01)
   })
   dispatch({
     type: types.INCREASE_PERCENT_SPENT,
@@ -217,7 +221,7 @@ export const handleOnSuccess = (token, metadata) => async dispatch => {
 // ------------------------------------- Goal -------------------------------------------------- //
 export const submitGoal = profile => async dispatch => {
   const res = await axios.post('/api/goal', {
-    maxSpend: (profile.maxSavings - profile.targetSavings) / 4
+    maxSpend: profile.weeklyMaxSavings - profile.weeklyTargetSavings
   })
   dispatch({ type: types.SUBMIT_GOAL, payload: res.data })
 }

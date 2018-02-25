@@ -16,7 +16,7 @@ class TargetSpend extends Component {
       <div className='jumbotron text-center'>
         <h4>
           Awesome, so you’re saving $
-          {this.props.profile.targetSavings}
+          {this.props.profile.weeklyTargetSavings}
           {' '}
           every week. How much of that do you want to spend on a reward?
         </h4>
