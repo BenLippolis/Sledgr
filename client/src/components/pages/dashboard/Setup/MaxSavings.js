@@ -4,6 +4,7 @@ import { updateMaxSavings, fetchBalance } from '../../../../actions'
 import '../styles/MaxSavings.css'
 import IncomeForm from './IncomeForm'
 import ExpenseForm from './ExpenseForm'
+import ExpenseList from './ExpenseList'
 
 class MaxSavings extends Component {
   componentDidMount () {
@@ -52,6 +53,7 @@ class MaxSavings extends Component {
     return (
       <div className='jumbotron'>
         <IncomeForm />
+        <ExpenseList />
         <ExpenseForm />
         <h4>
           {' '}

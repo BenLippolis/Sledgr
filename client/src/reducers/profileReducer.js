@@ -25,7 +25,8 @@ export default function (state = {}, action) {
         rewardBudget: action.payload.rewardBudget,
         activeGoal: action.payload.activeGoal,
         rewardType: action.payload.rewardType,
-        rewardNotes: action.payload.rewardNotes
+        rewardNotes: action.payload.rewardNotes,
+        expenses: action.payload.expenses
       }
 
     case types.SUBMIT_INFLOW:
