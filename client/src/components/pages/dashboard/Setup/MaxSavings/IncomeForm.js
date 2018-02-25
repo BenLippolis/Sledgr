@@ -3,12 +3,11 @@ import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as actions from '../../../../actions'
+import * as actions from '../../../../../actions'
 
-class ExpenseForm extends Component {
+class IncomeForm extends Component {
   onSubmit (values) {
-    this.props.addExpense(values)
-    this.props.reset()
+    this.props.addIncome(values)
   }
 
   render () {
@@ -17,21 +16,21 @@ class ExpenseForm extends Component {
     return (
       <div className='form-group'>
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <label>Add New Expense</label><br />
+          <label>Enter Income and frequency</label><br />
           <Field
-            name='title'
-            component='input'
-            type='text'
-            placeholder='Title'
-          />
-          <Field
-            name='amount'
+            name='income'
             component='input'
             type='number'
-            placeholder='Amount'
+            placeholder={this.props.profile.income}
+          />
+          <Field
+            name='incomeFrequency'
+            component='input'
+            type='number'
+            placeholder={this.props.profile.incomeFrequency}
           />
           <button className='btn btn-primary float-right' type='submit'>
-            Add Expense
+            Add Income
           </button>
         </form>
       </div>
@@ -44,5 +43,5 @@ function mapStateToProps (state) {
 }
 
 export default reduxForm({
-  form: 'profileExpenseForm'
-})(connect(mapStateToProps, actions)(withRouter(ExpenseForm)))
+  form: 'profileIncomeForm'
+})(connect(mapStateToProps, actions)(withRouter(IncomeForm)))

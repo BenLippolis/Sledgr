@@ -4,10 +4,10 @@ import * as actions from '../../../actions'
 import { connect } from 'react-redux'
 import RewardVisual from './Active/RewardVisual'
 import PlaidLink from './Welcome/PlaidLink'
-import TransactionList from './Setup/TransactionList'
-import MaxSavings from './Setup/MaxSavings'
+import TransactionList from './Active/TransactionList'
+import MaxSavings from './Setup/MaxSavings/MaxSavings'
 import TargetSavings from './Setup/TargetSavings'
-import RewardSchedule from './Setup/RewardSchedule'
+import TargetSpend from './Setup/TargetSpend'
 import RewardSelection from './Setup/RewardSelection'
 import Begin from './Setup/Begin'
 import InflowForm from '../../inflow/InflowForm'
@@ -155,7 +155,7 @@ class Dashboard extends Component {
             <MaxSavings />
             {this.renderInflowOutflow()}
             <TargetSavings />
-            <RewardSchedule />
+            <TargetSpend />
             <RewardSelection />
             <Begin />
             {this.renderContinueButton(2)}

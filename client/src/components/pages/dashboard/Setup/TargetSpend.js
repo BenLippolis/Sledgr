@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { decreasePercentSpent, increasePercentSpent } from '../../../../actions'
 
-class RewardSchedule extends Component {
+class TargetSpend extends Component {
   onSpentDecrementClick (profile) {
     this.props.decreasePercentSpent(profile)
   }
@@ -59,4 +59,4 @@ function mapStateToProps (state) {
 export default connect(mapStateToProps, {
   decreasePercentSpent,
   increasePercentSpent
-})(RewardSchedule)
+})(TargetSpend)

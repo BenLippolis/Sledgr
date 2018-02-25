@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
-import * as actions from '../../../../actions'
+import { addNotes } from '../../../../actions'
 
 class NotesForm extends Component {
   onSubmit (values) {
@@ -38,4 +38,4 @@ function mapStateToProps (state) {
 
 export default reduxForm({
   form: 'profileNotesForm'
-})(connect(mapStateToProps, actions)(withRouter(NotesForm)))
+})(connect(mapStateToProps, { addNotes })(withRouter(NotesForm)))
