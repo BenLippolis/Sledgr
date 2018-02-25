@@ -1,11 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import {
-  decreasePercentSaved,
-  increasePercentSaved,
-  decreasePercentSpent,
-  increasePercentSpent
-} from '../../../../actions'
+import { decreasePercentSaved, increasePercentSaved } from '../../../../actions'
 
 class TargetSavings extends Component {
   onSaveDecrementClick (profile) {
@@ -16,20 +11,12 @@ class TargetSavings extends Component {
     this.props.increasePercentSaved(profile)
   }
 
-  onSpentDecrementClick (profile) {
-    this.props.decreasePercentSpent(profile)
-  }
-
-  onSpentIncrementClick (profile) {
-    this.props.increasePercentSpent(profile)
-  }
-
   render () {
     return (
       <div className='jumbotron text-center'>
         <h4>
           {' '}
-          How much will you save every month? $
+          How do you want to aim to save every week?
           {this.props.profile.targetSavings}
           {' '}
         </h4>
@@ -50,38 +37,16 @@ class TargetSavings extends Component {
 
         <h4>
           {' '}
-          Of the $
-          {this.props.profile.targetSavings}
+          Soooo if you limit your weekly spending on extra stuff to
           {' '}
-          you save every month, how much would you like to spend?
+          $
+          {this.props.profile.weeklyMaxSavings -
+            this.props.profile.targetSavings}
+          ...<br />
           {' '}
-        </h4>
-        <button
-          className='btn btn-primary'
-          onClick={this.onSpentDecrementClick.bind(this, this.props.profile)}
-        >
-          -{' '}
-        </button>
 
-        <h4>
           {' '}
-          Spend
-          {' '}
-          {this.props.profile.percentSpent * 100}
-          % of monthly savings
-        </h4>
-        <button
-          className='btn btn-primary'
-          onClick={this.onSpentIncrementClick.bind(this, this.props.profile)}
-        >
-          +{' '}
-        </button>
-        <h4>
-          {' '}
-          You'll have $
-          {this.props.profile.monthlySpend}
-          {' '}
-          to spend on something new & fun every month!
+          you'll reach your goal in no time!!
         </h4>
 
       </div>
@@ -95,7 +60,5 @@ function mapStateToProps (state) {
 
 export default connect(mapStateToProps, {
   decreasePercentSaved,
-  increasePercentSaved,
-  decreasePercentSpent,
-  increasePercentSpent
+  increasePercentSaved
 })(TargetSavings)

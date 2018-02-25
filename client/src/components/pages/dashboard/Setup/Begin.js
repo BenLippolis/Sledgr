@@ -10,20 +10,6 @@ class Begin extends Component {
   render () {
     return (
       <div className='text-center jumbotron'>
-        <h4>
-          {' '}
-          Soooo if you limit your weekly spending on extra stuff to
-          {' '}
-          $
-          {(this.props.profile.maxSavings - this.props.profile.targetSavings) *
-            12 /
-            52}
-          ...<br />
-          {' '}
-
-          {' '}
-          you'll reach your goal in no time!!
-        </h4>
         <button
           className='btn btn-primary'
           onClick={this.onBeginClick.bind(this, this.props.profile)}

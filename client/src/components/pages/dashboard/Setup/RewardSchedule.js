@@ -1,66 +1,55 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { updateRewardSchedule } from '../../../../actions'
+import { decreasePercentSpent, increasePercentSpent } from '../../../../actions'
 
 class RewardSchedule extends Component {
-  onUpdateClick (frequency, profile) {
-    this.props.updateRewardSchedule(frequency, profile)
+  onSpentDecrementClick (profile) {
+    this.props.decreasePercentSpent(profile)
+  }
+
+  onSpentIncrementClick (profile) {
+    this.props.increasePercentSpent(profile)
   }
 
   render () {
     return (
       <div className='jumbotron text-center'>
         <h4>
-          {' '}How often would you like to do something new & fun?
+          {' '}
+          Of the $
+          {this.props.profile.targetSavings}
+          {' '}
+          you save every month, how much would you like to spend?
+          {' '}
+        </h4>
+        <button
+          className='btn btn-primary'
+          onClick={this.onSpentDecrementClick.bind(this, this.props.profile)}
+        >
+          -{' '}
+        </button>
+
+        <h4>
+          {' '}
+          Spend
+          {' '}
+          {this.props.profile.percentSpent * 100}
+          % of monthly savings
+        </h4>
+        <button
+          className='btn btn-primary'
+          onClick={this.onSpentIncrementClick.bind(this, this.props.profile)}
+        >
+          +{' '}
+        </button>
+        <h4>
+          {' '}
+          You'll have $
+          {this.props.profile.monthlySpend}
+          {' '}
+          to spend on something new & fun every month!
         </h4>
 
-        <div>
-          <button
-            className='btn btn-success btn-sm'
-            onClick={this.onUpdateClick.bind(this, 0.5, this.props.profile)}
-          >
-            {' '}
-            2 Weeks
-          </button>
-          <button
-            className='btn btn-success btn-sm'
-            onClick={this.onUpdateClick.bind(this, 1, this.props.profile)}
-          >
-            {' '}
-            1 Month
-          </button>
-          <button
-            className='btn btn-success btn-sm'
-            onClick={this.onUpdateClick.bind(this, 2, this.props.profile)}
-          >
-            {' '}
-            2 Months
-          </button>
-          <button
-            className='btn btn-success btn-sm'
-            onClick={this.onUpdateClick.bind(this, 3, this.props.profile)}
-          >
-            {' '}
-            3 Months{' '}
-          </button>
-        </div>
-        <div>
-          <h4>
-            You'll have $
-            {this.props.profile.rewardBudget}
-            {' '}
-            to spend on something new & fun...
-            <br />
-            {' '}
-            when you hit your goal in
-            {' '}
-            {' '}
-            {this.props.profile.rewardSchedule}
-            {' '}
-            month(s)
-
-          </h4>
-        </div>
       </div>
     )
   }
@@ -70,6 +59,7 @@ function mapStateToProps (state) {
   return { profile: state.profile }
 }
 
-export default connect(mapStateToProps, { updateRewardSchedule })(
-  RewardSchedule
-)
+export default connect(mapStateToProps, {
+  decreasePercentSpent,
+  increasePercentSpent
+})(RewardSchedule)
