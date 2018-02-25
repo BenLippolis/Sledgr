@@ -11,7 +11,7 @@ const profileSchema = new Schema({
   birthday: String,
   targetSavings: { type: Number, default: 0 },
   percentSaved: { type: Number, default: 0.8 },
-  monthlySpend: { type: Number, default: 0 },
+  weeklyTargetSpend: { type: Number, default: 0 },
   percentSpent: { type: Number, default: 0.2 },
   rewardSchedule: { type: Number, default: 0 },
   rewardBudget: { type: Number, default: 0 },

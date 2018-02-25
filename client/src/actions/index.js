@@ -53,7 +53,7 @@ export const updateMaxSavings = value => async dispatch => {
 export const updateRewardSchedule = (frequency, profile) => dispatch => {
   axios.patch('/api/profile/update', {
     rewardSchedule: frequency,
-    rewardBudget: frequency * profile.monthlySpend
+    rewardBudget: frequency * profile.weeklyTargetSpend
   })
   dispatch({ type: types.UPDATE_REWARD_SCHEDULE, payload: frequency })
 }
@@ -63,7 +63,7 @@ export const decreasePercentSaved = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percentSaved: profile.percentSaved - 0.01,
     targetSavings: profile.weeklyMaxSavings * (profile.percentSaved - 0.01),
-    monthlySpend: profile.weeklyMaxSavings *
+    weeklyTargetSpend: profile.weeklyMaxSavings *
       (profile.percentSaved - 0.01) *
       profile.percentSpent
   })
@@ -78,7 +78,7 @@ export const increasePercentSaved = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percentSaved: profile.percentSaved + 0.01,
     targetSavings: profile.weeklyMaxSavings * (profile.percentSaved + 0.01),
-    monthlySpend: profile.weeklyMaxSavings *
+    weeklyTargetSpend: profile.weeklyMaxSavings *
       (profile.percentSaved + 0.01) *
       profile.percentSpent
   })
@@ -92,7 +92,7 @@ export const increasePercentSaved = profile => dispatch => {
 export const decreasePercentSpent = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percentSpent: profile.percentSpent - 0.01,
-    monthlySpend: profile.targetSavings * (profile.percentSpent - 0.01)
+    weeklyTargetSpend: profile.targetSavings * (profile.percentSpent - 0.01)
   })
   dispatch({
     type: types.DECREASE_PERCENT_SPENT,
@@ -104,7 +104,7 @@ export const decreasePercentSpent = profile => dispatch => {
 export const increasePercentSpent = profile => dispatch => {
   axios.patch('/api/profile/update', {
     percentSpent: profile.percentSpent + 0.01,
-    monthlySpend: profile.targetSavings * (profile.percentSpent + 0.01)
+    weeklyTargetSpend: profile.targetSavings * (profile.percentSpent + 0.01)
   })
   dispatch({
     type: types.INCREASE_PERCENT_SPENT,

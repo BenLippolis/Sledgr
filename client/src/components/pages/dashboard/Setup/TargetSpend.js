@@ -42,7 +42,7 @@ class TargetSpend extends Component {
         </button>
         <h4>
           Great, so every week you'll have $
-          {this.props.profile.monthlySpend}
+          {this.props.profile.weeklyTargetSpend}
           {' '}
           to put towards your reward!
         </h4>

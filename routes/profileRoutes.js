@@ -35,7 +35,7 @@ module.exports = app => {
       profile.weeklyMaxSavings =
         profile.income / profile.incomeFrequency - profile.weeklyExpenseTotal
       profile.targetSavings = profile.weeklyMaxSavings * profile.percentSaved
-      profile.monthlySpend = profile.targetSavings * profile.percentSpent
+      profile.weeklyTargetSpend = profile.targetSavings * profile.percentSpent
       await profile.save()
       res.send(profile)
     } catch (err) {
@@ -54,7 +54,7 @@ module.exports = app => {
       profile.weeklyMaxSavings =
         profile.income / profile.incomeFrequency - profile.weeklyExpenseTotal
       profile.targetSavings = profile.weeklyMaxSavings * profile.percentSaved
-      profile.monthlySpend = profile.targetSavings * profile.percentSpent
+      profile.weeklyTargetSpend = profile.targetSavings * profile.percentSpent
 
       await profile.save()
       res.send(profile)
@@ -73,7 +73,7 @@ module.exports = app => {
       profile.weeklyMaxSavings =
         profile.income / profile.incomeFrequency - profile.weeklyExpenseTotal
       profile.targetSavings = profile.weeklyMaxSavings * profile.percentSaved
-      profile.monthlySpend = profile.targetSavings * profile.percentSpent
+      profile.weeklyTargetSpend = profile.targetSavings * profile.percentSpent
       await profile.save()
       res.send(profile)
     } catch (err) {

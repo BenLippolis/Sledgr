@@ -14,7 +14,7 @@ export default function (state = {}, action) {
         stage: action.payload.stage,
         targetSavings: action.payload.targetSavings,
         percentSaved: action.payload.percentSaved,
-        monthlySpend: action.payload.monthlySpend,
+        weeklyTargetSpend: action.payload.weeklyTargetSpend,
         percentSpent: action.payload.percentSaved,
         rewardSchedule: action.payload.rewardSchedule,
         rewardBudget: action.payload.rewardBudget,
@@ -28,7 +28,7 @@ export default function (state = {}, action) {
       return {
         ...state,
         rewardSchedule: action.payload,
-        rewardBudget: action.payload * state.monthlySpend
+        rewardBudget: action.payload * state.weeklyTargetSpend
       }
 
     case types.DECREASE_PERCENT_SAVED:
@@ -36,7 +36,7 @@ export default function (state = {}, action) {
         ...state,
         percentSaved: action.payload,
         targetSavings: state.weeklyMaxSavings * action.payload,
-        monthlySpend: state.weeklyMaxSavings *
+        weeklyTargetSpend: state.weeklyMaxSavings *
           action.payload *
           state.percentSpent
       }
@@ -46,7 +46,7 @@ export default function (state = {}, action) {
         ...state,
         percentSaved: action.payload,
         targetSavings: state.weeklyMaxSavings * action.payload,
-        monthlySpend: state.weeklyMaxSavings *
+        weeklyTargetSpend: state.weeklyMaxSavings *
           action.payload *
           state.percentSpent
       }
@@ -55,14 +55,14 @@ export default function (state = {}, action) {
       return {
         ...state,
         percentSpent: action.payload,
-        monthlySpend: state.targetSavings * action.payload
+        weeklyTargetSpend: state.targetSavings * action.payload
       }
 
     case types.DECREASE_PERCENT_SPENT:
       return {
         ...state,
         percentSpent: action.payload,
-        monthlySpend: state.targetSavings * action.payload
+        weeklyTargetSpend: state.targetSavings * action.payload
       }
 
     case types.UPDATE_STAGE:
@@ -89,7 +89,7 @@ export default function (state = {}, action) {
         expenses: action.payload.expenses,
         weeklyMaxSavings: action.payload.weeklyMaxSavings,
         targetSavings: action.payload.targetSavings,
-        monthlySpend: action.payload.monthlySpend
+        weeklyTargetSpend: action.payload.weeklyTargetSpend
       }
 
     case types.DELETE_EXPENSE:
@@ -98,7 +98,7 @@ export default function (state = {}, action) {
         expenses: action.payload.expenses,
         weeklyMaxSavings: action.payload.weeklyMaxSavings,
         targetSavings: action.payload.targetSavings,
-        monthlySpend: action.payload.monthlySpend
+        weeklyTargetSpend: action.payload.weeklyTargetSpend
       }
 
     case types.ADD_INCOME:
@@ -106,7 +106,7 @@ export default function (state = {}, action) {
         ...state,
         weeklyMaxSavings: action.payload.weeklyMaxSavings,
         targetSavings: action.payload.targetSavings,
-        monthlySpend: action.payload.monthlySpend
+        weeklyTargetSpend: action.payload.weeklyTargetSpend
       }
 
     default:
