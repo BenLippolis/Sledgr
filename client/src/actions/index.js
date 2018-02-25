@@ -20,8 +20,8 @@ export const addNotes = values => async dispatch => {
 }
 
 export const addIncome = values => async dispatch => {
-  await axios.patch('/api/profile/update', values)
-  dispatch({ type: types.ADD_INCOME })
+  const res = await axios.patch('/api/profile/update', values)
+  dispatch({ type: types.ADD_INCOME, payload: res.data })
 }
 
 export const addExpense = values => async dispatch => {

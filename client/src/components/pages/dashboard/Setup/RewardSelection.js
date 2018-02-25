@@ -18,13 +18,13 @@ class RewardSelection extends Component {
 
         <div>
           <h4>
-            {' '}How often would you like to do something new & fun?
+            {' '}How often do you want to cash in on your reward?
           </h4>
           <button
             className='btn btn-success btn-sm'
             onClick={this.onUpdateScheduleClick.bind(
               this,
-              0.5,
+              2,
               this.props.profile
             )}
           >
@@ -35,7 +35,7 @@ class RewardSelection extends Component {
             className='btn btn-success btn-sm'
             onClick={this.onUpdateScheduleClick.bind(
               this,
-              1,
+              4,
               this.props.profile
             )}
           >
@@ -46,7 +46,7 @@ class RewardSelection extends Component {
             className='btn btn-success btn-sm'
             onClick={this.onUpdateScheduleClick.bind(
               this,
-              2,
+              8,
               this.props.profile
             )}
           >
@@ -57,7 +57,7 @@ class RewardSelection extends Component {
             className='btn btn-success btn-sm'
             onClick={this.onUpdateScheduleClick.bind(
               this,
-              3,
+              12,
               this.props.profile
             )}
           >
@@ -78,7 +78,7 @@ class RewardSelection extends Component {
             {' '}
             {this.props.profile.rewardSchedule}
             {' '}
-            month(s)
+            weeks
 
           </h4>
         </div>

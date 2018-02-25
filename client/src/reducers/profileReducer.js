@@ -133,13 +133,24 @@ export default function (state = {}, action) {
     case types.ADD_EXPENSE:
       return {
         ...state,
-        expenses: action.payload.expenses
+        expenses: action.payload.expenses,
+        weeklyMaxSavings: action.payload.weeklyMaxSavings,
+        targetSavings: action.payload.targetSavings
       }
 
     case types.DELETE_EXPENSE:
       return {
         ...state,
-        expenses: action.payload.expenses
+        expenses: action.payload.expenses,
+        weeklyMaxSavings: action.payload.weeklyMaxSavings,
+        targetSavings: action.payload.targetSavings
+      }
+
+    case types.ADD_INCOME:
+      return {
+        ...state,
+        weeklyMaxSavings: action.payload.weeklyMaxSavings,
+        targetSavings: action.payload.targetSavings
       }
 
     default:

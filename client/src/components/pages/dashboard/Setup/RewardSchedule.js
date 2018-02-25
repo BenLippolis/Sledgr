@@ -15,12 +15,10 @@ class RewardSchedule extends Component {
     return (
       <div className='jumbotron text-center'>
         <h4>
-          {' '}
-          Of the $
+          Awesome, so you’re saving $
           {this.props.profile.targetSavings}
           {' '}
-          you save every month, how much would you like to spend?
-          {' '}
+          every week. How much of that do you want to spend on a reward?
         </h4>
         <button
           className='btn btn-primary'
@@ -34,7 +32,7 @@ class RewardSchedule extends Component {
           Spend
           {' '}
           {this.props.profile.percentSpent * 100}
-          % of monthly savings
+          % of weekly savings
         </h4>
         <button
           className='btn btn-primary'
@@ -43,11 +41,10 @@ class RewardSchedule extends Component {
           +{' '}
         </button>
         <h4>
-          {' '}
-          You'll have $
+          Great, so every week you'll have $
           {this.props.profile.monthlySpend}
           {' '}
-          to spend on something new & fun every month!
+          to put towards your reward!
         </h4>
 
       </div>

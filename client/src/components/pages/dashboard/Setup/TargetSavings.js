@@ -36,17 +36,13 @@ class TargetSavings extends Component {
         </button>
 
         <h4>
-          {' '}
-          Soooo if you limit your weekly spending on extra stuff to
-          {' '}
-          $
+          To do this, you can still spend           $
           {this.props.profile.weeklyMaxSavings -
             this.props.profile.targetSavings}
-          ...<br />
           {' '}
 
-          {' '}
-          you'll reach your goal in no time!!
+          every week on extra stuff...
+
         </h4>
 
       </div>
