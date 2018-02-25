@@ -9,8 +9,6 @@ const expenseSchema = new mongoose.Schema({
 const profileSchema = new Schema({
   name: String,
   birthday: String,
-  maxSavings: { type: Number, default: 0 },
-  showMaxSavings: { type: Boolean, default: true },
   targetSavings: { type: Number, default: 0 },
   percentSaved: { type: Number, default: 0.8 },
   monthlySpend: { type: Number, default: 0 },
