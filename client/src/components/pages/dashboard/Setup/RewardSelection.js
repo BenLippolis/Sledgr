@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateRewardType } from '../../../../actions'
+import NotesForm from './NotesForm'
 
 class RewardSelection extends Component {
   onUpdateClick (type) {
@@ -40,8 +41,7 @@ class RewardSelection extends Component {
           {' '}Sounds like {this.props.profile.rewardType} is your thing,
           anything specific you want us to know?{' '}
         </h4>
-        <p> Enter Notes Here</p>
-
+        <NotesForm />
       </div>
     )
   }

@@ -14,6 +14,11 @@ export const submitProfile = (values, history) => async dispatch => {
   dispatch({ type: types.SUBMIT_PROFILE, payload: res.data })
 }
 
+export const addNotes = values => async dispatch => {
+  await axios.patch('/api/profile/update', values)
+  dispatch({ type: types.ADD_NOTES })
+}
+
 export const fetchProfile = () => async dispatch => {
   const res = await axios.get('/api/profile')
   dispatch({ type: types.FETCH_PROFILE, payload: res.data })

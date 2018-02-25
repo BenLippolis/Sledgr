@@ -15,7 +15,7 @@ const profileSchema = new Schema({
   activeGoal: Boolean,
   stage: Number,
   rewardType: String,
-  rewardNotes: String,
+  rewardNotes: { type: String, default: '' },
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 
