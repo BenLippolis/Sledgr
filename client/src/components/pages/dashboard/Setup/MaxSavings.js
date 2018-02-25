@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { updateMaxSavings, fetchBalance } from '../../../../actions'
 import '../styles/MaxSavings.css'
 import IncomeForm from './IncomeForm'
+import ExpenseForm from './ExpenseForm'
 
 class MaxSavings extends Component {
   componentDidMount () {
@@ -51,6 +52,7 @@ class MaxSavings extends Component {
     return (
       <div className='jumbotron'>
         <IncomeForm />
+        <ExpenseForm />
         <h4>
           {' '}
           How much can you save every month? $

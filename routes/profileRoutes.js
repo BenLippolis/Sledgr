@@ -37,4 +37,17 @@ module.exports = app => {
       res.status(422).send(err)
     }
   })
+
+  app.patch('/api/profile/expense', requireLogin, async (req, res) => {
+    const { title, amount } = req.body
+    const newExpense = { title: title, amount: amount }
+    try {
+      const profile = await Profile.findOne({ _user: req.user.id })
+      profile.expenses.push(newExpense)
+      profile.save()
+      res.send(profile.expenses)
+    } catch (err) {
+      res.status(422).send(err)
+    }
+  })
 }

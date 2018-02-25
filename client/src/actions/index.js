@@ -24,6 +24,11 @@ export const addIncome = values => async dispatch => {
   dispatch({ type: types.ADD_INCOME })
 }
 
+export const addExpense = values => async dispatch => {
+  await axios.patch('/api/profile/expense', values)
+  dispatch({ type: types.ADD_EXPENSE })
+}
+
 export const fetchProfile = () => async dispatch => {
   const res = await axios.get('/api/profile')
   dispatch({ type: types.FETCH_PROFILE, payload: res.data })

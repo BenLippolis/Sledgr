@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 const { Schema } = mongoose
 
+const expenseSchema = new mongoose.Schema({
+  title: String,
+  amount: Number
+})
+
 const profileSchema = new Schema({
   name: String,
   birthday: String,
@@ -18,6 +23,7 @@ const profileSchema = new Schema({
   rewardNotes: { type: String, default: '' },
   income: { type: Number, default: 0 },
   incomeFrequency: { type: Number, default: 0 },
+  expenses: [expenseSchema],
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 
