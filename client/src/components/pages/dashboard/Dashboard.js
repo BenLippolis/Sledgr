@@ -10,10 +10,6 @@ import TargetSavings from './Setup/TargetSavings'
 import TargetSpend from './Setup/TargetSpend'
 import RewardSelection from './Setup/RewardSelection'
 import Begin from './Setup/Begin'
-import InflowForm from '../../inflow/InflowForm'
-import InflowList from '../../inflow/InflowList'
-import OutflowForm from '../../outflow/OutflowForm'
-import OutflowList from '../../outflow/OutflowList'
 import ProfileCreate from '../../profile/ProfileCreate'
 import Visual from './Setup/Visual'
 import WeeklyVisual from './Active/WeeklyVisual'
@@ -121,25 +117,6 @@ class Dashboard extends Component {
     this.props.updateStage(stage)
   }
 
-  renderInflowOutflow () {
-    switch (this.props.profile.showMaxSavings) {
-      case true:
-        return (
-          <div className='row'>
-            <div className='col-md-6'>
-              <InflowList />
-              <InflowForm />
-            </div>
-            <div className='col-md-6'>
-              <OutflowList />
-              <OutflowForm />
-            </div>
-          </div>
-        )
-      default:
-    }
-  }
-
   render () {
     switch (this.props.profile.stage) {
       case 0:
@@ -153,7 +130,6 @@ class Dashboard extends Component {
         return (
           <div className='text-center'>
             <MaxSavings />
-            {this.renderInflowOutflow()}
             <TargetSavings />
             <TargetSpend />
             <RewardSelection />
