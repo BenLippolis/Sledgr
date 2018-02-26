@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { decreasePercentSpent, increasePercentSpent } from '../../../../actions'
+import roundTo from 'round-to'
 
 class TargetSpend extends Component {
   onSpentDecrementClick (profile) {
@@ -15,10 +16,10 @@ class TargetSpend extends Component {
     return (
       <div className='jumbotron text-center'>
         <h4>
-          Awesome, so you’re saving $
-          {this.props.profile.weeklyTargetSavings}
+          Of the $
+          {roundTo(this.props.profile.weeklyTargetSavings, 0)}
           {' '}
-          every week. How much of that do you want to spend on a reward?
+          you save how much do you want to spend on a reward?
         </h4>
         <button
           className='btn btn-primary'
@@ -28,11 +29,7 @@ class TargetSpend extends Component {
         </button>
 
         <h4>
-          {' '}
-          Spend
-          {' '}
-          {this.props.profile.percentSpent * 100}
-          % of weekly savings
+          {this.props.profile.percentSpent * 100}%
         </h4>
         <button
           className='btn btn-primary'
@@ -40,12 +37,12 @@ class TargetSpend extends Component {
         >
           +{' '}
         </button>
-        <h4>
+        <p>
           Great, so every week you'll have $
-          {this.props.profile.weeklyTargetSpend}
+          <b>{roundTo(this.props.profile.weeklyTargetSpend, 0)}</b>
           {' '}
           to put towards your reward!
-        </h4>
+        </p>
 
       </div>
     )

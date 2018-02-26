@@ -3,16 +3,36 @@ import { connect } from 'react-redux'
 import IncomeForm from './IncomeForm'
 import ExpenseForm from './ExpenseForm'
 import ExpenseList from './ExpenseList'
+import roundTo from 'round-to'
 import '../../styles/MaxSavings.css'
 
 class MaxSavings extends Component {
   render () {
     return (
       <div className='jumbotron'>
+        <h4>
+          {' '}
+          Hey {this.props.profile.name}, you make
+          {' '}
+          ${this.props.profile.income}
+          {' '}
+          every
+          {' '}
+          {this.props.profile.incomeFrequency}
+          {' '}
+          weeks...
+          {' '}
+        </h4>
         <IncomeForm />
+        <h4> and have the following monthly expenses...</h4>
         <ExpenseList />
         <ExpenseForm />
-        <h4> Weekly Max Savings ${this.props.profile.weeklyMaxSavings} </h4>
+        <h4>
+          {' '}
+          so the most you can save each week is $
+          {roundTo(this.props.profile.weeklyMaxSavings, 0)}.
+          {' '}
+        </h4>
       </div>
     )
   }

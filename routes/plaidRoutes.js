@@ -52,23 +52,6 @@ module.exports = app => {
           const profile = await Profile.findOne({ _user: req.user.id })
           profile.stage = 1
           await profile.save()
-
-          // Add default expenses
-          const rentExpense = new Outflow({
-            title: 'Rent',
-            amount: 0,
-            _user: req.user.id
-          })
-          const utilsExpense = new Outflow({
-            title: 'Utilities',
-            amount: 0,
-            _user: req.user.id
-          })
-          // Create array of expenses
-          const defaultExpenses = [rentExpense, utilsExpense]
-          // Insert array into outflows collection
-          Outflow.collection.insert(defaultExpenses)
-
           res.send(user)
         } else {
           console.log('User has an access token already!')

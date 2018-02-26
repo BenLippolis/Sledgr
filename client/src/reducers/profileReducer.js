@@ -105,6 +105,8 @@ export default function (state = {}, action) {
     case types.ADD_INCOME:
       return {
         ...state,
+        income: action.payload.income,
+        incomeFrequency: action.payload.incomeFrequency,
         weeklyMaxSavings: action.payload.weeklyMaxSavings,
         weeklyTargetSavings: action.payload.weeklyTargetSavings,
         weeklyTargetSpend: action.payload.weeklyTargetSpend

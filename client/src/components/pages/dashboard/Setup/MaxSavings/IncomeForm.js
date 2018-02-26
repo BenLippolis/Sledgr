@@ -21,13 +21,13 @@ class IncomeForm extends Component {
             name='income'
             component='input'
             type='number'
-            placeholder={this.props.profile.income}
+            placeholder='Income Per Paycheck'
           />
           <Field
             name='incomeFrequency'
             component='input'
             type='number'
-            placeholder={this.props.profile.incomeFrequency}
+            placeholder='Paycheck Frequency'
           />
           <button className='btn btn-primary float-right' type='submit'>
             Add Income

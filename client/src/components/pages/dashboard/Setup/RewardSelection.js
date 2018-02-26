@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateRewardType, updateRewardSchedule } from '../../../../actions'
 import NotesForm from './NotesForm'
+import roundTo from 'round-to'
 
 class RewardSelection extends Component {
   onUpdateScheduleClick (frequency, profile) {
@@ -66,27 +67,26 @@ class RewardSelection extends Component {
           </button>
         </div>
         <div>
-          <h4>
+          <p>
             You'll have $
-            {this.props.profile.rewardBudget}
+            <b>{roundTo(this.props.profile.rewardBudget, 0)}</b>
             {' '}
-            to spend on something new & fun...
-            <br />
+            to spend on a reward
             {' '}
-            when you hit your goal in
-            {' '}
-            {' '}
-            {this.props.profile.rewardSchedule}
-            {' '}
-            weeks
-
-          </h4>
+            when you hit your goal in {' '}
+            <b>
+              {this.props.profile.rewardSchedule}
+              {' '}
+              weeks
+            </b>.
+          </p>
         </div>
         <h4>
-          {' '}
-          What's your idea of fun/ what experiences mean the most to you?
-          {' '}
+          Choose your reward
         </h4>
+        <p>
+          Let us know what experiences mean the most to you and we'll make it happen
+        </p>
         <div>
           <button
             className='btn btn-primary btn-sm'
@@ -108,10 +108,10 @@ class RewardSelection extends Component {
           </button>
         </div>
 
-        <h4>
-          {' '}Sounds like {this.props.profile.rewardType} is your thing,
+        <p>
+          Sounds like <b>{this.props.profile.rewardType}</b> is your thing,
           anything specific you want us to know?{' '}
-        </h4>
+        </p>
         <NotesForm />
       </div>
     )

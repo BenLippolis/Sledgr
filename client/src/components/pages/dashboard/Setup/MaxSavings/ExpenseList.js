@@ -30,7 +30,6 @@ class ExpenseList extends Component {
   render () {
     return (
       <div className='all'>
-        <h5> Monthly Expenses </h5>
         {this.renderExpenses()}
       </div>
     )

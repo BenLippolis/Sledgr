@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { decreasePercentSaved, increasePercentSaved } from '../../../../actions'
+import roundTo from 'round-to'
 
 class TargetSavings extends Component {
   onSaveDecrementClick (profile) {
@@ -15,11 +16,20 @@ class TargetSavings extends Component {
     return (
       <div className='jumbotron text-center'>
         <h4>
-          {' '}
-          How do you want to aim to save every week?
-          {this.props.profile.weeklyTargetSavings}
-          {' '}
+          How much do you want to aim to save every week?
         </h4>
+        <p>
+          {' '}
+          If you save
+          {' '}
+          <b>{this.props.profile.percentSaved * 100}</b>
+          % of the money you can possible save you'll be saving
+          {' '}
+          <b>${roundTo(this.props.profile.weeklyTargetSavings, 0)}</b>
+          {' '}
+          every week.
+          {' '}
+        </p>
         <button
           className='btn btn-primary'
           onClick={this.onSaveIncrementClick.bind(this, this.props.profile)}
@@ -27,7 +37,7 @@ class TargetSavings extends Component {
           +{' '}
         </button>
 
-        <h4> Save {this.props.profile.percentSaved * 100}% </h4>
+        <h4> {this.props.profile.percentSaved * 100}% </h4>
         <button
           className='btn btn-primary'
           onClick={this.onSaveDecrementClick.bind(this, this.props.profile)}
@@ -35,15 +45,18 @@ class TargetSavings extends Component {
           -{' '}
         </button>
 
-        <h4>
-          To do this, you can still spend           $
-          {this.props.profile.weeklyMaxSavings -
-            this.props.profile.weeklyTargetSavings}
+        <p>
+          You can save that much and still have          $
+          <b>
+            {roundTo(
+              this.props.profile.weeklyMaxSavings -
+                this.props.profile.weeklyTargetSavings,
+              0
+            )}
+          </b>
           {' '}
-
-          every week on extra stuff...
-
-        </h4>
+          to spend on extra stuff every week :)
+        </p>
 
       </div>
     )
