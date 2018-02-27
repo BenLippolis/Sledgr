@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchActiveWeek } from '../../../../actions'
+import './WeeklyVisual.css'
 
 class WeeklyVisual extends Component {
   componentDidMount () {
@@ -17,8 +18,8 @@ class WeeklyVisual extends Component {
 
   render () {
     return (
-      <div>
-        <h3> Weekly visual </h3>
+      <div className='jumbotron wv'>
+        <h3> Weekly Visual </h3>
         <div className='progress'>
           <div
             className='progress-bar'
@@ -33,7 +34,7 @@ class WeeklyVisual extends Component {
             aria-valuemin='0'
             aria-valuemax='100'
           >
-            ${this.props.activeWeek.maxSpend - this.calTotalSpend()}
+            <b>${this.props.activeWeek.maxSpend - this.calTotalSpend()}</b>
           </div>
         </div>
         <p />

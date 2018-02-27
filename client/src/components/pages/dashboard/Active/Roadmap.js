@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 
-class RewardVisual extends Component {
+class Roadmap extends Component {
   render () {
     return (
       <div className='jumbotron'>
-        <h3> Reward Visual </h3>
+        <h3> Roadmap </h3>
       </div>
     )
   }
 }
 
-export default RewardVisual
+export default Roadmap

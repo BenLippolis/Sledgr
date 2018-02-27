@@ -22,7 +22,7 @@ class TargetSavings extends Component {
           {' '}
           If you save
           {' '}
-          <b>{this.props.profile.percentSaved * 100}</b>
+          <b>{roundTo(this.props.profile.percentSaved * 100, 0)}</b>
           % of the money you can possible save you'll be saving
           {' '}
           <b>${roundTo(this.props.profile.weeklyTargetSavings, 0)}</b>
@@ -37,7 +37,7 @@ class TargetSavings extends Component {
           +{' '}
         </button>
 
-        <h4> {this.props.profile.percentSaved * 100}% </h4>
+        <h4> {roundTo(this.props.profile.percentSaved * 100, 0)}% </h4>
         <button
           className='btn btn-primary'
           onClick={this.onSaveDecrementClick.bind(this, this.props.profile)}

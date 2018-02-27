@@ -29,7 +29,7 @@ class TargetSpend extends Component {
         </button>
 
         <h4>
-          {this.props.profile.percentSpent * 100}%
+          {roundTo(this.props.profile.percentSpent * 100, 0)}%
         </h4>
         <button
           className='btn btn-primary'

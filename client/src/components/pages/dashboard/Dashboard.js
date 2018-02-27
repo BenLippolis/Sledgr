@@ -13,6 +13,7 @@ import Begin from './Setup/Begin'
 import ProfileCreate from '../../profile/ProfileCreate'
 import Visual from './Setup/Visual'
 import WeeklyVisual from './Active/WeeklyVisual'
+import Roadmap from './Active/Roadmap'
 
 class Dashboard extends Component {
   // Trigger action when account successfully linked
@@ -58,14 +59,15 @@ class Dashboard extends Component {
         return
       case false:
         return (
-          <div>
-            <p> Here are your transactions from the last week </p>
+          <div className='jumbotron'>
+            <h3> Weekly Transactions </h3>
             <TransactionList />
           </div>
         )
       default:
     }
   }
+
   // Render list of goals
   renderGoals () {
     return this.renderData().map(bal => {
@@ -129,10 +131,22 @@ class Dashboard extends Component {
       case 2:
         return (
           <div>
-            <WeeklyVisual />
-            <RewardVisual />
-            {this.props.goals.length} Goals
-            {this.renderTransactions()}
+            <div className='row'>
+              <div className='col-md-6'>
+                <WeeklyVisual />
+              </div>
+              <div className='col-md-6'>
+                {this.renderTransactions()}
+              </div>
+            </div>
+            <div className='row'>
+              <div className='col-md-6'>
+                <RewardVisual />
+              </div>
+              <div className='col-md-6'>
+                <Roadmap />
+              </div>
+            </div>
             {this.renderContinueButton(3)}
             {this.renderBackButton(1)}
           </div>
