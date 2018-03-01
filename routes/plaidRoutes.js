@@ -71,7 +71,8 @@ module.exports = app => {
     const activeWeek = activeGoal.weeks.find(week => week.active === true)
     console.log(activeWeek)
 
-    var startDate = moment().subtract(2, 'days').format('YYYY-MM-DD')
+    // var startDate = moment().subtract(2, 'days').format('YYYY-MM-DD')
+    var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
     // Exclude 'grocery' related transactions over $20
     client.getTransactions(
@@ -90,7 +91,10 @@ module.exports = app => {
         var displayTxns = []
         var displayTxnsValue = 0
         transactionsResponse.transactions.forEach(function (txn) {
-          if (txn.category_id === '19047000' && txn.amount > 20) {
+          if (
+            (txn.category_id === '19047000' && txn.amount > 20) ||
+            txn.amount < 0
+          ) {
           } else {
             displayTxns.push(txn)
             displayTxnsValue += txn.amount

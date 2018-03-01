@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchTransactions, fetchBalance } from '../../../../actions'
+import { fetchTransactions } from '../../../../actions'
 
 class TransactionList extends Component {
   componentDidMount () {
     if (this.props.auth.accessToken) {
       this.props.fetchTransactions()
-      this.props.fetchBalance()
     }
   }
 
@@ -32,6 +31,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, { fetchTransactions, fetchBalance })(
-  TransactionList
-)
+export default connect(mapStateToProps, { fetchTransactions })(TransactionList)

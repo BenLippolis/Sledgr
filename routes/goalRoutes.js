@@ -7,12 +7,11 @@ module.exports = app => {
   app.post('/api/goal', requireLogin, async (req, res) => {
     const { maxSpend } = req.body
     const goal = new Goal({
+      maxSpend: maxSpend,
       _user: req.user.id
     })
     // Auto create a balance with value 100 (temp)
-    goal.weeks.push({
-      maxSpend: maxSpend
-    })
+    goal.weeks.push({})
     try {
       await goal.save()
       res.send(goal)
