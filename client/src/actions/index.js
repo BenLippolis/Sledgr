@@ -191,10 +191,15 @@ export const submitGoal = profile => async dispatch => {
   dispatch({ type: types.SUBMIT_GOAL, payload: res.data })
 }
 
-// Fetch a goal
+// Fetch all goals
 export const fetchGoals = () => async dispatch => {
   const res = await axios.get('/api/goals')
   dispatch({ type: types.FETCH_GOALS, payload: res.data })
+}
+
+export const fetchActiveGoal = () => async dispatch => {
+  const res = await axios.get('/api/active_goal')
+  dispatch({ type: types.FETCH_ACTIVE_GOAL, payload: res.data })
 }
 
 // Fetch active week

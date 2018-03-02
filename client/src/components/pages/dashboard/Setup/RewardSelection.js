@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { updateRewardType, updateRewardSchedule } from '../../../../actions'
 import NotesForm from './NotesForm'
 import roundTo from 'round-to'
-
+import FaPlane from 'react-icons/lib/fa/plane'
 class RewardSelection extends Component {
   onUpdateScheduleClick (frequency, profile) {
     this.props.updateRewardSchedule(frequency, profile)

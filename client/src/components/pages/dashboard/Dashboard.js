@@ -35,6 +35,7 @@ class Dashboard extends Component {
   componentDidMount () {
     this.props.fetchProfile()
     this.props.fetchGoals()
+    this.props.fetchActiveGoal()
   }
 
   // Conditionally render the connect account button based on presence of Plaid access token
