@@ -5,9 +5,10 @@ const Goal = mongoose.model('goal')
 module.exports = app => {
   // Create a goal
   app.post('/api/goal', requireLogin, async (req, res) => {
-    const { maxSpend } = req.body
+    const { maxSpend, weekCount } = req.body
     const goal = new Goal({
       maxSpend: maxSpend,
+      weekCount: weekCount,
       _user: req.user.id
     })
     // Auto create a balance with value 100 (temp)
