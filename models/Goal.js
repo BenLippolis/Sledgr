@@ -4,8 +4,7 @@ const { Schema } = mongoose
 const weekSchema = new mongoose.Schema({
   time: { type: Date, default: Date.now },
   active: { type: Boolean, default: true },
-  endSpend: { type: Number, default: 0 },
-  success: Boolean
+  endSpend: { type: Number, default: 0 }
 })
 
 const goalSchema = new Schema({
@@ -14,6 +13,7 @@ const goalSchema = new Schema({
   weekCount: { type: Number, default: 0 },
   maxSpend: { type: Number, default: 0 },
   weeks: [weekSchema],
+  success: Boolean,
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 

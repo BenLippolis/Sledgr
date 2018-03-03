@@ -137,12 +137,13 @@ class Dashboard extends Component {
                 <WeeklyVisual />
               </div>
               <div className='col-md-6'>
-                {this.renderTransactions()}
+                <RewardVisual />
+
               </div>
             </div>
             <div className='row'>
               <div className='col-md-6'>
-                <RewardVisual />
+                {this.renderTransactions()}
               </div>
               <div className='col-md-6'>
                 <Roadmap />

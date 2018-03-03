@@ -26,7 +26,7 @@ class WeeklyVisual extends Component {
             role='progressbar'
             style={{
               width: (1 -
-                this.calTotalSpend() / this.props.activeWeek.maxSpend) *
+                this.calTotalSpend() / this.props.activeGoal.maxSpend) *
                 100 +
                 '%'
             }}
@@ -34,7 +34,7 @@ class WeeklyVisual extends Component {
             aria-valuemin='0'
             aria-valuemax='100'
           >
-            <b>${this.props.activeWeek.maxSpend - this.calTotalSpend()}</b>
+            <b>${this.props.activeGoal.maxSpend - this.calTotalSpend()}</b>
           </div>
         </div>
         <p />
@@ -48,7 +48,8 @@ function mapStateToProps (state) {
   return {
     profile: state.profile,
     activeWeek: state.activeWeek,
-    transactions: state.transactions
+    transactions: state.transactions,
+    activeGoal: state.activeGoal
   }
 }
 
