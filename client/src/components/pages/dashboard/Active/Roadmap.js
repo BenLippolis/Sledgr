@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import './Roadmap.css'
 
 class Roadmap extends Component {
   countCompletedGoals () {
@@ -14,7 +15,7 @@ class Roadmap extends Component {
 
   render () {
     return (
-      <div className='jumbotron'>
+      <div className='jumbotron white'>
         <h3> Roadmap </h3>
         <p> So far you have reached {this.countCompletedGoals()} goal(s) </p>
       </div>

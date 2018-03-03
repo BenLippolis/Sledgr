@@ -30,7 +30,11 @@ class Begin extends Component {
           {' '}
           on extras per week and still save <b>
             $
-            {roundTo(this.props.profile.weeklyTargetSavings, 0)}
+            {roundTo(
+              this.props.profile.weeklyTargetSavings -
+                this.props.profile.weeklyTargetSpend,
+              0
+            )}
           </b>
           {' '}
           each week and have <b>

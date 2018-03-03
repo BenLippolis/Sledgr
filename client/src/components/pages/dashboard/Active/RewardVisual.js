@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import './RewardVisual.css'
 
 class RewardVisual extends Component {
   render () {
     return (
-      <div className='jumbotron'>
+      <div className='jumbotron white'>
         <h3> Reward Visual </h3>
         <p>
           {' '}

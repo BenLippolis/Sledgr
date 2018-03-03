@@ -72,7 +72,7 @@ module.exports = app => {
     console.log(activeWeek)
 
     // var startDate = moment().subtract(2, 'days').format('YYYY-MM-DD')
-    var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
+    var startDate = moment().subtract(1, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
     // Exclude 'grocery' related transactions over $20
     client.getTransactions(
@@ -93,7 +93,8 @@ module.exports = app => {
         transactionsResponse.transactions.forEach(function (txn) {
           if (
             (txn.category_id === '19047000' && txn.amount > 20) ||
-            txn.amount < 0
+            txn.amount < 0 ||
+            txn.amount > 500
           ) {
           } else {
             displayTxns.push(txn)

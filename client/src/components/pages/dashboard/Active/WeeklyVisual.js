@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchActiveWeek } from '../../../../actions'
+import roundTo from 'round-to'
 import './WeeklyVisual.css'
 
 class WeeklyVisual extends Component {
@@ -18,8 +19,18 @@ class WeeklyVisual extends Component {
 
   render () {
     return (
-      <div className='jumbotron wv'>
+      <div className='jumbotron white'>
         <h3> Weekly Visual </h3>
+        <p>
+          {' '}
+          You have
+          $
+          {roundTo(this.props.activeGoal.maxSpend - this.calTotalSpend(), 0)}
+          {' '}
+          {' '}
+          left to spend on extra stuff over the next X days
+          {' '}
+        </p>
         <div className='progress'>
           <div
             className='progress-bar'
@@ -34,7 +45,13 @@ class WeeklyVisual extends Component {
             aria-valuemin='0'
             aria-valuemax='100'
           >
-            <b>${this.props.activeGoal.maxSpend - this.calTotalSpend()}</b>
+            <b>
+              $
+              {roundTo(
+                this.props.activeGoal.maxSpend - this.calTotalSpend(),
+                0
+              )}
+            </b>
           </div>
         </div>
         <p />

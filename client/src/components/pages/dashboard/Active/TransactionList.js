@@ -15,7 +15,7 @@ class TransactionList extends Component {
         <div className='card' key={txn.transaction_id}>
           <div className='card-body'>
             <p className='card-text'>
-              ${txn.amount}
+              {txn.name} ${txn.amount}
             </p>
           </div>
         </div>

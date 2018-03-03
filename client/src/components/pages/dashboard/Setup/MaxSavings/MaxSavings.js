@@ -4,7 +4,7 @@ import IncomeForm from './IncomeForm'
 import ExpenseForm from './ExpenseForm'
 import ExpenseList from './ExpenseList'
 import roundTo from 'round-to'
-import '../../styles/MaxSavings.css'
+import './MaxSavings.css'
 
 class MaxSavings extends Component {
   render () {

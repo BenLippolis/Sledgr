@@ -14,6 +14,7 @@ import ProfileCreate from '../../profile/ProfileCreate'
 import Visual from './Setup/Visual'
 import WeeklyVisual from './Active/WeeklyVisual'
 import Roadmap from './Active/Roadmap'
+import './Dashboard.css'
 
 class Dashboard extends Component {
   // Trigger action when account successfully linked
@@ -45,7 +46,7 @@ class Dashboard extends Component {
         <PlaidLink
           publicKey='dd4a42fe52273d06efafcc208601f9'
           product={this.plaidProducts()}
-          env='sandbox'
+          env='development'
           clientName='Sledgr.com'
           onSuccess={this.handleOnSuccess.bind(this)}
         />
@@ -60,7 +61,7 @@ class Dashboard extends Component {
         return
       case false:
         return (
-          <div className='jumbotron'>
+          <div className='jumbotron white'>
             <h3> Weekly Transactions </h3>
             <TransactionList />
           </div>
