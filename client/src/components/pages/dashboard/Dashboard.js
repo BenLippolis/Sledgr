@@ -14,6 +14,7 @@ import ProfileCreate from '../../profile/ProfileCreate'
 import Visual from './Setup/Visual'
 import WeeklyVisual from './Active/WeeklyVisual'
 import Roadmap from './Active/Roadmap'
+import Options from './Completed/Options'
 import './Dashboard.css'
 
 class Dashboard extends Component {
@@ -157,7 +158,7 @@ class Dashboard extends Component {
       case 3:
         return (
           <div className='text-center'>
-            <h1> Yay you completed your goal! </h1>
+            <Options />
             {this.renderContinueButton(1)}
           </div>
         )
