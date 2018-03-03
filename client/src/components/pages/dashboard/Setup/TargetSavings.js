@@ -23,7 +23,7 @@ class TargetSavings extends Component {
           If you save
           {' '}
           <b>{roundTo(this.props.profile.percentSaved * 100, 0)}</b>
-          % of the money you can possible save you'll be saving
+          % of the money you can possibly save you'll be saving
           {' '}
           <b>${roundTo(this.props.profile.weeklyTargetSavings, 0)}</b>
           {' '}

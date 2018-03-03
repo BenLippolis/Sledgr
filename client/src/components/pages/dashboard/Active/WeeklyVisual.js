@@ -2,11 +2,17 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchActiveWeek } from '../../../../actions'
 import roundTo from 'round-to'
+import moment from 'moment'
 import './WeeklyVisual.css'
 
 class WeeklyVisual extends Component {
   componentDidMount () {
     this.props.fetchActiveWeek()
+  }
+
+  daysLeftInWeek (week) {
+    var today = moment()
+    return 7 - today.diff(week.time, 'day')
   }
 
   calTotalSpend () {
@@ -28,7 +34,11 @@ class WeeklyVisual extends Component {
           {roundTo(this.props.activeGoal.maxSpend - this.calTotalSpend(), 0)}
           {' '}
           {' '}
-          left to spend on extra stuff over the next X days
+          left to spend on extra stuff over the next
+          {' '}
+          {this.daysLeftInWeek(this.props.activeWeek)}
+          {' '}
+          days
           {' '}
         </p>
         <div className='progress'>
