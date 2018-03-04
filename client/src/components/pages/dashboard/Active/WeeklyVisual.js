@@ -12,7 +12,7 @@ class WeeklyVisual extends Component {
 
   daysLeftInWeek (week) {
     var today = moment()
-    return today.diff(week.time, 'hours')
+    return 7 - today.diff(week.time, 'days')
   }
 
   calTotalSpend () {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import IncomeForm from './IncomeForm'
-import ExpenseForm from './ExpenseForm'
-import ExpenseList from './ExpenseList'
+import IncomeForm from './Income/IncomeForm'
+import ExpenseForm from './Expense/ExpenseForm'
+import ExpenseList from './Expense/ExpenseList'
 import roundTo from 'round-to'
 import './MaxSavings.css'
 

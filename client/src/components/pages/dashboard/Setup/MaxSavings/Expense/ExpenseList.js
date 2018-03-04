@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../../../../../actions'
+import * as actions from '../../../../../../actions'
+import ExpenseUpdateForm from './ExpenseUpdateForm'
 
 class ExpenseList extends Component {
   onDeleteClick (expense) {
@@ -13,6 +14,10 @@ class ExpenseList extends Component {
           <div className='card-body'>
             <p className='card-text'>
               {exp.title} | ${exp.amount}
+              <button className='btn btn-warning btn-sm'>
+                {' '}
+                Edit{' '}
+              </button>
               <button
                 className='btn btn-danger btn-sm'
                 onClick={this.onDeleteClick.bind(this, exp)}

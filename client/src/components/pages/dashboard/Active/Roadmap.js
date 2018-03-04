@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
+import roundTo from 'round-to'
 import './Roadmap.css'
 import _ from 'lodash'
 
@@ -31,6 +32,34 @@ class Roadmap extends Component {
       <div className='jumbotron white'>
         <h3> Roadmap </h3>
         <p> So far you have reached {this.countCompletedGoals()} goal(s) </p>
+        <p>
+          {' '}
+          If you continue setting a new goal evey
+          {' '}
+          <b>
+            {this.props.profile.rewardSchedule}
+            {' '}
+            weeks
+          </b>, you're on track to save
+          {' '}
+          <b>
+            $
+            {((this.props.profile.weeklyTargetSavings -
+              this.props.profile.weeklyTargetSpend) *
+              52).toLocaleString(navigator.language, {
+                minimumFractionDigits: 0
+              })}
+          </b>
+          {' '}
+          {' '}and spend <b>
+            ${(this.props.profile.weeklyTargetSpend *
+              52).toLocaleString(navigator.language, {
+                minimumFractionDigits: 0
+              })}{' '}
+          </b>on awesome experiences{' '}over the next 12 months!
+          {' '}
+        </p>
+
         {this.renderWeeks()}
       </div>
     )
@@ -40,7 +69,8 @@ class Roadmap extends Component {
 function mapStateToProps (state) {
   return {
     goals: state.goals,
-    activeGoal: state.activeGoal
+    activeGoal: state.activeGoal,
+    profile: state.profile
   }
 }
 
