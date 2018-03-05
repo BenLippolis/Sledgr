@@ -2,33 +2,16 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import * as actions from '../../../../../../actions'
 import ExpenseUpdateForm from './ExpenseUpdateForm'
+import ExpenseItem from './ExpenseItem'
 
 class ExpenseList extends Component {
   onDeleteClick (expense) {
     this.props.deleteExpense(expense)
   }
+
   renderExpenses () {
     return this.props.profile.expenses.map(exp => {
-      return (
-        <div className='card' key={exp._id}>
-          <div className='card-body'>
-            <p className='card-text'>
-              {exp.title} | ${exp.amount}
-              <button className='btn btn-warning btn-sm'>
-                {' '}
-                Edit{' '}
-              </button>
-              <button
-                className='btn btn-danger btn-sm'
-                onClick={this.onDeleteClick.bind(this, exp)}
-              >
-                {' '}
-                Delete{' '}
-              </button>
-            </p>
-          </div>
-        </div>
-      )
+      return <ExpenseItem key={exp._id} expense={exp} />
     })
   }
 
