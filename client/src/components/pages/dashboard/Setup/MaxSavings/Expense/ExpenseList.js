@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../../../../../../actions'
-import ExpenseUpdateForm from './ExpenseUpdateForm'
 import ExpenseItem from './ExpenseItem'
 
 class ExpenseList extends Component {
-  onDeleteClick (expense) {
-    this.props.deleteExpense(expense)
-  }
-
   renderExpenses () {
     return this.props.profile.expenses.map(exp => {
       return <ExpenseItem key={exp._id} expense={exp} />
@@ -17,7 +11,7 @@ class ExpenseList extends Component {
 
   render () {
     return (
-      <div className='all'>
+      <div>
         {this.renderExpenses()}
       </div>
     )
@@ -27,4 +21,4 @@ class ExpenseList extends Component {
 function mapStateToProps (state) {
   return { profile: state.profile }
 }
-export default connect(mapStateToProps, actions)(ExpenseList)
+export default connect(mapStateToProps)(ExpenseList)

@@ -112,6 +112,22 @@ export default function (state = {}, action) {
         weeklyTargetSpend: action.payload.weeklyTargetSpend
       }
 
+    case types.UPDATE_EXPENSE:
+      return {
+        ...state,
+        expenses: state.expenses.map(
+          exp =>
+            (exp._id === action.payload.expense_id
+              ? // transform the one with a matching id
+            {
+              ...exp,
+              title: action.payload.title,
+              amount: action.payload.amount
+            }
+              : // otherwise return original todo
+                exp)
+        )
+      }
     default:
       return state
   }

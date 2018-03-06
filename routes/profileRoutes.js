@@ -77,6 +77,24 @@ module.exports = app => {
     }
   })
 
+  // Update an expense
+  app.patch('/api/profile/expense/update', requireLogin, async (req, res) => {
+    const { expense_id, title, amount } = req.body
+    try {
+      await Profile.findOneAndUpdate(
+        { _user: req.user.id, 'expenses._id': expense_id },
+        {
+          $set: {
+            'expenses.$.title': title,
+            'expenses.$.amount': amount
+          }
+        }
+      )
+    } catch (err) {
+      res.status(422).send(err)
+    }
+  })
+
   // Destroy an expense
   app.patch('/api/profile/expense/delete', requireLogin, async (req, res) => {
     const { expense } = req.body

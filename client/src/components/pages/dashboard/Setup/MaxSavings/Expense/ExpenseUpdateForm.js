@@ -8,6 +8,16 @@ import { connect } from 'react-redux'
 import * as actions from '../../../../../../actions'
 
 class ExpenseUpdateForm extends Component {
+  constructor (props, context) {
+    super(props, context)
+    this.state = { isEditing: false }
+    this.toggleEdit = this.toggleEdit.bind(this)
+  }
+
+  toggleEdit () {
+    this.setState({ isEditing: !this.state.isEditing })
+  }
+
   renderFields () {
     return _.map(formFields, ({ label, name }) => {
       return (
@@ -22,26 +32,41 @@ class ExpenseUpdateForm extends Component {
     })
   }
 
-  onSubmit (values) {
-    this.props.addExpense(values)
-    this.props.reset()
-  }
-
-  render () {
+  renderForm () {
     const { handleSubmit } = this.props
 
-    return (
-      <div className='jumbotron'>
+    if (this.state.isEditing) {
+      return (
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div className='row'>
             {this.renderFields()}
             <div className='col-md-4'>
               <button className='btn btn-primary btn-sm' type='submit'>
-                Add Expense
+                Update Expense
               </button>
             </div>
           </div>
         </form>
+      )
+    } else {
+      return (
+        <button className='btn btn-warning btn-sm' onClick={this.toggleEdit}>
+          edit
+        </button>
+      )
+    }
+  }
+
+  onSubmit (values) {
+    this.props.updateExpense(values, this.props.expense_id)
+    this.toggleEdit()
+    this.props.reset()
+  }
+
+  render () {
+    return (
+      <div>
+        {this.renderForm()}
       </div>
     )
   }
@@ -59,9 +84,5 @@ function validate (values) {
 
 export default reduxForm({
   validate,
-  form: 'expenseUpdateForm',
-  initialValues: {
-    title: 'some value here',
-    amount: 'hey'
-  }
+  form: 'expenseUpdateForm'
 })(connect(null, actions)(withRouter(ExpenseUpdateForm)))
