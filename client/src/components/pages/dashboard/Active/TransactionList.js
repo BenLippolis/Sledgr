@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchTransactions } from '../../../../actions'
+import { fetchTransactions, addBadTxn } from '../../../../actions'
 
 class TransactionList extends Component {
   componentDidMount () {
     if (this.props.auth.accessToken) {
       this.props.fetchTransactions()
     }
+  }
+
+  onTxnClick (txnId) {
+    this.props.addBadTxn(txnId)
   }
 
   render () {
@@ -17,6 +21,12 @@ class TransactionList extends Component {
             <p className='card-text'>
               {txn.name} ${txn.amount}
             </p>
+            <button
+              className='btn btn-sm btn-danger'
+              onClick={this.onTxnClick.bind(this, txn.transaction_id)}
+            >
+              Remove
+            </button>
           </div>
         </div>
       )
@@ -31,4 +41,6 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, { fetchTransactions })(TransactionList)
+export default connect(mapStateToProps, { fetchTransactions, addBadTxn })(
+  TransactionList
+)

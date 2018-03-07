@@ -65,4 +65,20 @@ module.exports = app => {
       res.status(422).send(err)
     }
   })
+
+  // Add a bad transaction
+  app.patch('/api/goal/add_bad_txn', requireLogin, async (req, res) => {
+    const { txnId } = req.body
+    try {
+      const activeGoal = await Goal.findOne({
+        _user: req.user.id,
+        active: true
+      })
+      activeGoal.badTransactions.push(txnId)
+      await activeGoal.save()
+      console.log('yay you added the txn id')
+    } catch (err) {
+      res.status(422).send(err)
+    }
+  })
 }

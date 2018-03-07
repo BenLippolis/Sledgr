@@ -209,6 +209,7 @@ export const fetchGoals = () => async dispatch => {
   dispatch({ type: types.FETCH_GOALS, payload: res.data })
 }
 
+// Fetch active goal
 export const fetchActiveGoal = () => async dispatch => {
   const res = await axios.get('/api/active_goal')
   dispatch({ type: types.FETCH_ACTIVE_GOAL, payload: res.data })
@@ -218,4 +219,12 @@ export const fetchActiveGoal = () => async dispatch => {
 export const fetchActiveWeek = () => async dispatch => {
   const res = await axios.get('/api/active_week')
   dispatch({ type: types.FETCH_ACTIVE_WEEK, payload: res.data })
+}
+
+// Add bad transaction to bad txn list
+export const addBadTxn = txnId => async dispatch => {
+  axios.patch('/api/goal/add_bad_txn', {
+    txnId: txnId
+  })
+  dispatch({type: types.ADD_BAD_TXN, payload: txnId})
 }

@@ -14,6 +14,7 @@ const goalSchema = new Schema({
   maxSpend: { type: Number, default: 0 },
   weeks: [weekSchema],
   success: Boolean,
+  badTransactions: [String],
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
 })
 

@@ -41,7 +41,7 @@ class ExpenseUpdateForm extends Component {
           <div className='row'>
             {this.renderFields()}
             <div className='col-md-4'>
-              <button className='btn btn-primary btn-sm' type='submit'>
+              <button className='btn btn-outline-primary btn-sm' type='submit'>
                 Update Expense
               </button>
             </div>
@@ -50,7 +50,10 @@ class ExpenseUpdateForm extends Component {
       )
     } else {
       return (
-        <button className='btn btn-warning btn-sm' onClick={this.toggleEdit}>
+        <button
+          className='btn btn-outline-primary btn-sm'
+          onClick={this.toggleEdit}
+        >
           edit
         </button>
       )

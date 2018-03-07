@@ -69,7 +69,8 @@ module.exports = app => {
     })
     const activeWeek = activeGoal.weeks.find(week => week.active === true)
     console.log(activeWeek)
-    var startDate = moment(activeWeek.time).format('YYYY-MM-DD')
+    // var startDate = moment(activeWeek.time).format('YYYY-MM-DD')
+    var startDate = moment().subtract(5, 'days').format('YYYY-MM-DD')
     // var startDate = moment()
     //  .subtract(moment().diff(activeWeek.time, 'hours'), 'hours')
     //  .format('YYYY-MM-DD')
@@ -96,8 +97,9 @@ module.exports = app => {
             (txn.category_id === '19047000' && txn.amount > 20) ||
             txn.amount < 0 ||
             txn.amount > 500 ||
+            activeGoal.badTransactions.includes(txn.transaction_id)
             // This is a transaction that was made the day before
-            (txn.pending === false && txn.date === startDate)
+            // (txn.pending === false && txn.date === startDate)
           ) {
           } else {
             displayTxns.push(txn)

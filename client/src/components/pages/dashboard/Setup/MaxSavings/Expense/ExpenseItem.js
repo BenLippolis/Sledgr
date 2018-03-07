@@ -15,7 +15,7 @@ class ExpenseItem extends Component {
           <p> {this.props.expense.title} ${this.props.expense.amount}</p>
           <ExpenseUpdateForm expense_id={this.props.expense._id} />
           <button
-            className='btn btn-danger btn-sm'
+            className='btn btn-outline-danger btn-sm'
             onClick={this.onDeleteClick.bind(this, this.props.expense)}
           >
             {' '}
