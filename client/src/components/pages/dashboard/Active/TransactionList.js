@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchTransactions, addBadTxn } from '../../../../actions'
+import { fetchTransactions } from '../../../../actions'
+import TransactionItem from './TransactionItem'
 
 class TransactionList extends Component {
   componentDidMount () {
@@ -9,26 +10,14 @@ class TransactionList extends Component {
     }
   }
 
-  onTxnClick (txnId) {
-    this.props.addBadTxn(txnId)
-  }
-
   render () {
     return this.props.transactions.map(txn => {
       return (
-        <div className='card' key={txn.transaction_id}>
-          <div className='card-body'>
-            <p className='card-text'>
-              {txn.name} ${txn.amount}
-            </p>
-            <button
-              className='btn btn-sm btn-danger'
-              onClick={this.onTxnClick.bind(this, txn.transaction_id)}
-            >
-              Remove
-            </button>
-          </div>
-        </div>
+        <TransactionItem
+          name={txn.name}
+          amount={txn.amount}
+          id={txn.transaction_id}
+        />
       )
     })
   }
@@ -41,6 +30,4 @@ function mapStateToProps (state) {
   }
 }
 
-export default connect(mapStateToProps, { fetchTransactions, addBadTxn })(
-  TransactionList
-)
+export default connect(mapStateToProps, { fetchTransactions })(TransactionList)
