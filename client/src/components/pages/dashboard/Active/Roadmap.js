@@ -15,12 +15,40 @@ class Roadmap extends Component {
     return total
   }
 
+  showTrans (count) {
+    return this.props.transactions.map(txn => {
+      var a = moment(txn.date)
+      var b = moment(this.props.activeGoal.time)
+        .add(count, 'days')
+        .format('YYYY-MM-DD')
+      if (a.diff(b, 'days') === count) {
+        return (
+          <p>
+            {' '}
+            {txn.name}<br />
+            {' '}
+            Txn Created {txn.date}<br />
+            {' '}
+            Goal Created
+            {' '}
+            {moment(this.props.activeGoal.time).format('YYYY-MM-DD')}<br />
+            Days between goal & transaction creation <b>{a.diff(b, 'days')}</b>
+
+          </p>
+        )
+      }
+    })
+  }
+
   renderWeeks () {
     var today = moment()
     return (
       <div className='container'>
-        {_.times(today.diff(this.props.activeGoal.time, 'hours'), i => (
-          <p key={i}> Week {i + 1}</p>
+        {_.times(today.diff(this.props.activeGoal.time, 'days'), i => (
+          <div>
+            <p key={i}> Day {i + 1}</p>
+            {this.showTrans(i)}
+          </div>
         ))}
       </div>
     )
@@ -69,7 +97,8 @@ function mapStateToProps (state) {
   return {
     goals: state.goals,
     activeGoal: state.activeGoal,
-    profile: state.profile
+    profile: state.profile,
+    transactions: state.transactions
   }
 }
 

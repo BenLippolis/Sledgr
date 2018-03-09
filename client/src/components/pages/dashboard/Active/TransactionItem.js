@@ -10,7 +10,7 @@ class TransactionItem extends Component {
 
   render () {
     return (
-      <div className='card' key={this.props.id}>
+      <div className='card'>
         <div className='card-body'>
           <p className='card-text'>
             {this.props.name} ${this.props.amount}

@@ -14,9 +14,10 @@ class TransactionList extends Component {
     return this.props.transactions.map(txn => {
       return (
         <TransactionItem
+          key={txn.transaction_id}
+          id={txn.transaction_id}
           name={txn.name}
           amount={txn.amount}
-          id={txn.transaction_id}
         />
       )
     })

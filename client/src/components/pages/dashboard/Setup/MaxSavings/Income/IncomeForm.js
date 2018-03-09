@@ -8,6 +8,15 @@ import { connect } from 'react-redux'
 import * as actions from '../../../../../../actions'
 
 class IncomeForm extends Component {
+  constructor (props, context) {
+    super(props, context)
+    this.state = { isEditing: false }
+    this.toggleEdit = this.toggleEdit.bind(this)
+  }
+
+  toggleEdit () {
+    this.setState({ isEditing: !this.state.isEditing })
+  }
   renderFields () {
     return _.map(formFields, ({ label, name }) => {
       return (
@@ -24,25 +33,37 @@ class IncomeForm extends Component {
 
   onSubmit (values) {
     this.props.addIncome(values)
+    this.toggleEdit()
   }
 
   render () {
     const { handleSubmit } = this.props
 
-    return (
-      <div>
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-          <div className='row'>
-            {this.renderFields()}
-            <div className='col-md-4'>
-              <button className='btn btn-primary btn-sm' type='submit'>
-                Add Income
-              </button>
+    if (this.state.isEditing) {
+      return (
+        <div>
+          <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div className='row'>
+              {this.renderFields()}
+              <div className='col-md-4'>
+                <button className='btn btn-primary btn-sm' type='submit'>
+                  Update Income
+                </button>
+              </div>
             </div>
-          </div>
-        </form>
-      </div>
-    )
+          </form>
+        </div>
+      )
+    } else {
+      return (
+        <button
+          className='btn btn-outline-primary btn-sm'
+          onClick={this.toggleEdit}
+        >
+          Update
+        </button>
+      )
+    }
   }
 }
 
