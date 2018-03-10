@@ -5,7 +5,7 @@ import './RewardVisual.css'
 class RewardVisual extends Component {
   render () {
     return (
-      <div className='jumbotron white'>
+      <div className='jumbotron rv'>
         <h3> Reward Visual </h3>
         <p>
           {' '}

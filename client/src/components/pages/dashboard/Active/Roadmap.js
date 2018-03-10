@@ -15,39 +15,40 @@ class Roadmap extends Component {
     return total
   }
 
+  // Show the transactions that occurred on a specific day
   showTrans (count) {
+    var startDate = moment(this.props.activeGoal.time)
+      .add(count * 1, 'days')
+      .format('YYYY-MM-DD')
     return this.props.transactions.map(txn => {
-      var a = moment(txn.date)
-      var b = moment(this.props.activeGoal.time)
-        .add(count, 'days')
-        .format('YYYY-MM-DD')
-      if (a.diff(b, 'days') === count) {
-        return (
-          <p>
-            {' '}
-            {txn.name}<br />
-            {' '}
-            Txn Created {txn.date}<br />
-            {' '}
-            Goal Created
-            {' '}
-            {moment(this.props.activeGoal.time).format('YYYY-MM-DD')}<br />
-            Days between goal & transaction creation <b>{a.diff(b, 'days')}</b>
-
-          </p>
-        )
+      if (txn.date === startDate) {
+        return <p key={txn.transaction_id}> {txn.name} {txn.date}</p>
       }
     })
   }
 
   renderWeeks () {
-    var today = moment()
+    // Gives you the number of days that have passed since goal was created
+    var daysPassed = 1 + moment().diff(this.props.activeGoal.time, 'days')
     return (
       <div className='container'>
-        {_.times(today.diff(this.props.activeGoal.time, 'days'), i => (
-          <div>
-            <p key={i}> Day {i + 1}</p>
-            {this.showTrans(i)}
+        {_.times(daysPassed, i => (
+          <div key={i}>
+            <b>
+              <p>
+                {' '}
+                Day
+                {' '}
+                {i + 1}
+                {' '}
+                (
+                {moment(this.props.activeGoal.time)
+                  .add((i + 1) * 1, 'days')
+                  .format('YYYY-MM-DD')}
+                )
+              </p>
+            </b>
+            {this.showTrans(i + 1)}
           </div>
         ))}
       </div>
@@ -58,7 +59,19 @@ class Roadmap extends Component {
     return (
       <div className='jumbotron white'>
         <h3> Roadmap </h3>
-        <p> So far you have reached {this.countCompletedGoals()} goal(s) </p>
+        <p>
+          {' '}
+          So far you have reached {this.countCompletedGoals()} goal(s) <br />
+          You're on day
+          {' '}
+          {1 + moment().diff(this.props.activeGoal.time, 'days')}
+          {' '}
+          of this goal
+          <br />
+          This goal was created on
+          {' '}
+          {this.props.activeGoal.time}
+        </p>
         <p>
           {' '}
           If you continue setting a new goal evey
@@ -86,7 +99,6 @@ class Roadmap extends Component {
           </b>on awesome experiences{' '}over the next 12 months!
           {' '}
         </p>
-
         {this.renderWeeks()}
       </div>
     )

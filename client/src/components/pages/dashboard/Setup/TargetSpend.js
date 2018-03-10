@@ -21,22 +21,37 @@ class TargetSpend extends Component {
           {' '}
           you save how much do you want to spend on a reward?
         </h4>
-        <button
-          className='btn btn-primary'
-          onClick={this.onSpentDecrementClick.bind(this, this.props.profile)}
-        >
-          -{' '}
-        </button>
+        <div className='row'>
+          <div className='col-md-4' />
+          <div className='col-md-1'>
+            <button
+              className='btn btn-primary'
+              onClick={this.onSpentDecrementClick.bind(
+                this,
+                this.props.profile
+              )}
+            >
+              -{' '}
+            </button>
+          </div>
+          <div className='col-md-2'>
 
-        <h4>
-          {roundTo(this.props.profile.percentSpent * 100, 0)}%
-        </h4>
-        <button
-          className='btn btn-primary'
-          onClick={this.onSpentIncrementClick.bind(this, this.props.profile)}
-        >
-          +{' '}
-        </button>
+            <h4>
+              {roundTo(this.props.profile.percentSpent * 100, 0)}%
+            </h4>
+          </div>
+          <div className='col-md-1'>
+            <button
+              className='btn btn-primary'
+              onClick={this.onSpentIncrementClick.bind(
+                this,
+                this.props.profile
+              )}
+            >
+              +{' '}
+            </button>
+          </div>
+        </div>
         <p>
           Great, so every week you'll have $
           <b>{roundTo(this.props.profile.weeklyTargetSpend, 0)}</b>

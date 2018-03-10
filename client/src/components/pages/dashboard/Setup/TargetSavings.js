@@ -30,20 +30,28 @@ class TargetSavings extends Component {
           every week.
           {' '}
         </p>
-        <button
-          className='btn btn-primary'
-          onClick={this.onSaveIncrementClick.bind(this, this.props.profile)}
-        >
-          +{' '}
-        </button>
-
-        <h4> {roundTo(this.props.profile.percentSaved * 100, 0)}% </h4>
-        <button
-          className='btn btn-primary'
-          onClick={this.onSaveDecrementClick.bind(this, this.props.profile)}
-        >
-          -{' '}
-        </button>
+        <div className='row'>
+          <div className='col-md-4' />
+          <div className='col-md-1'>
+            <button
+              className='btn btn-primary'
+              onClick={this.onSaveDecrementClick.bind(this, this.props.profile)}
+            >
+              {' '}-
+            </button>
+          </div>
+          <div className='col-md-2'>
+            <h4> {roundTo(this.props.profile.percentSaved * 100, 0)}% </h4>
+          </div>
+          <div className='col-md-1'>
+            <button
+              className='btn btn-primary'
+              onClick={this.onSaveIncrementClick.bind(this, this.props.profile)}
+            >
+              +{' '}
+            </button>
+          </div>
+        </div>
 
         <p>
           You can save that much and still have          $

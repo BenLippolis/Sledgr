@@ -67,50 +67,51 @@ module.exports = app => {
       _user: req.user.id,
       active: true
     })
-    const activeWeek = activeGoal.weeks.find(week => week.active === true)
-    console.log(activeWeek)
-    // var startDate = moment(activeWeek.time).format('YYYY-MM-DD')
-    var startDate = moment().subtract(5, 'days').format('YYYY-MM-DD')
-    // var startDate = moment()
-    //  .subtract(moment().diff(activeWeek.time, 'hours'), 'hours')
-    //  .format('YYYY-MM-DD')
+    // var startDate = moment().subtract(5, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
 
-    // Exclude 'grocery' related transactions over $20
-    client.getTransactions(
-      req.user.accessToken,
-      startDate,
-      endDate,
-      {
-        count: 250,
-        offset: 0
-      },
-      function (error, transactionsResponse) {
-        if (error != null) {
-          console.log(JSON.stringify(error))
-          return res.json({ error: error })
-        }
-        var displayTxns = []
-        var displayTxnsValue = 0
-        transactionsResponse.transactions.forEach(function (txn) {
-          if (
-            (txn.category_id === '19047000' && txn.amount > 20) ||
-            txn.amount < 0 ||
-            txn.amount > 500 ||
-            activeGoal.badTransactions.includes(txn.transaction_id)
-            // This is a transaction that was made the day before
-            // (txn.pending === false && txn.date === startDate)
-          ) {
-          } else {
-            displayTxns.push(txn)
-            displayTxnsValue += txn.amount
-          }
-        })
-        console.log(transactionsResponse.transactions)
-        console.log(displayTxnsValue)
-        res.json(displayTxns)
+    // Gives you the number of days that have passed since goal was created
+    // Add one because this gives use the differenc, not the total weeks passed value we're looking for
+    var weeksPassed = 1 + moment().diff(activeGoal.time, 'weeks')
+
+    // Gives you the date of the earliest transactions that should be pulled
+    var startDate = moment(activeGoal.time)
+      .add(weeksPassed * 1, 'days')
+      .format('YYYY-MM-DD')
+
+    client.getTransactions(req.user.accessToken, startDate, endDate, function (
+      error,
+      transactionsResponse
+    ) {
+      if (error != null) {
+        console.log(JSON.stringify(error))
+        return res.json({ error: error })
       }
-    )
+      var displayTxns = []
+      var displayTxnsValue = 0
+
+      // Exclude 'grocery' related transactions over $20,
+      // negative values (deposits),
+      // amounts over $500,
+      // transactions that the user thinks don't apply
+      transactionsResponse.transactions.forEach(function (txn) {
+        if (
+          (txn.category_id === '19047000' && txn.amount > 20) ||
+          txn.amount < 0 ||
+          txn.amount > 500 ||
+          activeGoal.badTransactions.includes(txn.transaction_id)
+          // This is a transaction that was made the day before
+          // (txn.pending === false && txn.date === startDate)
+        ) {
+        } else {
+          displayTxns.push(txn)
+          displayTxnsValue += txn.amount
+        }
+      })
+      console.log(transactionsResponse.transactions)
+      console.log(displayTxnsValue)
+      res.json(displayTxns)
+    })
   })
 
   // Only available in production :(

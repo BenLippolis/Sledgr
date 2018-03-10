@@ -25,7 +25,7 @@ class WeeklyVisual extends Component {
 
   render () {
     return (
-      <div className='jumbotron white'>
+      <div className='jumbotron wv'>
         <h3> Weekly Visual </h3>
         <p>
           {' '}
@@ -36,7 +36,7 @@ class WeeklyVisual extends Component {
           {' '}
           left to spend on extra stuff over the next
           {' '}
-          {this.daysLeftInWeek(this.props.activeWeek)}
+          {7 - (1 + moment().diff(this.props.activeGoal.time, 'days'))}
           {' '}
           days
           {' '}

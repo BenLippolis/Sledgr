@@ -112,7 +112,13 @@ class RewardSelection extends Component {
           Sounds like <b>{this.props.profile.rewardType}</b> is your thing,
           anything specific you want us to know?{' '}
         </p>
-        <RewardForm />
+        <div className='row'>
+          <div className='col-md-3' />
+          <div className='col-md-6 text-center'>
+            <RewardForm />
+          </div>
+        </div>
+
       </div>
     )
   }
