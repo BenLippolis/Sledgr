@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateRewardType, updateRewardSchedule } from '../../../../actions'
-import NotesForm from './NotesForm'
+import RewardForm from './Reward/RewardForm'
 import roundTo from 'round-to'
 // import FaPlane from 'react-icons/lib/fa/plane'
 class RewardSelection extends Component {
@@ -112,7 +112,7 @@ class RewardSelection extends Component {
           Sounds like <b>{this.props.profile.rewardType}</b> is your thing,
           anything specific you want us to know?{' '}
         </p>
-        <NotesForm />
+        <RewardForm />
       </div>
     )
   }
