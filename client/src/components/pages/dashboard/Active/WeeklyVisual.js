@@ -23,6 +23,17 @@ class WeeklyVisual extends Component {
     return total
   }
 
+  daysLeft () {
+    const dayCount = 7 - (1 + moment().diff(this.props.activeGoal.time, 'days'))
+    const days = dayCount + ' days'
+    const day = 'day'
+    if (dayCount > 1) {
+      return days
+    } else {
+      return day
+    }
+  }
+
   render () {
     return (
       <div className='jumbotron wv'>
@@ -34,13 +45,9 @@ class WeeklyVisual extends Component {
           {roundTo(this.props.activeGoal.maxSpend - this.calTotalSpend(), 0)}
           {' '}
           {' '}
-          left to spend on extra stuff over the next
-          {' '}
-          {7 - (1 + moment().diff(this.props.activeGoal.time, 'days'))}
-          {' '}
-          days
-          {' '}
+          left to spend on extra stuff over the next {this.daysLeft()}
         </p>
+
         <div className='progress'>
           <div
             className='progress-bar'

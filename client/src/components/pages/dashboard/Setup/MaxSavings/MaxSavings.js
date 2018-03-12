@@ -23,7 +23,10 @@ class MaxSavings extends Component {
           weeks...
           {' '}
         </h4>
-        <IncomeForm />
+        <IncomeForm
+          income={this.props.profile.income}
+          incomeFrequency={this.props.profile.incomeFrequency}
+        />
         <h4> and have the following monthly expenses...</h4>
         <ExpenseList />
         <ExpenseForm />

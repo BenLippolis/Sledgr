@@ -14,6 +14,18 @@ class IncomeForm extends Component {
     this.toggleEdit = this.toggleEdit.bind(this)
   }
 
+  componentDidMount () {
+    this.handleInitialize()
+  }
+
+  handleInitialize () {
+    const initData = {
+      income: this.props.income,
+      incomeFrequency: this.props.incomeFrequency
+    }
+    this.props.initialize(initData)
+  }
+
   toggleEdit () {
     this.setState({ isEditing: !this.state.isEditing })
   }

@@ -7,6 +7,7 @@ import TransactionList from './Active/TransactionList'
 import MaxSavings from './Setup/MaxSavings/MaxSavings'
 import TargetSavings from './Setup/TargetSavings'
 import TargetSpend from './Setup/TargetSpend'
+import RewardSchedule from './Setup/RewardSchedule'
 import RewardSelection from './Setup/RewardSelection'
 import Begin from './Setup/Begin'
 import ProfileCreate from '../../profile/ProfileCreate'
@@ -124,6 +125,7 @@ class Dashboard extends Component {
             <MaxSavings />
             <TargetSavings />
             <TargetSpend />
+            <RewardSchedule />
             <RewardSelection />
             <Begin />
             {this.renderContinueButton(2)}

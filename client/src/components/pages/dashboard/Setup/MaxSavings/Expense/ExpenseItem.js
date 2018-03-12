@@ -13,7 +13,7 @@ class ExpenseItem extends Component {
       <li className='list-group-item'>
         <div className='video-list media'>
           <p> {this.props.expense.title} ${this.props.expense.amount}</p>
-          <ExpenseUpdateForm expense_id={this.props.expense._id} />
+          <ExpenseUpdateForm expense={this.props.expense} />
           <button
             className='btn btn-outline-danger btn-sm'
             onClick={this.onDeleteClick.bind(this, this.props.expense)}

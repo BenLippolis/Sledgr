@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm, Field, FieldArray } from 'redux-form'
 import ExpenseField from './ExpenseField'
 import { withRouter } from 'react-router-dom'
 import formFields from './formFields'
@@ -14,12 +14,25 @@ class ExpenseUpdateForm extends Component {
     this.toggleEdit = this.toggleEdit.bind(this)
   }
 
+  componentDidMount () {
+    this.handleInitialize()
+  }
+
+  handleInitialize () {
+    const initData = {
+      title: this.props.expense.title,
+      amount: this.props.expense.amount
+    }
+    console.log('handleInitialize', initData)
+    this.props.initialize(initData)
+  }
+
   toggleEdit () {
     this.setState({ isEditing: !this.state.isEditing })
   }
 
   renderFields () {
-    return _.map(formFields, ({ label, name }) => {
+    return _.map(formFields, ({ label, name }, index) => {
       return (
         <Field
           key={name}
@@ -61,7 +74,7 @@ class ExpenseUpdateForm extends Component {
   }
 
   onSubmit (values) {
-    this.props.updateExpense(values, this.props.expense_id)
+    this.props.updateExpense(values, this.props.expense._id)
     this.toggleEdit()
     this.props.reset()
   }
