@@ -23,7 +23,6 @@ class ExpenseUpdateForm extends Component {
       title: this.props.expense.title,
       amount: this.props.expense.amount
     }
-    console.log('handleInitialize', initData)
     this.props.initialize(initData)
   }
 
@@ -76,7 +75,6 @@ class ExpenseUpdateForm extends Component {
   onSubmit (values) {
     this.props.updateExpense(values, this.props.expense._id)
     this.toggleEdit()
-    this.props.reset()
   }
 
   render () {
@@ -99,6 +97,5 @@ function validate (values) {
 }
 
 export default reduxForm({
-  validate,
-  form: 'expenseUpdateForm'
+  validate
 })(connect(null, actions)(withRouter(ExpenseUpdateForm)))

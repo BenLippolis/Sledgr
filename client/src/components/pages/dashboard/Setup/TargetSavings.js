@@ -18,18 +18,6 @@ class TargetSavings extends Component {
         <h4>
           How much do you want to aim to save every week?
         </h4>
-        <p>
-          {' '}
-          If you save
-          {' '}
-          <b>{roundTo(this.props.profile.percentSaved * 100, 0)}</b>
-          % of the money you can possibly save you'll be saving
-          {' '}
-          <b>${roundTo(this.props.profile.weeklyTargetSavings, 0)}</b>
-          {' '}
-          every week.
-          {' '}
-        </p>
         <div className='row'>
           <div className='col-md-4' />
           <div className='col-md-1'>
@@ -54,6 +42,17 @@ class TargetSavings extends Component {
         </div>
 
         <p>
+          {' '}
+          If you save
+          {' '}
+          <b>{roundTo(this.props.profile.percentSaved * 100, 0)}</b>
+          % of the money you can possibly save you'll be saving
+          {' '}
+          <b>${roundTo(this.props.profile.weeklyTargetSavings, 0)}</b>
+          {' '}
+          every week.
+          {' '}
+          <br />
           You can save that much and still have          $
           <b>
             {roundTo(
