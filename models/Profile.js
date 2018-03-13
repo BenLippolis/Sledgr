@@ -22,6 +22,8 @@ const profileSchema = new Schema({
   rewardSchedule: { type: Number, default: 0 },
   rewardBudget: { type: Number, default: 0 },
   rewardType: { type: String, default: '_____' },
+  rewardDate: Date,
+  rewardFlavor: String,
   rewardNotes: { type: String, default: '' },
   activeGoal: { type: Boolean, default: false },
   _user: { type: Schema.Types.ObjectId, ref: 'User' }
