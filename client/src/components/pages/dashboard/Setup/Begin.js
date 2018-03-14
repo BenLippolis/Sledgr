@@ -10,7 +10,7 @@ class Begin extends Component {
 
   render () {
     return (
-      <div className='text-center jumbotron'>
+      <div className='text-center white jumbotron'>
         <p>
           {' '}
           You’re done! So for the next

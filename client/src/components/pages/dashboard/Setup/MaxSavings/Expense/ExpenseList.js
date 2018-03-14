@@ -4,22 +4,10 @@ import ExpenseItem from './ExpenseItem'
 import ExpenseForm from './ExpenseForm'
 
 class ExpenseList extends Component {
-  renderExpenses () {
+  render () {
     return this.props.profile.expenses.map(exp => {
       return <ExpenseItem key={exp._id} expense={exp} />
     })
-  }
-
-  render () {
-    return (
-      <div className='card'>
-
-        <ul className='list-group list-group-flush'>
-          {this.renderExpenses()}
-        </ul>
-
-      </div>
-    )
   }
 }
 

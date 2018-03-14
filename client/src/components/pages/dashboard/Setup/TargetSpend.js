@@ -14,7 +14,7 @@ class TargetSpend extends Component {
 
   render () {
     return (
-      <div className='jumbotron text-center'>
+      <div className='jumbotron white text-center'>
         <h4>
           Of the $
           {roundTo(this.props.profile.weeklyTargetSavings, 0)}

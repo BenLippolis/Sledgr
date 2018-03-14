@@ -53,18 +53,16 @@ class IncomeForm extends Component {
 
     if (this.state.isEditing) {
       return (
-        <div>
-          <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-            <div className='row'>
-              {this.renderFields()}
-              <div className='col-md-4'>
-                <button className='btn btn-primary btn-sm' type='submit'>
-                  Update Income
-                </button>
-              </div>
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+          <div className='row'>
+            {this.renderFields()}
+            <div className='col-md-4'>
+              <button className='btn btn-primary btn-sm' type='submit'>
+                Update Income
+              </button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       )
     } else {
       return (

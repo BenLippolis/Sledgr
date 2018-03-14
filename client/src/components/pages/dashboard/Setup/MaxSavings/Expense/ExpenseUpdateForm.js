@@ -30,6 +30,10 @@ class ExpenseUpdateForm extends Component {
     this.setState({ isEditing: !this.state.isEditing })
   }
 
+  onDeleteClick (expense) {
+    this.props.deleteExpense(expense)
+  }
+
   renderFields () {
     return _.map(formFields, ({ label, name }, index) => {
       return (
@@ -53,7 +57,7 @@ class ExpenseUpdateForm extends Component {
           <div className='row'>
             {this.renderFields()}
             <div className='col-md-4'>
-              <button className='btn btn-outline-primary btn-sm' type='submit'>
+              <button className='btn btn-sm btn-outline-primary' type='submit'>
                 Update Expense
               </button>
             </div>
@@ -62,12 +66,24 @@ class ExpenseUpdateForm extends Component {
       )
     } else {
       return (
-        <button
-          className='btn btn-outline-primary btn-sm'
-          onClick={this.toggleEdit}
-        >
-          edit
-        </button>
+        <div className='row'>
+          {this.renderFields()}
+          <div className='col-md-4'>
+            <button
+              className='btn btn-outline-primary btn-sm'
+              onClick={this.toggleEdit}
+            >
+              edit
+            </button>
+            <button
+              className='btn btn-outline-danger btn-sm'
+              onClick={this.onDeleteClick.bind(this, this.props.expense)}
+            >
+              {' '}
+              Delete{' '}
+            </button>
+          </div>
+        </div>
       )
     }
   }

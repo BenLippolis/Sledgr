@@ -11,7 +11,7 @@ class RewardSchedule extends Component {
 
   render () {
     return (
-      <div className='jumbotron text-center'>
+      <div className='jumbotron white text-center'>
 
         <div>
           <h4>

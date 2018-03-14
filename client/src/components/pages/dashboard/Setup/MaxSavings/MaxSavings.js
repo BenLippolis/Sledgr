@@ -9,7 +9,7 @@ import './MaxSavings.css'
 class MaxSavings extends Component {
   render () {
     return (
-      <div className='jumbotron'>
+      <div className='jumbotron white'>
         <h4>
           {' '}
           Hey {this.props.profile.name}, you make
@@ -23,13 +23,23 @@ class MaxSavings extends Component {
           weeks...
           {' '}
         </h4>
-        <IncomeForm
-          income={this.props.profile.income}
-          incomeFrequency={this.props.profile.incomeFrequency}
-        />
+        <div className='row'>
+          <div className='col-md-3' />
+          <div className='col-md-6'>
+            <IncomeForm
+              income={this.props.profile.income}
+              incomeFrequency={this.props.profile.incomeFrequency}
+            />
+          </div>
+        </div>
         <h4> and have the following monthly expenses...</h4>
-        <ExpenseList />
-        <ExpenseForm />
+        <div className='row'>
+          <div className='col-md-3' />
+          <div className='col-md-6'>
+            <ExpenseList />
+            <ExpenseForm />
+          </div>
+        </div>
         <h4>
           {' '}
           so the most you can save each week is $

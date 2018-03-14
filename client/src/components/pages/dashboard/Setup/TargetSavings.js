@@ -14,7 +14,7 @@ class TargetSavings extends Component {
 
   render () {
     return (
-      <div className='jumbotron text-center'>
+      <div className='jumbotron white text-center'>
         <h4>
           How much do you want to aim to save every week?
         </h4>

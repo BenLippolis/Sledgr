@@ -226,5 +226,5 @@ export const addBadTxn = txnId => async dispatch => {
   axios.patch('/api/goal/add_bad_txn', {
     txnId: txnId
   })
-  dispatch({type: types.ADD_BAD_TXN, payload: txnId})
+  dispatch({ type: types.ADD_BAD_TXN, payload: txnId })
 }

@@ -11,7 +11,7 @@ class RewardSelection extends Component {
 
   render () {
     return (
-      <div className='jumbotron text-center'>
+      <div className='jumbotron white text-center'>
         <h4>
           What would you like to do for your reward?
         </h4>
