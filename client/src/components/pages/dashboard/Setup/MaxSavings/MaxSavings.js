@@ -7,7 +7,18 @@ import roundTo from 'round-to'
 import './MaxSavings.css'
 
 class MaxSavings extends Component {
+  calTotalExpenses () {
+    var total = 0
+    this.props.profile.expenses.forEach(function (exp) {
+      total += exp.amount
+    })
+    return total * 12 / 52
+  }
+
   render () {
+    var maxSavings =
+      this.props.profile.income / this.props.profile.incomeFrequency -
+      this.calTotalExpenses()
     return (
       <div className='jumbotron white'>
         <h4>
@@ -43,7 +54,7 @@ class MaxSavings extends Component {
         <h4>
           {' '}
           so the most you can save each week is $
-          {roundTo(this.props.profile.weeklyMaxSavings, 0)}.
+          {roundTo(maxSavings, 0)}.
           {' '}
         </h4>
       </div>

@@ -4,6 +4,14 @@ import { decreasePercentSaved, increasePercentSaved } from '../../../../actions'
 import roundTo from 'round-to'
 
 class TargetSavings extends Component {
+  calTotalExpenses () {
+    var total = 0
+    this.props.profile.expenses.forEach(function (exp) {
+      total += exp.amount
+    })
+    return total * 12 / 52
+  }
+
   onSaveDecrementClick (profile) {
     this.props.decreasePercentSaved(profile)
   }
@@ -13,6 +21,9 @@ class TargetSavings extends Component {
   }
 
   render () {
+    var maxSavings =
+      this.props.profile.income / this.props.profile.incomeFrequency -
+      this.calTotalExpenses()
     return (
       <div className='jumbotron white text-center'>
         <h4>
@@ -48,7 +59,7 @@ class TargetSavings extends Component {
           <b>{roundTo(this.props.profile.percentSaved * 100, 0)}</b>
           % of the money you can possibly save you'll be saving
           {' '}
-          <b>${roundTo(this.props.profile.weeklyTargetSavings, 0)}</b>
+          <b>${roundTo(maxSavings * this.props.profile.percentSaved, 0)}</b>
           {' '}
           every week.
           {' '}
