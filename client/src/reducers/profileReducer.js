@@ -35,35 +35,25 @@ export default function (state = {}, action) {
     case types.DECREASE_PERCENT_SAVED:
       return {
         ...state,
-        percentSaved: action.payload,
-        weeklyTargetSavings: state.weeklyMaxSavings * action.payload,
-        weeklyTargetSpend: state.weeklyMaxSavings *
-          action.payload *
-          state.percentSpent
+        percentSaved: action.payload
       }
 
     case types.INCREASE_PERCENT_SAVED:
       return {
         ...state,
-        percentSaved: action.payload,
-        weeklyTargetSavings: state.weeklyMaxSavings * action.payload,
-        weeklyTargetSpend: state.weeklyMaxSavings *
-          action.payload *
-          state.percentSpent
+        percentSaved: action.payload
       }
 
     case types.INCREASE_PERCENT_SPENT:
       return {
         ...state,
-        percentSpent: action.payload,
-        weeklyTargetSpend: state.weeklyTargetSavings * action.payload
+        percentSpent: action.payload
       }
 
     case types.DECREASE_PERCENT_SPENT:
       return {
         ...state,
-        percentSpent: action.payload,
-        weeklyTargetSpend: state.weeklyTargetSavings * action.payload
+        percentSpent: action.payload
       }
 
     case types.UPDATE_STAGE:
@@ -87,29 +77,20 @@ export default function (state = {}, action) {
     case types.ADD_EXPENSE:
       return {
         ...state,
-        expenses: action.payload.expenses,
-        weeklyMaxSavings: action.payload.weeklyMaxSavings,
-        weeklyTargetSavings: action.payload.weeklyTargetSavings,
-        weeklyTargetSpend: action.payload.weeklyTargetSpend
+        expenses: action.payload.expenses
       }
 
     case types.DELETE_EXPENSE:
       return {
         ...state,
-        expenses: action.payload.expenses,
-        weeklyMaxSavings: action.payload.weeklyMaxSavings,
-        weeklyTargetSavings: action.payload.weeklyTargetSavings,
-        weeklyTargetSpend: action.payload.weeklyTargetSpend
+        expenses: action.payload.expenses
       }
 
     case types.ADD_INCOME:
       return {
         ...state,
         income: action.payload.income,
-        incomeFrequency: action.payload.incomeFrequency,
-        weeklyMaxSavings: action.payload.weeklyMaxSavings,
-        weeklyTargetSavings: action.payload.weeklyTargetSavings,
-        weeklyTargetSpend: action.payload.weeklyTargetSpend
+        incomeFrequency: action.payload.incomeFrequency
       }
 
     case types.UPDATE_EXPENSE:

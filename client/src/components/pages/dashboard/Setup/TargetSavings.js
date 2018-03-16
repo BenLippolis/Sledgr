@@ -66,11 +66,7 @@ class TargetSavings extends Component {
           <br />
           You can save that much and still have          $
           <b>
-            {roundTo(
-              this.props.profile.weeklyMaxSavings -
-                this.props.profile.weeklyTargetSavings,
-              0
-            )}
+            {roundTo(maxSavings * (1 - this.props.profile.percentSaved), 0)}
           </b>
           {' '}
           to spend on extra stuff every week :)

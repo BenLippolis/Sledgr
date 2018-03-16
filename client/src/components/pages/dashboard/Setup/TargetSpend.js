@@ -4,6 +4,14 @@ import { decreasePercentSpent, increasePercentSpent } from '../../../../actions'
 import roundTo from 'round-to'
 
 class TargetSpend extends Component {
+  calTotalExpenses () {
+    var total = 0
+    this.props.profile.expenses.forEach(function (exp) {
+      total += exp.amount
+    })
+    return total * 12 / 52
+  }
+
   onSpentDecrementClick (profile) {
     this.props.decreasePercentSpent(profile)
   }
@@ -13,11 +21,14 @@ class TargetSpend extends Component {
   }
 
   render () {
+    var maxSavings =
+      this.props.profile.income / this.props.profile.incomeFrequency -
+      this.calTotalExpenses()
     return (
       <div className='jumbotron white text-center'>
         <h4>
           Of the $
-          {roundTo(this.props.profile.weeklyTargetSavings, 0)}
+          {roundTo(maxSavings * this.props.profile.percentSaved, 0)}
           {' '}
           you save how much do you want to spend on a reward?
         </h4>
@@ -54,7 +65,14 @@ class TargetSpend extends Component {
         </div>
         <p>
           Great, so every week you'll have $
-          <b>{roundTo(this.props.profile.weeklyTargetSpend, 0)}</b>
+          <b>
+            {roundTo(
+              maxSavings *
+                this.props.profile.percentSaved *
+                this.props.profile.percentSpent,
+              0
+            )}
+          </b>
           {' '}
           to put towards your reward!
         </p>

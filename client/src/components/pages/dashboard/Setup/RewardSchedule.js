@@ -5,11 +5,22 @@ import RewardForm from './Reward/RewardForm'
 import roundTo from 'round-to'
 
 class RewardSchedule extends Component {
+  calTotalExpenses () {
+    var total = 0
+    this.props.profile.expenses.forEach(function (exp) {
+      total += exp.amount
+    })
+    return total * 12 / 52
+  }
+
   onUpdateScheduleClick (frequency, profile) {
     this.props.updateRewardSchedule(frequency, profile)
   }
 
   render () {
+    var maxSavings =
+      this.props.profile.income / this.props.profile.incomeFrequency -
+      this.calTotalExpenses()
     return (
       <div className='jumbotron white text-center'>
 
@@ -65,7 +76,15 @@ class RewardSchedule extends Component {
         <div>
           <p>
             You'll have $
-            <b>{roundTo(this.props.profile.rewardBudget, 0)}</b>
+            <b>
+              {roundTo(
+                maxSavings *
+                  this.props.profile.percentSaved *
+                  this.props.profile.percentSpent *
+                  this.props.profile.rewardSchedule,
+                0
+              )}
+            </b>
             {' '}
             to spend on a reward
             {' '}

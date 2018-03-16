@@ -4,11 +4,25 @@ import { submitGoal } from '../../../../actions'
 import roundTo from 'round-to'
 
 class Begin extends Component {
-  onBeginClick (profile) {
-    this.props.submitGoal(profile)
+  calTotalExpenses () {
+    var total = 0
+    this.props.profile.expenses.forEach(function (exp) {
+      total += exp.amount
+    })
+    return total * 12 / 52
+  }
+  onBeginClick (profile, weeklySpend) {
+    this.props.submitGoal(profile, weeklySpend)
   }
 
   render () {
+    var maxSavings =
+      this.props.profile.income / this.props.profile.incomeFrequency -
+      this.calTotalExpenses()
+    var weeklySpend = roundTo(
+      maxSavings * (1 - this.props.profile.percentSaved),
+      0
+    )
     return (
       <div className='text-center white jumbotron'>
         <p>
@@ -21,26 +35,20 @@ class Begin extends Component {
             weeks
           </b>, you can spend <b>
             $
-            {roundTo(
-              this.props.profile.weeklyMaxSavings -
-                this.props.profile.weeklyTargetSavings,
-              0
-            )}
+            {weeklySpend}
           </b>
           {' '}
           on extras per week. Doing so, you will save <b>
             $
-            {roundTo(
-              this.props.profile.weeklyTargetSavings -
-                this.props.profile.weeklyTargetSpend,
-              0
-            )}
+            {roundTo(maxSavings * this.props.profile.percentSaved, 0)}
           </b>
           {' '}
           each week and have <b>
             $
             {roundTo(
-              this.props.profile.weeklyTargetSpend *
+              maxSavings *
+                this.props.profile.percentSaved *
+                this.props.profile.percentSpent *
                 this.props.profile.rewardSchedule,
               0
             )}
@@ -51,7 +59,11 @@ class Begin extends Component {
         </p>
         <button
           className='btn btn-primary'
-          onClick={this.onBeginClick.bind(this, this.props.profile)}
+          onClick={this.onBeginClick.bind(
+            this,
+            this.props.profile,
+            weeklySpend
+          )}
         >
           {' '}Begin!{' '}
         </button>
