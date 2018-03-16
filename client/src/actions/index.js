@@ -46,8 +46,8 @@ export const updateExpense = (values, expense_id) => async dispatch => {
     amount: values.amount,
     expense_id: expense_id
   }
-  axios.patch('/api/profile/expense/update', all_values)
-  dispatch({ type: types.UPDATE_EXPENSE, payload: all_values })
+  const res = await axios.patch('/api/profile/expense/update', all_values)
+  dispatch({ type: types.UPDATE_EXPENSE, payload: res.data })
 }
 
 // Delete expense from profile

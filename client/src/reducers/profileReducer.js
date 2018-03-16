@@ -80,6 +80,12 @@ export default function (state = {}, action) {
         expenses: action.payload.expenses
       }
 
+    case types.UPDATE_EXPENSE:
+      return {
+        ...state,
+        expenses: action.payload.expenses
+      }
+
     case types.DELETE_EXPENSE:
       return {
         ...state,
@@ -93,22 +99,6 @@ export default function (state = {}, action) {
         incomeFrequency: action.payload.incomeFrequency
       }
 
-    case types.UPDATE_EXPENSE:
-      return {
-        ...state,
-        expenses: state.expenses.map(
-          exp =>
-            (exp._id === action.payload.expense_id
-              ? // transform the one with a matching id
-            {
-              ...exp,
-              title: action.payload.title,
-              amount: action.payload.amount
-            }
-              : // otherwise return original todo
-                exp)
-        )
-      }
     default:
       return state
   }

@@ -60,15 +60,17 @@ module.exports = app => {
   app.patch('/api/profile/expense/update', requireLogin, async (req, res) => {
     const { expense_id, title, amount } = req.body
     try {
-      await Profile.findOneAndUpdate(
+      const profile = await Profile.findOneAndUpdate(
         { _user: req.user.id, 'expenses._id': expense_id },
         {
           $set: {
             'expenses.$.title': title,
             'expenses.$.amount': amount
           }
-        }
+        },
+        { new: true }
       )
+      res.send(profile)
     } catch (err) {
       res.status(422).send(err)
     }
