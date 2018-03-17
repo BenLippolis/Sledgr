@@ -9,7 +9,6 @@ import Community from './pages/static/Community'
 import HowItWorks from './pages/static/HowItWorks'
 import Pricing from './pages/static/Pricing'
 import About from './pages/static/About'
-import ProfileCreate from './profile/ProfileCreate'
 import './App.css'
 
 class App extends Component {
@@ -30,7 +29,6 @@ class App extends Component {
                 <Route path='/how-it-works' component={HowItWorks} />
                 <Route path='/pricing' component={Pricing} />
                 <Route path='/about' component={About} />
-                <Route path='/profile/create' component={ProfileCreate} />
               </div>
             </div>
           </div>

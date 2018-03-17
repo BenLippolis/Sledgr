@@ -7,8 +7,6 @@ const keys = require('./config/keys')
 // Require all models
 require('./models/User')
 require('./models/Profile')
-require('./models/Inflow')
-require('./models/Outflow')
 require('./models/Goal')
 require('./services/passport')
 
@@ -36,8 +34,6 @@ app.use(passport.session())
 require('./routes/authRoutes')(app)
 require('./routes/plaidRoutes')(app)
 require('./routes/profileRoutes')(app)
-require('./routes/inflowRoutes')(app)
-require('./routes/outflowRoutes')(app)
 require('./routes/goalRoutes')(app)
 
 // Config for production routing with React Router

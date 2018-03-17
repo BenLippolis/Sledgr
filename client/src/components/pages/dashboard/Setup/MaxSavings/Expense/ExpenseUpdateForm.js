@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import _ from 'lodash'
-import { reduxForm, Field, FieldArray } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
 import ExpenseField from './ExpenseField'
 import { withRouter } from 'react-router-dom'
 import formFields from './formFields'

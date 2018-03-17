@@ -6,8 +6,6 @@ const mongoose = require('mongoose')
 const Profile = mongoose.model('profile')
 const Goal = mongoose.model('goal')
 const Week = mongoose.model('goal')
-const Outflow = mongoose.model('outflow')
-
 const plaidClientId = keys.plaidClientId
 const plaidSecret = keys.plaidSecret
 const plaidPublic = keys.plaidPublic
@@ -60,6 +58,7 @@ module.exports = app => {
     )
   })
 
+  // Return transactions for the active week
   app.get('/api/transactions', requireLogin, async (req, res, next) => {
     // Find active week
     // Use week.time to pull necesary transactions

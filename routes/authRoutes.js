@@ -16,11 +16,13 @@ module.exports = app => {
     }
   )
 
+  // Log the user out
   app.get('/api/logout', (req, res) => {
     req.logout()
     res.redirect('/')
   })
 
+  // Return the current user
   app.get('/api/current_user', (req, res) => {
     res.send(req.user)
   })
