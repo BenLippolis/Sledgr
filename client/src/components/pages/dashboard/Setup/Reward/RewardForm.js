@@ -23,7 +23,7 @@ class RewardForm extends Component {
   }
 
   onSubmit (values) {
-    this.props.addNotes(values)
+    this.props.updateReward(values)
   }
 
   render () {

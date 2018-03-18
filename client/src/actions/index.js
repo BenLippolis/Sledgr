@@ -21,12 +21,6 @@ export const fetchProfile = () => async dispatch => {
   dispatch({ type: types.FETCH_PROFILE, payload: res.data })
 }
 
-// Add notes to profile
-export const addNotes = values => async dispatch => {
-  await axios.patch('/api/profile/update', values)
-  dispatch({ type: types.ADD_NOTES })
-}
-
 // Add income to profile
 export const addIncome = values => async dispatch => {
   const res = await axios.patch('/api/profile/update', values)
@@ -123,22 +117,21 @@ export const updateRewardSchedule = (frequency, profile) => dispatch => {
 }
 
 // Update the type of reward the users wants when they reach goal
-export const updateRewardType = values => dispatch => {
-  axios.patch('/api/profile/update', values)
+export const updateRewardType = type => dispatch => {
+  axios.patch('/api/profile/update', {
+    rewardType: type
+  })
   dispatch({
     type: types.UPDATE_REWARD_TYPE,
-    payload: values
+    payload: type
   })
 }
 
 // Update the notes for reward the users wants when they reach goal
-export const updateRewardNotes = notes => dispatch => {
-  axios.patch('/api/profile/update', {
-    rewardNotes: notes
-  })
+export const updateReward = values => dispatch => {
+  axios.patch('/api/profile/update', values)
   dispatch({
-    type: types.UPDATE_REWARD_NOTES,
-    payload: notes
+    type: types.UPDATE_REWARD
   })
 }
 

@@ -65,6 +65,19 @@ class RewardSelection extends Component {
             Travel
           </button>
         </div>
+        <p>
+          {' '}
+          {this.props.profile.rewardFlavor}
+          {' '}
+          |
+          {' '}
+          {this.props.profile.rewardDate}
+          {' '}
+          |
+          {' '}
+          {this.props.profile.rewardNotes}
+          {' '}
+        </p>
         {this.renderOptions()}
         <div className='row'>
           <div className='col-md-3' />
