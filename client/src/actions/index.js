@@ -123,13 +123,11 @@ export const updateRewardSchedule = (frequency, profile) => dispatch => {
 }
 
 // Update the type of reward the users wants when they reach goal
-export const updateRewardType = type => dispatch => {
-  axios.patch('/api/profile/update', {
-    rewardType: type
-  })
+export const updateRewardType = values => dispatch => {
+  axios.patch('/api/profile/update', values)
   dispatch({
     type: types.UPDATE_REWARD_TYPE,
-    payload: type
+    payload: values
   })
 }
 

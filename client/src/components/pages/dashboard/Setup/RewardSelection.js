@@ -9,6 +9,33 @@ class RewardSelection extends Component {
     this.props.updateRewardType(type)
   }
 
+  renderOptions () {
+    switch (this.props.profile.rewardType) {
+      case 'events':
+        return (
+          <p>
+            Sounds like <b> events </b> are your thing,
+            let us know specifically what you're into and when you want to do it!
+          </p>
+        )
+      case 'dinner':
+        return (
+          <p>
+            Sounds like <b> dinner </b> is your thing,
+            let us know specifically what you're into and when you want to do it!
+          </p>
+        )
+      case 'travel':
+        return (
+          <p>
+            Sounds like <b> travel </b> is your thing,
+            let us know specifically what you're into and when you want to do it!
+          </p>
+        )
+      default:
+    }
+  }
+
   render () {
     return (
       <div className='jumbotron white text-center'>
@@ -38,11 +65,7 @@ class RewardSelection extends Component {
             Travel
           </button>
         </div>
-
-        <p>
-          Sounds like <b>{this.props.profile.rewardType}</b> is your thing,
-          anything specific you want us to know?{' '}
-        </p>
+        {this.renderOptions()}
         <div className='row'>
           <div className='col-md-3' />
           <div className='col-md-6 text-center'>

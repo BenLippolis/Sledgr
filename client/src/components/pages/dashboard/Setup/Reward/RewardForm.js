@@ -36,7 +36,7 @@ class RewardForm extends Component {
             {this.renderFields()}
             <div className='col-md-4'>
               <button className='btn btn-primary btn-sm' type='submit'>
-                Add Notes
+                Update Reward
               </button>
             </div>
           </div>
