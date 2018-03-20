@@ -10,6 +10,7 @@ const plaidClientId = keys.plaidClientId
 const plaidSecret = keys.plaidSecret
 const plaidPublic = keys.plaidPublic
 const plaidEnv = keys.plaidEnv
+const _ = require('lodash')
 
 // Initialize Plaid client
 var client = new plaid.Client(
@@ -66,7 +67,8 @@ module.exports = app => {
       _user: req.user.id,
       active: true
     })
-    // var startDate = moment().subtract(5, 'days').format('YYYY-MM-DD')
+
+    var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
 
     // Gives you the number of days that have passed since goal was created
@@ -74,9 +76,9 @@ module.exports = app => {
     var weeksPassed = 1 + moment().diff(activeGoal.time, 'weeks')
 
     // Gives you the date of the earliest transactions that should be pulled
-    var startDate = moment(activeGoal.time)
-      .add(weeksPassed * 1, 'days')
-      .format('YYYY-MM-DD')
+    // var startDate = moment(activeGoal.time)
+    //  .add(weeksPassed * 1, 'days')
+    //  .format('YYYY-MM-DD')
 
     client.getTransactions(req.user.accessToken, startDate, endDate, function (
       error,
@@ -94,21 +96,33 @@ module.exports = app => {
       // amounts over $500,
       // transactions that the user thinks don't apply
       transactionsResponse.transactions.forEach(function (txn) {
-        if (
-          (txn.category_id === '19047000' && txn.amount > 20) ||
-          txn.amount < 0 ||
-          txn.amount > 500 ||
-          activeGoal.badTransactions.includes(txn.transaction_id)
-          // This is a transaction that was made the day before
-          // (txn.pending === false && txn.date === startDate)
-        ) {
-        } else {
-          displayTxns.push(txn)
-          displayTxnsValue += txn.amount
-        }
+        // if (
+        // (txn.category_id === '19047000' && txn.amount > 20) ||
+        // txn.amount < 0 ||
+        // txn.amount > 500 ||
+        // activeGoal.badTransactions.includes(txn.transaction_id)
+        // This is a transaction that was made the day before
+        // (txn.pending === false && txn.date === startDate)
+        // ) {
+        // } else {
+        displayTxns.push(txn)
+        displayTxnsValue += txn.amount
+        // }
+        console.log(
+          Math.floor(moment(txn.date).diff(activeGoal.time, 'days') / 7)
+        )
       })
-      console.log(transactionsResponse.transactions)
-      console.log(displayTxnsValue)
+      console.log(
+        _(transactionsResponse.transactions)
+          .groupBy(txn =>
+            Math.floor(moment(activeGoal.time).diff(txn.date, 'days') / 7)
+          )
+          .map((value, key) => ({ week: key, txns: value }))
+          .value()
+      )
+
+      // console.log(transactionsResponse.transactions)
+      // console.log(displayTxnsValue)
       res.json(displayTxns)
     })
   })
