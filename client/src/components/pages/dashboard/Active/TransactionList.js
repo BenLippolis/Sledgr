@@ -19,6 +19,7 @@ class TransactionList extends Component {
           key={txn.transaction_id}
           id={txn.transaction_id}
           name={txn.name}
+          date={txn.date}
           amount={txn.amount}
         />
       )

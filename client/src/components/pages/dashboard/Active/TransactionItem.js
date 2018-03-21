@@ -16,7 +16,7 @@ class TransactionItem extends Component {
           <div className='row'>
             <div className='col-md-10'>
               <p className='card-text'>
-                {this.props.name} ${this.props.amount}
+                {this.props.name} | ${this.props.amount} | {this.props.date}
               </p>
             </div>
             <div className='col-md-2'>

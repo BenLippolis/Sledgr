@@ -72,13 +72,13 @@ module.exports = app => {
     var endDate = moment().format('YYYY-MM-DD')
 
     // Gives you the number of days that have passed since goal was created
-    // Add one because this gives use the differenc, not the total weeks passed value we're looking for
-    var weeksPassed = 1 + moment().diff(activeGoal.time, 'weeks')
+    // Add one because this gives use the difference, not the total weeks passed value we're looking for
+    // var weeksPassed = moment().diff(activeGoal.time, 'weeks')
 
     // Gives you the date of the earliest transactions that should be pulled
     // var startDate = moment(activeGoal.time)
-    //  .add(weeksPassed * 1, 'days')
-    //  .format('YYYY-MM-DD')
+    //  .add(weeksPassed * 7, 'days')
+    // .format('YYYY-MM-DD')
 
     client.getTransactions(req.user.accessToken, startDate, endDate, function (
       error,
@@ -90,6 +90,12 @@ module.exports = app => {
       }
       var displayTxns = []
       var displayTxnsValue = 0
+      var txnsByWeek = _(transactionsResponse.transactions)
+        .groupBy(txn =>
+          Math.floor(moment(activeGoal.time).diff(txn.date, 'days') / 7)
+        )
+        .map((value, key) => ({ week: key, txns: value }))
+        .value()
 
       // Exclude 'grocery' related transactions over $20,
       // negative values (deposits),
@@ -108,22 +114,12 @@ module.exports = app => {
         displayTxns.push(txn)
         displayTxnsValue += txn.amount
         // }
-        console.log(
-          Math.floor(moment(txn.date).diff(activeGoal.time, 'days') / 7)
-        )
       })
-      console.log(
-        _(transactionsResponse.transactions)
-          .groupBy(txn =>
-            Math.floor(moment(activeGoal.time).diff(txn.date, 'days') / 7)
-          )
-          .map((value, key) => ({ week: key, txns: value }))
-          .value()
-      )
-
+      console.log(txnsByWeek)
+      var sorted = _(displayTxns).sortBy(txn => txn.date)
       // console.log(transactionsResponse.transactions)
       // console.log(displayTxnsValue)
-      res.json(displayTxns)
+      res.json(sorted)
     })
   })
 
