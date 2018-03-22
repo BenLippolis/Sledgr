@@ -71,15 +71,6 @@ module.exports = app => {
     var startDate = moment().subtract(30, 'days').format('YYYY-MM-DD')
     var endDate = moment().format('YYYY-MM-DD')
 
-    // Gives you the number of days that have passed since goal was created
-    // Add one because this gives use the difference, not the total weeks passed value we're looking for
-    // var weeksPassed = moment().diff(activeGoal.time, 'weeks')
-
-    // Gives you the date of the earliest transactions that should be pulled
-    // var startDate = moment(activeGoal.time)
-    //  .add(weeksPassed * 7, 'days')
-    // .format('YYYY-MM-DD')
-
     client.getTransactions(req.user.accessToken, startDate, endDate, function (
       error,
       transactionsResponse
@@ -89,7 +80,6 @@ module.exports = app => {
         return res.json({ error: error })
       }
       var displayTxns = []
-      var displayTxnsValue = 0
       var txnsByWeek = _(transactionsResponse.transactions)
         .groupBy(txn =>
           Math.floor(moment(activeGoal.time).diff(txn.date, 'days') / 7)
@@ -97,11 +87,18 @@ module.exports = app => {
         .map((value, key) => ({ week: key, txns: value }))
         .value()
 
-      // Exclude 'grocery' related transactions over $20,
-      // negative values (deposits),
-      // amounts over $500,
-      // transactions that the user thinks don't apply
+      // Gives you the number of days that have passed since goal was created
+      var weeksPassed = moment().diff(activeGoal.time, 'weeks')
+
       transactionsResponse.transactions.forEach(function (txn) {
+        if (
+          txn.date >
+          moment(activeGoal.time)
+            .add(weeksPassed * 7, 'days')
+            .format('YYYY-MM-DD')
+        ) {
+          displayTxns.push(txn)
+        }
         // if (
         // (txn.category_id === '19047000' && txn.amount > 20) ||
         // txn.amount < 0 ||
@@ -111,14 +108,10 @@ module.exports = app => {
         // (txn.pending === false && txn.date === startDate)
         // ) {
         // } else {
-        displayTxns.push(txn)
-        displayTxnsValue += txn.amount
         // }
       })
-      console.log(txnsByWeek)
+
       var sorted = _(displayTxns).sortBy(txn => txn.date)
-      // console.log(transactionsResponse.transactions)
-      // console.log(displayTxnsValue)
       res.json(sorted)
     })
   })
