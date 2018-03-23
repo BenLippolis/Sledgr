@@ -67,9 +67,13 @@ class RewardSelection extends Component {
         </div>
         {this.renderOptions()}
         <div className='row'>
-          <div className='col-md-3' />
-          <div className='col-md-6 text-center'>
-            <RewardForm />
+          <div className='col-md-2' />
+          <div className='col-md-8 text-center'>
+            <RewardForm
+              flavor={this.props.profile.rewardFlavor}
+              date={this.props.profile.rewardDate}
+              notes={this.props.profile.rewardNotes}
+            />
           </div>
         </div>
 

@@ -8,6 +8,18 @@ import { connect } from 'react-redux'
 import * as actions from '../../../../../actions'
 
 class RewardForm extends Component {
+  componentDidMount () {
+    this.handleInitialize()
+  }
+
+  handleInitialize () {
+    const initData = {
+      rewardFlavor: this.props.flavor,
+      rewardDate: this.props.date,
+      rewardNotes: this.props.notes
+    }
+    this.props.initialize(initData)
+  }
   renderFields () {
     return _.map(formFields, ({ label, name }) => {
       return (
@@ -34,7 +46,7 @@ class RewardForm extends Component {
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
           <div className='row'>
             {this.renderFields()}
-            <div className='col-md-4'>
+            <div className='col-md-3'>
               <button className='btn btn-primary btn-sm' type='submit'>
                 Update Reward
               </button>
