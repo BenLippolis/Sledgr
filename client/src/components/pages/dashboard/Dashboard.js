@@ -121,14 +121,16 @@ class Dashboard extends Component {
         )
       case 1:
         return (
-          <div className='text-center'>
-            <MaxSavings />
-            <TargetSavings />
-            <TargetSpend />
-            <RewardSchedule />
-            <RewardSelection />
-            <Begin />
-            {this.renderContinueButton(2)}
+          <div>
+            <div className='text-center'>
+              <MaxSavings />
+              <TargetSavings />
+              <TargetSpend />
+              <RewardSchedule />
+              <RewardSelection />
+              <Begin />
+              {this.renderContinueButton(2)}
+            </div>
           </div>
         )
       case 2:
@@ -167,10 +169,9 @@ class Dashboard extends Component {
           <div className='jumbotron text-center branding'>
             <h1> Welcome to Sledgr! </h1>
             <div className='row'>
-              <div className='col-md-12'>
-                <div className='col-md-6 col-md-offset-3'>
-                  <ProfileCreate />
-                </div>
+              <div className='col-md-3' />
+              <div className='col-md-6'>
+                <ProfileCreate />
               </div>
             </div>
           </div>

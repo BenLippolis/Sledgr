@@ -61,25 +61,6 @@ class Roadmap extends Component {
         <h3> Roadmap </h3>
         <p>
           {' '}
-          So far you have reached {this.countCompletedGoals()} goal(s) <br />
-          You're on day
-          {' '}
-          {1 + moment().diff(this.props.activeGoal.time, 'days')}
-          {' '}
-          of this goal
-          <br />
-          This goal was created on
-          {' '}
-          {moment(this.props.activeGoal.time).format('YYYY-MM-DD')}
-          <br />
-          You're on week
-          {' '}
-          {1 + moment().diff(this.props.activeGoal.time, 'weeks')}
-          {' '}
-          of this goal
-        </p>
-        <p>
-          {' '}
           If you continue setting a new goal evey
           {' '}
           <b>
@@ -104,6 +85,32 @@ class Roadmap extends Component {
               })}{' '}
           </b>on awesome experiences{' '}over the next 12 months!
           {' '}
+        </p>
+        <div className='jumbotron'>
+          <p>
+            {' '}
+            Visual with timline, week illustration, and savings accumulation over time.
+            {' '}
+          </p>
+        </div>
+        <p>
+          {' '}
+          So far you have reached {this.countCompletedGoals()} goal(s) <br />
+          You're on day
+          {' '}
+          {1 + moment().diff(this.props.activeGoal.time, 'days')}
+          {' '}
+          of this goal
+          <br />
+          This goal was created on
+          {' '}
+          {moment(this.props.activeGoal.time).format('YYYY-MM-DD')}
+          <br />
+          You're on week
+          {' '}
+          {1 + moment().diff(this.props.activeGoal.time, 'weeks')}
+          {' '}
+          of this goal
         </p>
       </div>
     )
