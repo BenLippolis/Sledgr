@@ -70,7 +70,13 @@ class Roadmap extends Component {
           <br />
           This goal was created on
           {' '}
-          {this.props.activeGoal.time}
+          {moment(this.props.activeGoal.time).format('YYYY-MM-DD')}
+          <br />
+          You're on week
+          {' '}
+          {1 + moment().diff(this.props.activeGoal.time, 'weeks')}
+          {' '}
+          of this goal
         </p>
         <p>
           {' '}
@@ -99,7 +105,6 @@ class Roadmap extends Component {
           </b>on awesome experiences{' '}over the next 12 months!
           {' '}
         </p>
-        {this.renderWeeks()}
       </div>
     )
   }
