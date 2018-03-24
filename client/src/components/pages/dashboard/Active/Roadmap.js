@@ -59,33 +59,6 @@ class Roadmap extends Component {
     return (
       <div className='jumbotron white'>
         <h3> Roadmap </h3>
-        <p>
-          {' '}
-          If you continue setting a new goal evey
-          {' '}
-          <b>
-            {this.props.profile.rewardSchedule}
-            {' '}
-            weeks
-          </b>, you're on track to save
-          {' '}
-          <b>
-            $
-            {((this.props.profile.weeklyTargetSavings -
-              this.props.profile.weeklyTargetSpend) *
-              52).toLocaleString(navigator.language, {
-                minimumFractionDigits: 0
-              })}
-          </b>
-          {' '}
-          {' '}and spend <b>
-            ${(this.props.profile.weeklyTargetSpend *
-              52).toLocaleString(navigator.language, {
-                minimumFractionDigits: 0
-              })}{' '}
-          </b>on awesome experiences{' '}over the next 12 months!
-          {' '}
-        </p>
         <div className='jumbotron'>
           <p>
             {' '}
