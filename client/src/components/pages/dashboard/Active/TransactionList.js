@@ -13,17 +13,21 @@ class TransactionList extends Component {
   }
 
   render () {
-    return this.props.transactions.map(txn => {
-      return (
-        <TransactionItem
-          key={txn.transaction_id}
-          id={txn.transaction_id}
-          name={txn.name}
-          date={txn.date}
-          amount={txn.amount}
-        />
-      )
-    })
+    if (this.props.transactions.length > 0) {
+      return this.props.transactions.map(txn => {
+        return (
+          <TransactionItem
+            key={txn.transaction_id}
+            id={txn.transaction_id}
+            name={txn.name}
+            date={txn.date}
+            amount={txn.amount}
+          />
+        )
+      })
+    } else {
+      return null
+    }
   }
 }
 
