@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import './styles/Header.css'
 
 class Header extends Component {
   renderProfileName () {
@@ -53,7 +54,7 @@ class Header extends Component {
   render () {
     return (
       <div>
-        <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <nav className='navbar navbar-expand-lg navbar-light bg-lightt'>
           <Link to={this.props.auth ? '/' : '/'} className='navbar-brand'>
             Sledgr
           </Link>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { addBadTxn } from '../../../../actions'
 import { connect } from 'react-redux'
-import TransactionList from './TransactionList'
 import FaClose from 'react-icons/lib/fa/times-circle'
 
 class TransactionItem extends Component {

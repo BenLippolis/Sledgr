@@ -2,8 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchTransactions } from '../../../../actions'
 import TransactionItem from './TransactionItem'
-import moment from 'moment'
-import _ from 'lodash'
 
 class TransactionList extends Component {
   componentDidMount () {

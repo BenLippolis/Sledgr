@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateRewardType } from '../../../../actions'
 import RewardForm from './Reward/RewardForm'
-import roundTo from 'round-to'
 
 class RewardSelection extends Component {
   onUpdateSelectionClick (type) {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import ExpenseItem from './ExpenseItem'
-import ExpenseForm from './ExpenseForm'
 
 class ExpenseList extends Component {
   render () {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateRewardSchedule } from '../../../../actions'
-import RewardForm from './Reward/RewardForm'
 import roundTo from 'round-to'
 
 class RewardSchedule extends Component {
