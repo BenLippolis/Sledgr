@@ -30,7 +30,7 @@ class TargetSpend extends Component {
           Of the $
           {roundTo(maxSavings * this.props.profile.percentSaved, 0)}
           {' '}
-          you save how much do you want to spend on a reward?
+          you save how much do you want to put towards your reward?
         </h4>
         <div className='row'>
           <div className='col-md-4' />
@@ -74,7 +74,7 @@ class TargetSpend extends Component {
             )}
           </b>
           {' '}
-          to put towards your reward!
+          to put towards a reward of your choice!
         </p>
 
       </div>

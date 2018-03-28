@@ -5,7 +5,7 @@ import './RewardVisual.css'
 class RewardVisual extends Component {
   render () {
     return (
-      <div className='jumbotron rv'>
+      <div className='jumbotron rv text-center'>
         <h3> Reward Visual </h3>
         <p>
           {' '}
@@ -17,10 +17,12 @@ class RewardVisual extends Component {
           {' '}
           {this.props.activeGoal.weekCount}
           {' '}
-          weeks
+          weeks. Get excited!
           {' '}
         </p>
-        <p> Booking Status: Pending... </p>
+        <button className='btn btn-outline-primary btn-sm'>
+          View Reward Details
+        </button>
       </div>
     )
   }

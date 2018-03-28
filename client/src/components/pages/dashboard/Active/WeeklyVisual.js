@@ -36,7 +36,7 @@ class WeeklyVisual extends Component {
 
   render () {
     return (
-      <div className='jumbotron wv'>
+      <div className='jumbotron wv text-center'>
         <h3> Weekly Visual </h3>
         <p>
           {' '}
