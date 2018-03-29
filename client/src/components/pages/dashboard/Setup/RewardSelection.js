@@ -2,10 +2,48 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { updateRewardType } from '../../../../actions'
 import RewardForm from './Reward/RewardForm'
+import _ from 'lodash'
+import roundTo from 'round-to'
 
 class RewardSelection extends Component {
   onUpdateSelectionClick (type) {
     this.props.updateRewardType(type)
+  }
+
+  calTotalExpenses () {
+    var total = 0
+    this.props.profile.expenses.forEach(function (exp) {
+      total += exp.amount
+    })
+    return total * 12 / 52
+  }
+
+  renderWeeks () {
+    var maxSavings =
+      this.props.profile.income / this.props.profile.incomeFrequency -
+      this.calTotalExpenses()
+    return (
+      <div className='container'>
+        <div className='row'>
+          {_.times(this.props.profile.rewardSchedule, i => (
+            <div className='col-md-1' key={i}>
+              <p>
+                $
+                {roundTo(
+                  maxSavings *
+                    this.props.profile.percentSaved *
+                    this.props.profile.percentSpent,
+                  0
+                ) *
+                  (i + 1)}
+                <br />
+                Week {i + 1}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   }
 
   renderOptions () {
@@ -38,6 +76,7 @@ class RewardSelection extends Component {
   render () {
     return (
       <div className='jumbotron white text-center'>
+        {this.renderWeeks()}
         <h4>
           What would you like to do for your reward?
         </h4>
