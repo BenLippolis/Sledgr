@@ -97,18 +97,22 @@ module.exports = app => {
             .add(weeksPassed * 7, 'days')
             .format('YYYY-MM-DD')
         ) {
-          displayTxns.push(txn)
+          if (
+            // The txn is a deposit
+            txn.amount < 0 ||
+            // The txn is more than $500
+            txn.amount > 500 ||
+            // The txn is weekly grocery shopping
+            (txn.category_id === '19047000' && txn.amount > 20) ||
+            // The user has marked the txn as one that does not apply
+            activeGoal.badTransactions.includes(txn.transaction_id)
+            // This is a transaction that was made the day before
+            // (txn.pending === false && txn.date === startDate)
+          ) {
+          } else {
+            displayTxns.push(txn)
+          }
         }
-        // if (
-        // (txn.category_id === '19047000' && txn.amount > 20) ||
-        // txn.amount < 0 ||
-        // txn.amount > 500 ||
-        // activeGoal.badTransactions.includes(txn.transaction_id)
-        // This is a transaction that was made the day before
-        // (txn.pending === false && txn.date === startDate)
-        // ) {
-        // } else {
-        // }
       })
 
       var sorted = _(displayTxns).sortBy(txn => txn.date)
